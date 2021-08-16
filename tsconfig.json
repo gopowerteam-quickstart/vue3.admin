@@ -13,6 +13,7 @@
     "incremental": false,
     "skipLibCheck": true,
     "strictNullChecks": true,
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["esnext", "dom"],
     "types": [
@@ -21,13 +22,16 @@
       "vite-plugin-vue-layouts/client"
     ],
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "@/*": ["src/*"]
     }
   },
   "include": [
     "components.d.ts",
     "vite.config.ts",
     "windi.config.ts",
+    "http-request-cli.config.js",
+    "plugin.ts",
     "src/**/*.vue",
     "src/**/*.ts"
   ],

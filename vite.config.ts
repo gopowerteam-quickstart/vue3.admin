@@ -23,10 +23,13 @@ const globalLessVaribles = path.resolve(
   'varibles.less'
 )
 
+import { plugin } from './plugin'
+
 export default defineConfig({
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, 'src')}/`
+      '~/': `${path.resolve(__dirname, 'src')}/`,
+      '@/': `${path.resolve(__dirname, 'src')}/`
     }
   },
   plugins: [
@@ -54,7 +57,15 @@ export default defineConfig({
       ]
     }),
     icons(),
-    WindiCSS({})
+    WindiCSS({}),
+    plugin({
+      path: path.resolve(
+        __dirname,
+        'src',
+        'http',
+        'services'
+      )
+    })
   ],
   css: {
     preprocessorOptions: {

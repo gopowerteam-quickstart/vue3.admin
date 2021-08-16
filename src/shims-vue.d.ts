@@ -8,3 +8,8 @@ declare module '*.vue' {
 interface ImportMetaEnv {
   VITE_REQUEST_GATEWAY: string
 }
+
+declare module 'virtual:http-request' {
+  const routes: any
+  export default routes
+}
