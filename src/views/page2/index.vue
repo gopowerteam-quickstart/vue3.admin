@@ -1,7 +1,9 @@
 <template lang="pug">
 main
   .a asdasd
-    a-button(@click='$router.push("/")' type='primary') 123
+    a-button(
+      @click='$router.push("/page1")'
+      type='primary') 123
 </template>
 
 <script setup lang="ts"></script>

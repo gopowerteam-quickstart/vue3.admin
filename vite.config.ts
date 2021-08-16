@@ -5,7 +5,9 @@ import jsx from '@vitejs/plugin-vue-jsx'
 import eslint from 'vite-plugin-eslint'
 import pages from 'vite-plugin-pages'
 import layouts from 'vite-plugin-vue-layouts'
-import components, { AntDesignVueResolver } from 'vite-plugin-components'
+import components, {
+  AntDesignVueResolver
+} from 'vite-plugin-components'
 import icons, { ViteIconsResolver } from 'vite-plugin-icons'
 import WindiCSS from 'vite-plugin-windicss'
 
