@@ -19,7 +19,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "cz-conventional-changelog-emoji"
+      "path": "node_modules/cz-customizable"
     }
   },
   "dependencies": {
@@ -45,7 +45,7 @@
     "@vue/compiler-sfc": "3.2.2",
     "@vue/server-renderer": "3.2.2",
     "commitizen": "4.2.4",
-    "cz-conventional-changelog-emoji": "0.1.0",
+    "cz-customizable": "6.3.0",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "3.4.0",
