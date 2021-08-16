@@ -1,6 +1,6 @@
 <template lang="pug">
 main
-  .a asdasd
+  router-view
 </template>
 
 <script setup lang="ts"></script>

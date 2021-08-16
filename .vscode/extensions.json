@@ -1,5 +1,15 @@
 {
 	"recommendations": [
-		"johnsoncodehk.volar"
-	]
+    "johnsoncodehk.volar",
+    "coenraads.bracket-pair-colorizer-2",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "antfu.iconify",
+    "christian-kohler.path-intellisense",
+    "esbenp.prettier-vscode",
+    "sysoev.language-stylus",
+    "antfu.vite",
+    "voorjaar.windicss-intellisense",
+    "antfu.browse-lite"
+  ]
 }

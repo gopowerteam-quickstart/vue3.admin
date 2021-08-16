@@ -41,7 +41,11 @@ module.exports = {
     // @typescript-eslint
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
     'prefer-promise-reject-errors': 'off',
+
     // TypeScript
     quotes: ['warn', 'single', { avoidEscape: true }],
     // 仅在开发时允许使用debug

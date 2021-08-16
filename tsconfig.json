@@ -15,11 +15,21 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client"],
+    "types": [
+      "vite/client",
+      "vite-plugin-pages/client",
+      "vite-plugin-vue-layouts/client"
+    ],
     "paths": {
       "~/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": [
+    "components.d.ts",
+    "vite.config.ts",
+    "windi.config.ts",
+    "src/**/*.vue",
+    "src/**/*.ts"
+  ],
   "exclude": ["dist", "node_modules"]
 }

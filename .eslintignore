@@ -3,4 +3,5 @@
 /public
 
 .eslintrc.js
+components.d.ts
 
