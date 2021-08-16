@@ -4,13 +4,26 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "vite",
+    "prebuild": "rimraf dist",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "commit": "git-cz",
+    "prepare": "husky install"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog-emoji"
+    }
   },
   "dependencies": {
-    "@vueuse/core": "5.3.0",
+    "@vueuse/core": "6.0.0",
     "@vueuse/head": "0.6.0",
     "ant-design-vue": "2.2.6",
     "nprogress": "0.2.0",
@@ -20,8 +33,10 @@
     "vuex": "4.0.2"
   },
   "devDependencies": {
-    "@iconify/json": "1.1.387",
-    "@prettier/plugin-pug": "1.16.3",
+    "@commitlint/cli": "13.1.0",
+    "@commitlint/config-conventional": "13.1.0",
+    "@iconify/json": "1.1.388",
+    "@prettier/plugin-pug": "1.16.4",
     "@types/nprogress": "0.2.0",
     "@typescript-eslint/eslint-plugin": "4.29.1",
     "@typescript-eslint/parser": "4.29.1",
@@ -29,24 +44,28 @@
     "@vitejs/plugin-vue-jsx": "1.1.7",
     "@vue/compiler-sfc": "3.2.2",
     "@vue/server-renderer": "3.2.2",
+    "commitizen": "4.2.4",
+    "cz-conventional-changelog-emoji": "0.1.0",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-vue": "7.16.0",
+    "husky": "7.0.1",
     "less": "4.1.1",
+    "lint-staged": "11.1.2",
     "prettier": "2.3.2",
     "prettier-plugin-packagejson": "2.2.11",
     "typescript": "4.3.5",
-    "vite": "2.4.4",
+    "vite": "2.5.0",
     "vite-plugin-components": "0.13.2",
     "vite-plugin-eslint": "1.3.0",
     "vite-plugin-icons": "0.6.5",
     "vite-plugin-pages": "0.17.3",
     "vite-plugin-vue-layouts": "0.3.1",
-    "vite-plugin-windicss": "^1.2.7",
+    "vite-plugin-windicss": "1.2.7",
     "vite-ssg": "0.14.5",
-    "vue-tsc": "0.2.2",
-    "windicss": "^3.1.7"
+    "vue-tsc": "0.2.3",
+    "windicss": "3.1.7"
   },
   "engines": {
     "node": ">=14"
