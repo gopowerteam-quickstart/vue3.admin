@@ -1396,11 +1396,6 @@ conventional-changelog-conventionalcommits@^4.3.1:
     lodash "^4.17.15"
     q "^1.5.1"
 
-conventional-commit-types-emoji@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.nlark.com/conventional-commit-types-emoji/download/conventional-commit-types-emoji-0.1.0.tgz#f3193a5f9e66dbc6dee5a380d111d8391a4809f6"
-  integrity sha1-8xk6X55m28be5aOA0RHYORpICfY=
-
 conventional-commit-types@^3.0.0:
   version "3.0.0"
   resolved "https://registry.nlark.com/conventional-commit-types/download/conventional-commit-types-3.0.0.tgz#7c9214e58eae93e85dd66dbfbafe7e4fffa2365b"
@@ -1484,18 +1479,6 @@ csstype@^2.6.8:
   version "2.6.17"
   resolved "https://registry.nlark.com/csstype/download/csstype-2.6.17.tgz#4cf30eb87e1d1a005d8b6510f95292413f6a1c0e"
   integrity sha1-TPMOuH4dGgBdi2UQ+VKSQT9qHA4=
-
-cz-conventional-changelog-emoji@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.nlark.com/cz-conventional-changelog-emoji/download/cz-conventional-changelog-emoji-0.1.0.tgz#8eadd1798b8e3e1bd1568de8577107988c97efff"
-  integrity sha1-jq3ReYuOPhvRVo3oV3EHmIyX7/8=
-  dependencies:
-    conventional-commit-types-emoji "^0.1.0"
-    lodash.map "^4.6.0"
-    longest "^1.0.1"
-    pad-right "^0.2.2"
-    right-pad "^1.0.1"
-    word-wrap "^1.1.0"
 
 cz-conventional-changelog@3.2.0:
   version "3.2.0"
@@ -3056,7 +3039,7 @@ lodash.clonedeep@^4.5.0:
   resolved "https://registry.nlark.com/lodash.clonedeep/download/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
   integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
 
-lodash.map@^4.5.1, lodash.map@^4.6.0:
+lodash.map@^4.5.1:
   version "4.6.0"
   resolved "https://registry.nlark.com/lodash.map/download/lodash.map-4.6.0.tgz#771ec7839e3473d9c4cde28b19394c3562f4f6d3"
   integrity sha1-dx7Hg540c9nEzeKLGTlMNWL09tM=
@@ -3093,11 +3076,6 @@ log-update@^4.0.0:
     cli-cursor "^3.1.0"
     slice-ansi "^4.0.0"
     wrap-ansi "^6.2.0"
-
-longest@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.nlark.com/longest/download/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
-  integrity sha1-MKCy2jj3N3DoKUoNIuZiXtd9AJc=
 
 longest@^2.0.1:
   version "2.0.1"
@@ -3493,13 +3471,6 @@ p-try@^2.0.0:
   resolved "https://registry.nlark.com/p-try/download/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha1-yyhoVA4xPWHeWPr741zpAE1VQOY=
 
-pad-right@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.nlark.com/pad-right/download/pad-right-0.2.2.tgz#6fbc924045d244f2a2a244503060d3bfc6009774"
-  integrity sha1-b7ySQEXSRPKiokRQMGDTv8YAl3Q=
-  dependencies:
-    repeat-string "^1.5.2"
-
 param-case@^2.1.1:
   version "2.1.1"
   resolved "https://registry.nlark.com/param-case/download/param-case-2.1.1.tgz#df94fd8cf6531ecf75e6bef9a0858fbc72be2247"
@@ -3878,11 +3849,6 @@ relateurl@^0.2.7:
   resolved "https://registry.npm.taobao.org/relateurl/download/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
-repeat-string@^1.5.2:
-  version "1.6.1"
-  resolved "https://registry.nlark.com/repeat-string/download/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
-  integrity sha1-jcrkcOHIirwtYA//Sndihtp15jc=
-
 request-light@^0.5.4:
   version "0.5.4"
   resolved "https://registry.nlark.com/request-light/download/request-light-0.5.4.tgz#497a98c6d8ae49536417a5e2d7f383b934f3e38c"
@@ -3956,11 +3922,6 @@ reusify@^1.0.4:
   version "1.0.4"
   resolved "https://registry.nlark.com/reusify/download/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
   integrity sha1-kNo4Kx4SbvwCFG6QhFqI2xKSXXY=
-
-right-pad@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npm.taobao.org/right-pad/download/right-pad-1.0.1.tgz#8ca08c2cbb5b55e74dafa96bf7fd1a27d568c8d0"
-  integrity sha1-jKCMLLtbVedNr6lr9/0aJ9VoyNA=
 
 rimraf@^3.0.2:
   version "3.0.2"
@@ -4932,7 +4893,7 @@ with@^7.0.0:
     assert-never "^1.2.1"
     babel-walk "3.0.0-canary-5"
 
-word-wrap@^1.0.3, word-wrap@^1.1.0, word-wrap@^1.2.3, word-wrap@~1.2.3:
+word-wrap@^1.0.3, word-wrap@^1.2.3, word-wrap@~1.2.3:
   version "1.2.3"
   resolved "https://registry.nlark.com/word-wrap/download/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
   integrity sha1-YQY29rH3A4kb00dxzLF/uTtHB5w=
