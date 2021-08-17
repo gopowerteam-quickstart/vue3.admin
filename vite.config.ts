@@ -10,10 +10,11 @@ import components, {
 } from 'vite-plugin-components'
 import icons, { ViteIconsResolver } from 'vite-plugin-icons'
 import WindiCSS from 'vite-plugin-windicss'
+import { requestPlugin as request } from '@gopowerteam/http-request-cli'
+import { VitePWA as pwa } from 'vite-plugin-pwa'
 
 // Ant Design Vue 主题样式
 import AntDesignVueTheme from './src/assets/styles/theme.json'
-import { requestPlugin as request } from '@gopowerteam/http-request-cli'
 
 // 全局样式变量
 const globalLessVaribles = path.resolve(
@@ -63,7 +64,8 @@ export default defineConfig({
       alias: '~',
       serviceDir: 'http/services',
       serviceDeclaration: 'typings/request.d.ts'
-    })
+    }),
+    pwa()
   ],
   css: {
     preprocessorOptions: {
