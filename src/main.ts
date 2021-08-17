@@ -9,8 +9,7 @@ import 'virtual:windi-devtools'
 
 import App from './App.vue'
 import { routes } from '~/router'
-import request from 'virtual:http-request'
-console.log(request)
+
 export const createApp = ViteSSG(
   App,
   {

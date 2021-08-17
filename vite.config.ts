@@ -13,6 +13,7 @@ import WindiCSS from 'vite-plugin-windicss'
 
 // Ant Design Vue 主题样式
 import AntDesignVueTheme from './src/assets/styles/theme.json'
+import { requestPlugin as request } from '@gopowerteam/http-request-cli'
 
 // 全局样式变量
 const globalLessVaribles = path.resolve(
@@ -22,8 +23,6 @@ const globalLessVaribles = path.resolve(
   'styles',
   'varibles.less'
 )
-
-import { plugin } from './plugin'
 
 export default defineConfig({
   resolve: {
@@ -45,7 +44,8 @@ export default defineConfig({
       layoutsDir: 'src/layouts'
     }),
     components({
-      globalComponentsDeclaration: true,
+      globalComponentsDeclaration:
+        'typings/components.d.ts',
       dirs: ['src/shared/components'],
       customComponentResolvers: [
         AntDesignVueResolver({
@@ -58,13 +58,11 @@ export default defineConfig({
     }),
     icons(),
     WindiCSS({}),
-    plugin({
-      path: path.resolve(
-        __dirname,
-        'src',
-        'http',
-        'services'
-      )
+    request({
+      root: path.resolve(__dirname, 'src'),
+      alias: '~',
+      serviceDir: 'http/services',
+      serviceDeclaration: 'typings/request.d.ts'
     })
   ],
   css: {

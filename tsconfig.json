@@ -27,11 +27,11 @@
     }
   },
   "include": [
-    "components.d.ts",
     "vite.config.ts",
     "windi.config.ts",
     "http-request-cli.config.js",
     "plugin.ts",
+    "typings/**/*.d.ts",
     "src/**/*.vue",
     "src/**/*.ts"
   ],

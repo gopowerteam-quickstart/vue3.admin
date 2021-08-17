@@ -475,10 +475,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gopowerteam/http-request-cli@0.2.1":
-  version "0.2.1"
-  resolved "https://registry.nlark.com/@gopowerteam/http-request-cli/download/@gopowerteam/http-request-cli-0.2.1.tgz#7269d673da8df0f3ebfcb19e403006b781507a5b"
-  integrity sha1-cmnWc9qN8PPr/LGeQDAGt4FQels=
+"@gopowerteam/http-request-cli@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.nlark.com/@gopowerteam/http-request-cli/download/@gopowerteam/http-request-cli-0.2.2.tgz?cache=0&sync_timestamp=1629171193443&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40gopowerteam%2Fhttp-request-cli%2Fdownload%2F%40gopowerteam%2Fhttp-request-cli-0.2.2.tgz#0a47bdbb8f0bfb51875136aad6c8fd9e02a59230"
+  integrity sha1-Cke9u48L+1GHUTaq1sj9ngKlkjA=
   dependencies:
     chalk "^4.1.1"
     commander "^7.2.0"

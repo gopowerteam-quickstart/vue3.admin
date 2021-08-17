@@ -36,7 +36,7 @@
   "devDependencies": {
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
-    "@gopowerteam/http-request-cli": "0.2.1",
+    "@gopowerteam/http-request-cli": "0.2.3",
     "@iconify/json": "1.1.388",
     "@prettier/plugin-pug": "1.16.4",
     "@types/nprogress": "0.2.0",
