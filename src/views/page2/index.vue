@@ -3,7 +3,7 @@ main
   .a asdasd
     a-button(
       @click='$router.push("/page1")'
-      type='primary') 123
+      type='primary') 222
 </template>
 
 <script setup lang="ts"></script>

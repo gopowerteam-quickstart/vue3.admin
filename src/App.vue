@@ -1,6 +1,11 @@
 <template lang="pug">
-main
-  router-view
+router-view
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'vue3-web-template'
+})
+</script>

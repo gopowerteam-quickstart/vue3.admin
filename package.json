@@ -28,10 +28,10 @@
     "@vueuse/head": "0.6.0",
     "ant-design-vue": "2.2.6",
     "nprogress": "0.2.0",
+    "pinia": "2.0.0-rc.4",
     "vue": "3.2.2",
     "vue-global-api": "0.4.1",
-    "vue-router": "4.0.11",
-    "vuex": "4.0.2"
+    "vue-router": "4.0.11"
   },
   "devDependencies": {
     "@commitlint/cli": "13.1.0",
