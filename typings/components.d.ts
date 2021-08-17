@@ -6,6 +6,7 @@ declare module 'vue' {
     AButton: typeof import('ant-design-vue/es')['Button']
     IconMdiAccount: typeof import('virtual:vite-icons/mdi/account')['default']
     IconMdiAccountClockOutline: typeof import('virtual:vite-icons/mdi/account-clock-outline')['default']
+    PageContainer: typeof import('./../src/shared/components/page-container.vue')['default']
   }
 }
 

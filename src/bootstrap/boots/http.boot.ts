@@ -8,7 +8,7 @@ export default function () {
   })
 
   // 添加状态拦截器
-  RequestService.interceptors.status.use(respone => {
+  RequestService.interceptors.status.use(() => {
     return true
   })
 
@@ -24,34 +24,32 @@ export default function () {
 
   // 网络异常处理
   RequestService.requestCatchHandle = respone => {
-    const defaultError = '服务通讯连接失败'
-    const messageList = {
-      400: '请求参数错误',
-      405: '请求服务方法错误',
-      500: '服务器内部错误',
-      403: '没有权限，请重新登陆'
-    }
-
-    // if (respone) {
-    //   const responseMessage = (respone.data || {}).message
-    //   const errorMessage =
-    //     responseMessage ||
-    //     messageList[respone.status] ||
-    //     defaultError
-
-    //   if (respone.status === 403) {
-    //     setTimeout(() => {
-    //       store.dispatch('logout').catch()
-    //       router.push({
-    //         name: 'login'
-    //       })
-    //     }, 2000)
-    //   }
-
-    //   message.error(errorMessage)
-    // } else {
-    //   // Notification.error(defaultError)
+    // const defaultError = '服务通讯连接失败'
+    // const messageList = {
+    //   400: '请求参数错误',
+    //   405: '请求服务方法错误',
+    //   500: '服务器内部错误',
+    //   403: '没有权限，请重新登陆'
     // }
+
+    if (respone) {
+      // const responseMessage = (respone.data || {}).message
+      // const errorMessage =
+      //   responseMessage ||
+      //   messageList[respone.status] ||
+      //   defaultError
+      // if (respone.status === 403) {
+      //   setTimeout(() => {
+      //     store.dispatch('logout').catch()
+      //     router.push({
+      //       name: 'login'
+      //     })
+      //   }, 2000)
+      // }
+      // message.error(errorMessage)
+    } else {
+      // Notification.error(defaultError)
+    }
   }
 
   // 安装Token认证服务
