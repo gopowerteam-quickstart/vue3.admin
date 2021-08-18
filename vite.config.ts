@@ -12,6 +12,7 @@ import icons, { ViteIconsResolver } from 'vite-plugin-icons'
 import WindiCSS from 'vite-plugin-windicss'
 import { requestPlugin as request } from '@gopowerteam/http-request-cli'
 import { VitePWA as pwa } from 'vite-plugin-pwa'
+import svg from 'vite-svg-loader'
 
 // Ant Design Vue 主题样式
 import AntDesignVueTheme from './src/assets/styles/theme.json'
@@ -65,7 +66,8 @@ export default defineConfig({
       serviceDir: 'http/services',
       serviceDeclaration: 'typings/request.d.ts'
     }),
-    pwa()
+    pwa(),
+    svg()
   ],
   css: {
     preprocessorOptions: {

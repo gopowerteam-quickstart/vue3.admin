@@ -1,8 +1,8 @@
+import httpBoot from './http.boot'
+import launchBoot from './launch.boot'
 import { App } from 'vue'
 import { Router } from 'vue-router'
 // import { componentsBoot } from './component.boot'
-import httpBoot from './http.boot'
-import launchBoot from './launch.boot'
 // import { pluginBoot } from './plugin.boot'
 
 export const boot = ({

@@ -24,6 +24,13 @@ export const useStore = defineStore(STORE_ID, {
   actions: {
     increment() {
       this.current = ''
+    },
+    login() {
+      if (!this.id) {
+        return
+      }
+
+      this.token = 'token'
     }
   }
 })
