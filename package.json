@@ -41,6 +41,7 @@
     "@iconify/json": "1.1.389",
     "@prettier/plugin-pug": "1.16.4",
     "@types/nprogress": "0.2.0",
+    "@types/ramda": "0.27.44",
     "@typescript-eslint/eslint-plugin": "4.29.2",
     "@typescript-eslint/parser": "4.29.2",
     "@vitejs/plugin-vue": "1.4.0",
