@@ -1,4 +1,5 @@
 <template lang="pug">
-router-view(v-slot='{ Component, route }')
-  component(:is='Component' :key='route')
+a-layout.absolute.inset-0
+  a-layout-content
+    router-view
 </template>

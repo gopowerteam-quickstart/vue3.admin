@@ -1,8 +1,8 @@
-/dist
-/node_modules
-/public
+dist/
+node_modules/
+public/
 
 .eslintrc.js
 components.d.ts
-/src/http
+src/http/
 

@@ -23,6 +23,8 @@
     }
   },
   "dependencies": {
+    "@fast-crud/fast-crud": "0.17.4",
+    "@fast-crud/ui-antdv": "0.17.2",
     "@gopowerteam/http-request": "0.2.5",
     "@vueuse/core": "6.0.0",
     "@vueuse/head": "0.6.0",

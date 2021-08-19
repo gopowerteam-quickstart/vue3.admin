@@ -7,9 +7,10 @@ import 'virtual:windi-base.css'
 import 'virtual:windi-components.css'
 import 'virtual:windi-utilities.css'
 import 'virtual:windi-devtools'
+import '~/assets/styles/index.less'
 
 import App from './App.vue'
-import router, { installGuard } from '~/router'
+import router from '~/router'
 import { boot } from './bootstrap/boots'
 
 /**
@@ -23,11 +24,10 @@ function installModules(ctx: ViteSSGContext) {
 }
 
 export const createApp = ViteSSG(App, router, ctx => {
-  // 安装Store
-  ctx.app.use(createPinia())
   // 安装基础模块
   installModules(ctx)
-  installGuard(ctx.router)
+  // 安装Store
+  ctx.app.use(createPinia())
   // 安装启动模块
   boot({ app: ctx.app, router: ctx.router })
 })

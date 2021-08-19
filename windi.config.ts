@@ -25,6 +25,8 @@ export default defineConfig({
   },
   theme: {
     flex: {
+      auto: '1 1 auto',
+      none: 'none',
       ...generateFlex(1, 13)
     }
   }

@@ -12,9 +12,26 @@ page-container(flex flex-direction='row')
       .subtitle(css:text='sm') GoPowerTeam Admin
   .flex-1(class='*flex-center')
     .login-card
+      a-form.p-10(
+        :labelCol='{ span: 4 }'
+        :model='loginModel')
+        a-form-item(label='用户名')
+          a-input(v-model:value='loginModel.username')
+        a-form-item(label='密码')
+          a-input(
+            type='password'
+            v-model:value='loginModel.password')
+      a-button(
+        @click='$router.push("/curd")'
+        type='primary') login
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+let loginModel = $ref({
+  username: '',
+  password: '`'
+})
+</script>
 
 <style lang="less" scoped>
 .background {
