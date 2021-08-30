@@ -46,7 +46,10 @@ export default defineConfig({
         'vue',
         'vue-router',
         {
-          '@vueuse/core': ['get', 'set']
+          '@vueuse/core': []
+        },
+        {
+          '~/shared/common': ['get', 'set']
         }
       ]
     }),

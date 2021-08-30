@@ -41,7 +41,7 @@ declare global {
   const onRenderTriggered: typeof import('vue')['onRenderTriggered']
   const useRouter: typeof import('vue-router')['useRouter']
   const useRoute: typeof import('vue-router')['useRoute']
-  const get: typeof import('@vueuse/core')['get']
-  const set: typeof import('@vueuse/core')['set']
+  const get: typeof import('~/shared/common')['get']
+  const set: typeof import('~/shared/common')['set']
 }
 export {}

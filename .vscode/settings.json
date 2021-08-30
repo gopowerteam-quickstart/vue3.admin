@@ -1,4 +1,5 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "volar.autoCompleteRefs": false
+  "volar.autoCompleteRefs": false,
+  "auto-close-tag.disableOnLanguage": ["typescript"]
 }
