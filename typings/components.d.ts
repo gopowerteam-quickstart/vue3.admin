@@ -4,9 +4,16 @@
 declare module 'vue' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
-    IconMdiAccount: typeof import('virtual:vite-icons/mdi/account')['default']
-    IconMdiAccountClockOutline: typeof import('virtual:vite-icons/mdi/account-clock-outline')['default']
+    AForm: typeof import('ant-design-vue/es')['Form']
+    AFormItem: typeof import('ant-design-vue/es')['FormItem']
+    AInput: typeof import('ant-design-vue/es')['Input']
+    ALayout: typeof import('ant-design-vue/es')['Layout']
+    ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
     PageContainer: typeof import('./../src/shared/components/page-container.vue')['default']
+    SiderBar: typeof import('./../src/layouts/components/sider-bar.vue')['default']
+    SiderMenu: typeof import('./../src/layouts/components/sider-menu.vue')['default']
+    SiderPanel: typeof import('./../src/layouts/components/sider-panel.vue')['default']
+    SiderTool: typeof import('./../src/layouts/components/sider-tool.vue')['default']
   }
 }
 

@@ -15,6 +15,12 @@ main
 </style>
 
 <route lang="yaml">
+name: page1
 meta:
+  title: 页面1
   layout: workspace
+  menu:
+    group: 测试
+    index: 2
+    icon: /icons/app.svg
 </route>

@@ -2,7 +2,7 @@ export const themeConfig = {
   layout: {
     sider: {
       width: 50,
-      collapsedWidth: 250
+      collapsedWidth: 300
     }
   },
   login: {

@@ -5,12 +5,16 @@ import jsx from '@vitejs/plugin-vue-jsx'
 import eslint from 'vite-plugin-eslint'
 import pages from 'vite-plugin-pages'
 import layouts from 'vite-plugin-vue-layouts'
-import components from 'vite-plugin-components'
-import icons, { ViteIconsResolver } from 'vite-plugin-icons'
+import components, {
+  AntDesignVueResolver
+} from 'vite-plugin-components'
+import icons from 'unplugin-icons/vite'
+import iconsResolver from 'unplugin-icons/resolver'
 import WindiCSS from 'vite-plugin-windicss'
 import { requestPlugin as request } from '@gopowerteam/http-request-cli'
 import { VitePWA as pwa } from 'vite-plugin-pwa'
 import svg from 'vite-svg-loader'
+import autoImport from 'unplugin-auto-import/vite'
 
 // Ant Design Vue 主题样式
 import AntDesignVueTheme from './src/assets/styles/theme.json'
@@ -32,12 +36,24 @@ export default defineConfig({
     }
   },
   plugins: [
-    vue({ script: { refSugar: true } }),
+    vue(),
     jsx(),
     eslint(),
+    autoImport({
+      dts: 'typings/auto-imports.d.ts',
+      include: [/\.[tj]sx?$/, /\.vue\??/],
+      imports: [
+        'vue',
+        'vue-router',
+        {
+          '@vueuse/core': ['get', 'set']
+        }
+      ]
+    }),
     pages({
       pagesDir: [{ dir: 'src/views', baseRoute: '' }],
       exclude: ['**/components/*.vue'],
+      extensions: ['vue'],
       nuxtStyle: true
     }),
     layouts({
@@ -46,9 +62,13 @@ export default defineConfig({
     components({
       globalComponentsDeclaration:
         'typings/components.d.ts',
-      dirs: ['src/shared/components'],
+      dirs: [
+        'src/layouts/components',
+        'src/shared/components'
+      ],
       customComponentResolvers: [
-        ViteIconsResolver({
+        AntDesignVueResolver(),
+        iconsResolver({
           componentPrefix: 'icon'
         })
       ]

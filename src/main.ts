@@ -1,4 +1,3 @@
-import 'vue-global-api'
 import { ViteSSG, ViteSSGContext } from 'vite-ssg'
 import { createPinia } from 'pinia'
 

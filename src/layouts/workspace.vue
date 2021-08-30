@@ -2,13 +2,23 @@
 a-layout.absolute.inset-0
   a-layout-sider(
     :collapsedWidth='themeConfig.layout.sider.collapsedWidth'
-    :width='themeConfig.layout.sider.width')
-  a-layout-content.relative
+    :trigger='null'
+    :width='themeConfig.layout.sider.width'
+    v-model:collapsed='collapsed')
+    sider-panel(v-if='collapsed')
+    sider-bar(v-else)
+  a-layout-content.relative.m-5
     router-view
 </template>
 
 <script setup lang="ts">
 import { themeConfig } from '~/config/theme.config'
+
+let collapsed = $ref(false)
+
+provide('updateCollapsed', (value: boolean) => {
+  collapsed = value
+})
 </script>
 
 <style lang="less">

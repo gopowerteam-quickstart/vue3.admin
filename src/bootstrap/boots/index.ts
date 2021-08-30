@@ -6,7 +6,6 @@ import { Router } from 'vue-router'
 // import { pluginBoot } from './plugin.boot'
 
 export const boot = ({
-  app,
   router
 }: {
   app: App<Element>

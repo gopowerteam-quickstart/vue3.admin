@@ -16,12 +16,6 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["esnext", "dom"],
-    "types": [
-      "vite/client",
-      "vite-plugin-pages/client",
-      "vite-plugin-vue-layouts/client",
-      "vite-svg-loader"
-    ],
     "paths": {
       "~/*": ["src/*"],
       "@/*": ["src/*"]

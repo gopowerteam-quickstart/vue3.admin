@@ -1,7 +1,5 @@
 <template lang="pug">
-.page-container.absolute.inset-0(
-  :class='containerClass'
-  css:p='x-5 y-2')
+.page-container.absolute.inset-0(:class='containerClass')
   slot
 </template>
 
