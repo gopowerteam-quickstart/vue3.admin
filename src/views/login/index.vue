@@ -30,6 +30,14 @@ const loginModel = ref({
   username: '',
   password: ''
 })
+
+onMounted(() => {
+  get(loginModel, 'username')
+
+  set(loginModel, ({ username }) => ({
+    username: username + '-go-'
+  }))
+})
 </script>
 
 <style lang="less" scoped>

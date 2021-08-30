@@ -1,4 +1,3 @@
-import * as R from 'ramda'
 import type { Ref } from 'vue'
 
 type SetOption = {
