@@ -10,7 +10,8 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
     "format": "prettier . --write",
     "commit": "git-cz",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "update:request":"npx http-request-cli -g"
   },
   "commitlint": {
     "extends": [
