@@ -23,7 +23,7 @@
     }
   },
   "dependencies": {
-    "@gopowerteam/http-request": "0.2.5",
+    "@gopowerteam/http-request": "0.3.0",
     "@vueuse/core": "6.0.0",
     "@vueuse/head": "0.6.0",
     "ant-design-vue": "2.2.6",
@@ -37,7 +37,7 @@
   "devDependencies": {
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
-    "@gopowerteam/http-request-cli": "0.2.3",
+    "@gopowerteam/http-request-cli": "0.3.0",
     "@iconify/json": "1.1.394",
     "@prettier/plugin-pug": "1.16.5",
     "@types/lodash-es": "4.17.4",
