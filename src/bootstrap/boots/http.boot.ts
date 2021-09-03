@@ -3,7 +3,6 @@ import { RequestService } from '@gopowerteam/http-request'
 export default function () {
   // 配置服务端信息
   RequestService.setConfig({
-    server: '/api',
     timeout: 10000
   })
 

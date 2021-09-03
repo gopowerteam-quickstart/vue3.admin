@@ -5,14 +5,13 @@ import jsx from '@vitejs/plugin-vue-jsx'
 import eslint from 'vite-plugin-eslint'
 import pages from 'vite-plugin-pages'
 import layouts from 'vite-plugin-vue-layouts'
-import components, {
-  AntDesignVueResolver
-} from 'vite-plugin-components'
+import components from 'unplugin-vue-components/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import icons from 'unplugin-icons/vite'
 import iconsResolver from 'unplugin-icons/resolver'
 import WindiCSS from 'vite-plugin-windicss'
-import { requestPlugin as request } from '@gopowerteam/http-request-cli'
-import { VitePWA as pwa } from 'vite-plugin-pwa'
+import request from '@gopowerteam/http-request/vite-plugin'
+// import { VitePWA as pwa } from 'vite-plugin-pwa'
 import svg from 'vite-svg-loader'
 import autoImport from 'unplugin-auto-import/vite'
 
@@ -63,13 +62,12 @@ export default defineConfig({
       layoutsDir: 'src/layouts'
     }),
     components({
-      globalComponentsDeclaration:
-        'typings/components.d.ts',
+      dts: 'typings/components.d.ts',
       dirs: [
         'src/layouts/components',
         'src/shared/components'
       ],
-      customComponentResolvers: [
+      resolvers: [
         AntDesignVueResolver(),
         iconsResolver({
           componentPrefix: 'icon'
@@ -84,7 +82,7 @@ export default defineConfig({
       serviceDir: 'http/services',
       serviceDeclaration: 'typings/request.d.ts'
     }),
-    pwa(),
+    // pwa(),
     svg()
   ],
   css: {

@@ -48,7 +48,7 @@ type MenuItem = {
   }
 }
 
-let menus = $ref<{ [key: string]: MenuItem[] }>({})
+let menus = ref<{ [key: string]: MenuItem[] }>({})
 
 /**
  *  获取菜单列表
@@ -66,6 +66,6 @@ function getMenus(pages: MenuItem[]) {
 }
 
 onMounted(() => {
-  menus = getMenus(routes as unknown as MenuItem[])
+  set(menus, getMenus(routes as unknown as MenuItem[]))
 })
 </script>

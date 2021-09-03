@@ -9,10 +9,10 @@ export const install = ({
   router
     .isReady()
     .then(async () => {
-      const { registerSW } = await import(
-        'virtual:pwa-register'
-      )
-      registerSW({ immediate: true })
+      // const { registerSW } = await import(
+      //   'virtual:pwa-register'
+      // )
+      // registerSW({ immediate: true })
     })
     .catch(ex => console.error(ex))
 }

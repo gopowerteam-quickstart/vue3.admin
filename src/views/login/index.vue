@@ -2,7 +2,7 @@
 page-container(flex flex-direction='row')
   .background.flex-1(class='*flex-col-center' css:text='white')
     .card.p-20
-      img(css:w='8/12' src='/images/login-box.svg')
+      img(:src='a' css:w='8/12')
       .title(
         css:font='bold'
         css:p='t-10 b-1'
@@ -26,6 +26,8 @@ page-container(flex flex-direction='row')
 </template>
 
 <script setup lang="ts">
+import a from '~/assets/images/login-box.svg?raw'
+console.log(a)
 const loginModel = ref({
   username: '',
   password: ''

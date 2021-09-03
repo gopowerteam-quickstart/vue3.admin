@@ -14,10 +14,10 @@ a-layout.absolute.inset-0
 <script setup lang="ts">
 import { themeConfig } from '~/config/theme.config'
 
-let collapsed = $ref(false)
+let collapsed = ref(false)
 
 provide('updateCollapsed', (value: boolean) => {
-  collapsed = value
+  set(collapsed, value)
 })
 </script>
 
