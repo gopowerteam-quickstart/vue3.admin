@@ -1,10 +1,12 @@
 import { Store, StoreDefinition } from 'pinia'
 import { useStore as userStore } from './user.store'
 import { useStore as appStore } from './app.store'
+import { useStore as menuStore } from './menu.store'
 
 const stores = {
   app: appStore,
-  user: userStore
+  user: userStore,
+  menu: menuStore
 }
 
 export function useStore<ID extends string, S, G, A>(

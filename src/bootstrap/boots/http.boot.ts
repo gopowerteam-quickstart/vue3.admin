@@ -1,14 +1,27 @@
 import { RequestService } from '@gopowerteam/http-request'
+import { appConfig } from '~/config/app.config'
+import { TokenService } from '~/http/extends/token.service'
 
 export default function () {
   // 配置服务端信息
   RequestService.setConfig({
-    timeout: 10000
+    gateway: {
+      default: appConfig.http.gateway.default,
+      authorization: appConfig.http.gateway.authorization
+    },
+    timeout: 30000,
+    qs: {
+      arrayFormat: 'repeat',
+      skipNulls: true,
+      allowDots: true,
+      encodeValuesOnly: true,
+      encode: true
+    }
   })
 
   // 添加状态拦截器
-  RequestService.interceptors.status.use(() => {
-    return true
+  RequestService.interceptors.status.use(respone => {
+    return respone.status === 200
   })
 
   // 添加成功拦截器
@@ -52,5 +65,5 @@ export default function () {
   }
 
   // 安装Token认证服务
-  // RequestService.installExtendService(new TokenService())
+  RequestService.installExtendService(new TokenService())
 }

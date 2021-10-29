@@ -1,18 +1,24 @@
 <template lang="pug">
-.sider-bar-container.h-full.flex.flex-col.items-center.justify-between.py-2
-  .sider-action(css:text='white 2xl')
-    icon-eva:arrow-back-outline.cursor-pointer(
-      @click='$router.back()')
+.sider-bar-container.h-full.flex.flex-col.items-center.justify-between.py-5
+  .sider-action(css:text='2xl')
+    icon-bi:arrow-left-circle.cursor-pointer(
+      @click='store.updateCollapsed'
+      v-if='store.collapsed')
+    icon-bi:arrow-right-circle.cursor-pointer(
+      @click='store.updateCollapsed'
+      v-else)
   .sider-content.flex-auto
-  .sider-tool.flex.flex-col.space-y-2(css:text='white xl')
-    icon-ant-design:home-outlined.cursor-pointer(
-      @click='() => $router.push("/home")')
-    icon-ant-design:menu-unfold-outlined.cursor-pointer(
-      @click='() => updateCollapsed(true)')
+    sider-menu
 </template>
 
+<style lang="less" scoped>
+.sider-action {
+  color: #5e81f4;
+}
+</style>
+
 <script setup lang="ts">
-const updateCollapsed = inject('updateCollapsed') as (
-  value: boolean
-) => void
+import { useStore } from '~/store'
+
+const store = useStore(store => store.menu)
 </script>

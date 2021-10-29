@@ -5,4 +5,5 @@ public/
 .eslintrc.js
 components.d.ts
 src/http/
+src/shared/components/data-table/
 typings/

@@ -1,36 +1,28 @@
+import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
+import { Ref } from 'vue'
+import { EmployeeModel } from '~/http/model/wechat-service.model'
 
 const STORE_ID = 'user'
 
 type State = {
-  id: string
-  token: string
-  current: string
+  token: Ref<string>
+  current: EmployeeModel | undefined
 }
 
 const initialState: State = {
-  id: '',
-  token: '',
-  current: 'asdasd'
+  token: useStorage('store_token', ''),
+  current: undefined
 }
 
 export const useStore = defineStore(STORE_ID, {
   state: () => initialState,
-  getters: {
-    doubleCount(state) {
-      return state.id + '2'
-    }
-  },
   actions: {
-    increment() {
-      this.current = ''
+    updateToken(token: string) {
+      this.token = token
     },
-    login() {
-      if (!this.id) {
-        return
-      }
-
-      this.token = 'token'
+    updateCurrent(user: EmployeeModel | undefined) {
+      this.current = user
     }
   }
 })

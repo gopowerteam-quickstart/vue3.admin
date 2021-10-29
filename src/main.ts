@@ -12,9 +12,6 @@ import App from './App.vue'
 import router from '~/router'
 import { boot } from './bootstrap/boots'
 
-/**
- * 安装模块
- */
 function installModules(ctx: ViteSSGContext) {
   // 加载模块
   Object.values(

@@ -40,7 +40,7 @@ export default defineConfig({
     eslint(),
     autoImport({
       dts: 'typings/auto-imports.d.ts',
-      include: [/\.[tj]sx?$/, /\.vue\??/],
+      include: [/\.vue\??/],
       imports: [
         'vue',
         'vue-router',
@@ -63,16 +63,14 @@ export default defineConfig({
     }),
     components({
       dts: 'typings/components.d.ts',
-      dirs: [
-        'src/layouts/components',
-        'src/shared/components'
-      ],
+      dirs: ['src/layouts/components'],
       resolvers: [
         AntDesignVueResolver(),
         iconsResolver({
           componentPrefix: 'icon'
         })
-      ]
+      ],
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/]
     }),
     icons(),
     WindiCSS({}),
