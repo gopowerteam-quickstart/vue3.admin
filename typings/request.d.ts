@@ -1,9 +1,9 @@
 declare module 'virtual:http-request' {
-  import { PosterDownloadRecordService } from '~/http/services/material-service/poster-download-record.service.ts'
-  import { PosterService } from '~/http/services/material-service/poster.service.ts'
+  import { AppService } from '~/http/services/authorization-service/app.service'
+  import { StorageService } from '~/http/services/authorization-service/storage.service'
   const serviceList = {
-    PosterDownloadRecordService,
-    PosterService
+    AppService,
+    StorageService
   }
 
   export function useRequest<T>(

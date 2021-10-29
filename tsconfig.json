@@ -15,6 +15,7 @@
     "strictNullChecks": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
     "lib": ["esnext", "dom"],
     "paths": {
       "~/*": ["src/*"],
@@ -22,13 +23,13 @@
     }
   },
   "include": [
+    "typings/**/*.d.ts",
     "vite.config.ts",
     "windi.config.ts",
     "http-request-cli.config.js",
-    "plugin.ts",
-    "typings/**/*.d.ts",
     "src/**/*.vue",
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ],
   "exclude": ["dist", "node_modules"]
 }

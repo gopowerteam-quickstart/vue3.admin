@@ -7,30 +7,32 @@ module.exports = {
   env: {
     browser: true
   },
-  // 扩展规则列表
-  extends: [
-    // ESLint typescript rules
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    // ESLint vue3 rules
-    'plugin:vue/vue3-essential', // Priority A: Essential (Error Prevention)
-    // ESLint prettire rules
-    'prettier',
-    'plugin:prettier/recommended'
-  ],
   parser: 'vue-eslint-parser',
-  // Parser配置选项
   parserOptions: {
-    extraFileExtensions: ['.vue'],
     parser: '@typescript-eslint/parser',
-    project: './tsconfig.json',
+    parserOptions: {
+      project: 'tsconfig.json'
+    },
+    sourceType: 'module',
     ecmaVersion: 2020,
     ecmaFeatures: {
       jsx: true
     },
-    sourceType: 'module'
+    extraFileExtensions: ['.vue']
   },
-  plugins: ['@typescript-eslint', 'vue'],
+  // 扩展规则列表
+  extends: [
+    // ESLint typescript rules
+    'plugin:@typescript-eslint/recommended',
+    // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    // ESLint vue3 rules
+    'plugin:vue/vue3-essential',
+    // ESLint prettire rules
+    'prettier',
+    'plugin:prettier/recommended'
+  ],
+
+  // plugins: ['@typescript-eslint', 'vue'],
   globals: {
     process: 'readonly',
     chrome: 'readonly'
@@ -47,6 +49,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/no-unsafe-return': 'off',
     '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
       { varsIgnorePattern: '.*', args: 'none' }

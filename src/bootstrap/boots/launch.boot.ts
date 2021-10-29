@@ -1,76 +1,21 @@
-// import { useGraphql } from '@/graphql'
-// import store from '@/store'
-
-import { Router } from 'vue-router'
+import { RequestParams } from '@gopowerteam/http-request'
+import { lastValueFrom } from 'rxjs'
+import { useRequest } from 'virtual:http-request'
+import {
+  NavigationGuardNext,
+  RouteLocationNormalized,
+  Router
+} from 'vue-router'
 import { useStore } from '~/store'
-
-// /**
-//  * 获取系统状态
-//  * @returns
-//  */
-// function getSystemInfo() {
-//     return useGraphql()
-//         .query({
-//             getSystemInfo: {
-//                 administrator: true,
-//                 apps: true
-//             }
-//         })
-//         .then(({ getSystemInfo: data }) => {
-//             store.commit('app/initialize', data.administrator)
-//         })
-// }
-
-// /**
-//  * 更新用户信息
-//  **/
-// function getUserInfo() {
-//     return useGraphql()
-//         .query({
-//             getUserByToken: {
-//                 id: true,
-//                 username: true,
-//                 nickname: true,
-//                 role: true,
-//                 desktop: {
-//                     name: true
-//                 }
-//             }
-//         })
-//         .then(({ getUserByToken: data }) => {
-//             const { desktop, ...user } = data
-//             // 更新用户信息
-//             store.commit('user/updateUser', user)
-//             // 更新桌面应用
-//             store.commit(
-//                 'app/updateDesktopApps',
-//                 desktop.map(x => x.name)
-//             )
-//         })
-// }
-
-// function getAppList() {
-//     return useGraphql()
-//         .query({
-//             getAppList: {
-//                 name: true,
-//                 icon: true,
-//                 title: true,
-//                 maximize: true
-//             }
-//         })
-//         .then(({ getAppList: apps }) => {
-//             store.commit('app/updateAppList', apps)
-//         })
-// }
-
+import getAppLaunchTasks from '../launch/app.launch'
+import getUserLaunchTasks from '../launch/user.launch'
 /**
  * 业务启动逻辑
  */
 export async function appLaunch() {
   const store = useStore(store => store.app)
   // 同步并获取应用
-  await Promise.all([])
+  await Promise.all(getAppLaunchTasks())
   // 更新系统状态
   store.setReady()
 }
@@ -78,25 +23,107 @@ export async function appLaunch() {
 /**
  * 业务启动逻辑
  */
-export function userLaunch() {
+export async function userLaunch() {
   // 同步并获取应用
-  return Promise.all([])
-  // return getUserInfo()
-  //   .then(() => Promise.all([getAppList()]))
-  //   .then(() => true)
-  //   .catch(() => {
-  //     // 用户信息更新失败
-  //     store.commit('user/clearUser')
-  //     return '/login'
-  //   })
+  await Promise.all(getUserLaunchTasks())
+}
+
+/**
+ * 验证用户权限
+ */
+export function userAccess(
+  to: RouteLocationNormalized,
+  next: NavigationGuardNext
+) {
+  const userStore = useStore(store => store.user)
+  let redirect = ''
+
+  if (to.name === 'login' && userStore.token) {
+    redirect = '/home'
+  }
+
+  if (to.name !== 'login' && !userStore.token) {
+    redirect = '/login'
+  }
+
+  if (redirect) {
+    next(redirect)
+  }
+
+  return redirect
+}
+
+/**
+ * 验证TOKEN有效性
+ */
+export function tokenAccess(
+  to: RouteLocationNormalized,
+  next: NavigationGuardNext
+) {
+  // const userStore = useStore(store => store.user)
+  // if (
+  //   to.name !== 'login' &&
+  //   userStore.token &&
+  //   !userStore.current
+  // ) {
+  //   return getUserData()
+  //     .then(() => {
+  //       return true
+  //     })
+  //     .catch(() => {
+  //       userStore.updateToken('')
+  //       userStore.updateCurrent(undefined)
+  //       next('/login')
+  //       return false
+  //     })
+  // }
+}
+
+/**
+ * 获取用户信息
+ * @returns
+ */
+function getUserData() {
+  // const userStore = useStore(store => store.user)
+  // const authService = useRequest(
+  //   services => services.AuthService
+  // )
+  // return lastValueFrom(
+  //   authService.queryEmployeeByToken(
+  //     new RequestParams({
+  //       append: {
+  //         token: userStore.token
+  //       }
+  //     })
+  //   )
+  // ).then(data => {
+  //   userStore.updateCurrent(data)
+  // })
 }
 
 export default function (router: Router) {
-  const store = useStore(store => store.app)
+  const appStore = useStore(store => store.app)
+
   router.beforeEach(async (to, from, next) => {
-    if (!store.ready) {
+    // 系统初始化状态
+    if (!appStore.ready) {
       await appLaunch()
     }
+
+    // 用户验证检测
+    if (userAccess(to, next)) {
+      return
+    }
+
+    // 用户验证检测
+    // switch (await tokenAccess(to, next)) {
+    //   case true:
+    //     await userLaunch()
+    //     break
+    //   case false:
+    //     return
+    // }
+
     next()
   })
 }

@@ -1,13 +1,13 @@
 module.exports = {
-  gateway: '',
-  apiVersion: 'v2',
+  name: 'authorization',
+  gateway: 'https://authorization.local.xbt-dev.top',
+  swagger: 'api-docs-json',
   controllerDir: {
-    alias: '@/http/controller', // 控制器目录名别
-    path: './src/http/controller' // 控制器目录路径
+    alias: '@/http/controller/authorization-service', // 控制器目录名别
+    path: './src/http/controller/authorization-service' // 控制器目录路径
   },
   serviceDir: {
-    alias: '@/http/services', // 服务目录名别
-    path: './src/http/services' // 服务目录名别
-  },
-  services: {}
+    alias: '@/http/services/authorization-service', // 服务目录名别
+    path: './src/http/services/authorization-service' // 服务目录名别
+  }
 }

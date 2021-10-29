@@ -1,30 +1,37 @@
 <template lang="pug">
 a-layout.absolute.inset-0
   a-layout-sider(
+    :collapsed='store.collapsed'
     :collapsedWidth='themeConfig.layout.sider.collapsedWidth'
+    :style='siderStyle'
     :trigger='null'
     :width='themeConfig.layout.sider.width'
-    v-model:collapsed='collapsed')
-    sider-panel(v-if='collapsed')
-    sider-bar(v-else)
-  a-layout-content.relative.m-5
-    router-view
+    collapsible)
+    sider-bar
+  a-layout
+    a-layout-header(
+      :style='headerStyle'
+      v-if='headerMenus && headerMenus.length')
+      header-menu
+    a-layout
+      a-layout-content.relative
+        router-view
+  drawer-bar
 </template>
 
 <script setup lang="ts">
 import { themeConfig } from '~/config/theme.config'
+import { useStore } from '~/store'
+import DrawerBar from './components/drawer-bar.vue'
 
-let collapsed = ref(false)
+const store = useStore(store => store.menu)
 
-provide('updateCollapsed', (value: boolean) => {
-  set(collapsed, value)
-})
-</script>
-
-<style lang="less">
-.menu-bar {
-  width: 50px;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+const siderStyle = {
+  background: '#fff'
 }
-</style>
+const headerStyle = {
+  background: '#fff'
+}
+
+const headerMenus = computed(() => store.headerMenus)
+</script>
