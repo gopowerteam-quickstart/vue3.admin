@@ -8,6 +8,9 @@ import layouts from 'vite-plugin-vue-layouts'
 import icons from 'unplugin-icons/vite'
 import iconsResolver from 'unplugin-icons/resolver'
 import { ArcoResolver } from 'unplugin-vue-components/resolvers'
+import unocss from 'unocss/vite'
+import { presetAttributify, presetUno } from 'unocss'
+import transformerDirective from '@unocss/transformer-directives'
 
 // 全局样式变量
 const globalLessVaribles = resolve(
@@ -85,5 +88,25 @@ export default defineConfig({
     }),
     // 自动导入图标插件配置
     icons(),
+    unocss({
+      presets: [
+        presetAttributify({
+          prefix: 'css:',
+          prefixedOnly: true,
+          nonValuedAttribute: true,
+        }),
+        presetUno(),
+      ],
+      transformers: [transformerDirective()],
+      // extractors: [extractorPug(), extractorSplit],
+      shortcuts: {
+        'flex-center': 'flex justify-center align-center',
+      },
+      theme: {
+        colors: {
+          primary: '#1f6ae3',
+        },
+      },
+    }),
   ],
 })

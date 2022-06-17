@@ -3,30 +3,34 @@ defineProps<{ msg: string }>()
 </script>
 
 <template>
-  <a-button type="primary">Primary</a-button>
-  <a-button>Secondary</a-button>
-  <a-button type="dashed">Dashed</a-button>
-  <a-button type="outline">Outline</a-button>
-  <a-button type="text">Text</a-button>
-  <a-space>
-    <a-button type="primary">
-      <template #icon>
-        <icon-park:home />
+  <div
+    css:bg-gray-500
+    css:m="t-10 l-20">
+    <a-button type="primary">Primary</a-button>
+    <a-button>Secondary</a-button>
+    <a-button type="dashed">Dashed</a-button>
+    <a-button type="outline">Outline</a-button>
+    <a-button type="text">Text</a-button>
+    <a-space>
+      <a-button type="primary">
+        <template #icon>
+          <icon-park:home />
 
-        <!-- <icon-park-abdominal></icon-park-abdominal> -->
-      </template>
-    </a-button>
-    <a-button type="primary">
-      <template #icon>
-        <!-- <icon-park-abdominal></icon-park-abdominal> -->
-      </template>
-      <!-- Use the default slot to avoid extra spaces -->
-      <template #default>Delete</template>
-    </a-button>
-  </a-space>
-  <p>
-    Edit<code>components/HelloWorld.vue</code>to test hot module replacement.
-  </p>
+          <!-- <icon-park-abdominal></icon-park-abdominal> -->
+        </template>
+      </a-button>
+      <a-button type="primary">
+        <template #icon>
+          <!-- <icon-park-abdominal></icon-park-abdominal> -->
+        </template>
+        <!-- Use the default slot to avoid extra spaces -->
+        <template #default>Delete</template>
+      </a-button>
+    </a-space>
+    <p>
+      Edit<code>components/HelloWorld.vue</code>to test hot module replacement.
+    </p>
+  </div>
 </template>
 
 <style lang="less" scoped>

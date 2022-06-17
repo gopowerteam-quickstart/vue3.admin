@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "stylelint.vscode-stylelint",
-    "Vue.volar"
+    "vue.volar",
+    "antfu.iconify"
   ]
 }
