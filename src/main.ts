@@ -1,8 +1,23 @@
-import { createApp } from 'vue'
-import ArcoVue from '@arco-design/web-vue'
+import { ViteSSG, ViteSSGContext } from 'vite-ssg'
+import router from '~/router'
+
 import '@arco-design/web-vue/dist/arco.css'
 import App from './App.vue'
+import { bootstrap } from './bootstrap'
 
-const app = createApp(App)
-app.use(ArcoVue)
-app.mount('#app')
+/**
+ * 加载模块
+ * @param ctx
+ */
+function installModules(ctx: ViteSSGContext) {
+  Object.values(import.meta.globEager('./modules/*.ts')).forEach((i) =>
+    i.install?.(ctx),
+  )
+}
+
+export const createApp = ViteSSG(App, router, (ctx) => {
+  // 安装基础模块
+  installModules(ctx)
+  // 安装启动模块
+  bootstrap({ app: ctx.app, router: ctx.router })
+})

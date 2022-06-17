@@ -1,3 +1,6 @@
+/**
+ * @type {import('prettier').Options}
+ */
 module.exports = {
   // 一行最多 80 字符
   printWidth: 80,
@@ -9,14 +12,12 @@ module.exports = {
   semi: false,
   // 使用单引号
   singleQuote: true,
-  // 每行一个属性
-  singleAttributePerLine: true,
   // 对象的 key 仅在必要时用引号
   quoteProps: 'as-needed',
   // jsx 不使用单引号，而使用双引号
   jsxSingleQuote: false,
   // 末尾需要有逗号
-  trailingComma: 'none',
+  trailingComma: 'all',
   // 大括号内的首尾需要空格
   bracketSpacing: true,
   // jsx 标签的反尖括号需要换行
@@ -40,5 +41,7 @@ module.exports = {
   endOfLine: 'lf',
   // 格式化内嵌代码
   embeddedLanguageFormatting: 'auto',
-  eslintIntegration: true
+  // 每行一个属性
+  singleAttributePerLine: true,
+  eslintIntegration: true,
 }

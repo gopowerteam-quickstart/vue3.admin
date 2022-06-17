@@ -2,7 +2,7 @@ module.exports = {
   env: {
     node: true,
     browser: true,
-    es2022: true
+    es2022: true,
   },
   extends: [
     // 基础规则引入
@@ -10,7 +10,8 @@ module.exports = {
     // React规则引入
     // 'plugin:react/recommended',
     // prettier规则引入&处理perttier-eslint冲突
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    './.eslintrc-auto-import.json',
   ],
   overrides: [
     {
@@ -20,16 +21,16 @@ module.exports = {
         sourceType: 'module',
         allowImportExportEverywhere: false,
         ecmaFeatures: {
-          globalReturn: false
-        }
-      }
+          globalReturn: false,
+        },
+      },
     },
     {
       files: ['**/*.{ts,tsx}'],
       extends: [
         // typescript支持引入
-        'plugin:@typescript-eslint/recommended'
-      ]
+        'plugin:@typescript-eslint/recommended',
+      ],
     },
     {
       files: ['**/*.vue'], // 只处理 vue 文件
@@ -40,13 +41,13 @@ module.exports = {
         'plugin:vue/vue3-recommended',
         'plugin:prettier-vue/recommended',
         // typescript支持引入
-        '@vue/typescript'
+        '@vue/typescript',
       ],
       rules: {
-        'vue/multi-word-component-names': ['off']
+        'vue/multi-word-component-names': ['off'],
         // 'vue/max-attributes-per-line': ['off'],
         // 'vue/html-indent': ['off']
-      }
-    }
-  ]
+      },
+    },
+  ],
 }
