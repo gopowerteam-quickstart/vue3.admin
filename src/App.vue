@@ -6,6 +6,8 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <a-button type="primary">Primary</a-button>
+  <a-button>Secondary</a-button>
 </template>
 
 <style lang="less">
