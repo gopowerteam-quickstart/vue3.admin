@@ -22,6 +22,10 @@
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.30.1",
+    "@ngneat/elf": "^2.1.0",
+    "@ngneat/elf-devtools": "^1.2.1",
+    "@ngneat/elf-persist-state": "^1.1.2",
+    "pinia": "^2.0.14",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16"
   },
