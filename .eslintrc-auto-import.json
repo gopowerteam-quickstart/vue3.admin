@@ -108,6 +108,7 @@
     "useAttrs": true,
     "useBase64": true,
     "useBattery": true,
+    "useBluetooth": true,
     "useBreakpoints": true,
     "useBroadcastChannel": true,
     "useBrowserLocation": true,
