@@ -11,7 +11,7 @@ export abstract class StoreAction<T> {
 export abstract class StoreQuery<T> {
   protected readonly store!: Store<StoreDef, T>
 
-  public get state$() {
+  public get steam$() {
     return this.store.pipe(select((state) => state))
   }
 
@@ -19,7 +19,11 @@ export abstract class StoreQuery<T> {
     this.store = store
   }
 
-  select<R>(selector: (state: T) => R) {
-    return selector(this.store.getValue())
+  select(): T
+  select<R>(selector: (state: T) => R): R
+  select<R>(selector?: (state: T) => R) {
+    const state = this.store.getValue()
+
+    return selector ? selector(state) : state
   }
 }

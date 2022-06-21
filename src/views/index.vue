@@ -10,6 +10,12 @@ const length = useStore(userQuery.isLogin)
 function login() {
   userAction.updateToken(token.value + 'a')
 }
+
+onMounted(() => {
+  const data = userQuery.select((state) => state.token)
+
+  console.log(data)
+})
 </script>
 
 <template>

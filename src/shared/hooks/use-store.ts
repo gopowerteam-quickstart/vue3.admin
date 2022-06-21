@@ -25,7 +25,7 @@ export function useStore<T, R>(
   if (query instanceof StoreQuery && selector) {
     const state = ref<R>()
 
-    query.state$.pipe(select(selector)).subscribe((data) => {
+    query.steam$.pipe(select(selector)).subscribe((data) => {
       state.value = data
     })
 

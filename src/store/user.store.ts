@@ -42,7 +42,7 @@ class UserQuery extends StoreQuery<State> {
   }
 
   get isLogin() {
-    return this.state$.pipe(map((state) => state.token.length))
+    return this.steam$.pipe(map((state) => state.token.length))
   }
 }
 
