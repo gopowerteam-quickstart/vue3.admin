@@ -23,8 +23,12 @@ useHead({
     },
   ],
 })
+onMounted(() => {
+  console.log(123123)
+})
 </script>
 
 <template>
+  <div>123123</div>
   <RouterView />
 </template>

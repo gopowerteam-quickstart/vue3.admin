@@ -1,14 +1,39 @@
 <script setup lang="ts">
+import { useStore } from '~/shared/hooks/use-store'
+import { userQuery, userAction } from '~/store/user.store'
+
 defineProps<{ msg: string }>()
+
+const token = useStore(userQuery, (state) => state.token)
+const length = useStore(userQuery.isLogin)
+
+function login() {
+  userAction.updateToken(token.value + 'a')
+}
+
+onMounted(() => {
+  const data = userQuery.select((state) => state.token)
+
+  console.log(data)
+})
 </script>
 
 <template>
   <div
     css:bg-gray-500
     css:m="t-10 l-20">
+    <a-button
+      type="primary"
+      @click="login"
+      >Usera: {{ token }} - {{ length }}</a-button
+    >
     <a-button type="primary">Primary</a-button>
     <a-button>Secondary</a-button>
-    <a-button type="dashed">Dashed</a-button>
+    <a-button
+      type="dashed"
+      @click="() => $router.push({ name: 'login' })"
+      >Dashed</a-button
+    >
     <a-button type="outline">Outline</a-button>
     <a-button type="text">Text</a-button>
     <a-space>
@@ -52,3 +77,9 @@ code {
   border-radius: 4px;
 }
 </style>
+
+<route lang="yaml">
+name: page1
+meta:
+  requiresAuth: false
+</route>
