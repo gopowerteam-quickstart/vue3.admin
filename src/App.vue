@@ -29,6 +29,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>123123</div>
   <RouterView />
 </template>
