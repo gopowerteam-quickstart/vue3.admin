@@ -25,11 +25,15 @@ onMounted(() => {
     <a-button
       type="primary"
       @click="login"
-      >User: {{ token }} - {{ length }}</a-button
+      >Usera: {{ token }} - {{ length }}</a-button
     >
     <a-button type="primary">Primary</a-button>
     <a-button>Secondary</a-button>
-    <a-button type="dashed">Dashed</a-button>
+    <a-button
+      type="dashed"
+      @click="() => $router.push({ name: 'login' })"
+      >Dashed</a-button
+    >
     <a-button type="outline">Outline</a-button>
     <a-button type="text">Text</a-button>
     <a-space>
@@ -73,3 +77,9 @@ code {
   border-radius: 4px;
 }
 </style>
+
+<route lang="yaml">
+name: page1
+meta:
+  requiresAuth: false
+</route>

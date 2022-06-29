@@ -2,6 +2,7 @@ import { ViteSSG, ViteSSGContext } from 'vite-ssg'
 import router from '~/router'
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
+import '~/assets/styles/index.less'
 
 import '@arco-design/web-vue/dist/arco.css'
 import App from './App.vue'
@@ -17,7 +18,7 @@ function installModules(ctx: ViteSSGContext) {
   )
 }
 
-export const createApp = ViteSSG(App, router, (ctx) => {
+export const createApp = ViteSSG(App, router, async (ctx) => {
   // 安装基础模块
   installModules(ctx)
   // 安装启动模块
