@@ -2,7 +2,6 @@
 import { useStore } from '~/shared/hooks/use-store'
 import { userQuery, userAction } from '~/store/user.store'
 
-const router = useRouter()
 defineProps<{ msg: string }>()
 
 const token = useStore(userQuery, (state) => state.token)
@@ -26,13 +25,13 @@ onMounted(() => {
     <a-button
       type="primary"
       @click="login"
-      >Userb: {{ token }} - {{ length }}</a-button
+      >Usera: {{ token }} - {{ length }}</a-button
     >
     <a-button type="primary">Primary</a-button>
     <a-button>Secondary</a-button>
     <a-button
       type="dashed"
-      @click="() => router.push({ name: 'dashboard' })"
+      @click="() => $router.push({ name: 'login' })"
       >Dashed</a-button
     >
     <a-button type="outline">Outline</a-button>
@@ -80,11 +79,14 @@ code {
 </style>
 
 <route lang="yaml">
-name: login
+name: page2
 meta:
-  requiresAuth: false
+  layout: workspace
+  auth:
+    roles:
+      - ADMIN
   menu:
-    key: root1.page1
+    key: root2.test.page2
     icon: xxx
-    title: Page1
+    title: Page2
 </route>

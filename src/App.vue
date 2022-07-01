@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { isDark, preferredDark } from './config/theme'
+const isDark = useDark()
+// const toggleDark = useToggle(isDark)
+const preferredDark = usePreferredDark()
 
 useHead({
   title: 'Vitesse',
@@ -22,9 +24,6 @@ useHead({
       ),
     },
   ],
-})
-onMounted(() => {
-  console.log(123123)
 })
 </script>
 

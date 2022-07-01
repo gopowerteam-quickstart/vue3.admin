@@ -81,5 +81,12 @@ code {
 <route lang="yaml">
 name: page1
 meta:
-  requiresAuth: false
+  layout: workspace
+  auth:
+    roles:
+      - ADMIN
+  menu:
+    key: root1.page1
+    icon: xxx
+    title: Page1
 </route>

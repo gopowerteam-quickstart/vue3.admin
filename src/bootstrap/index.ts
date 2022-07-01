@@ -1,5 +1,8 @@
 import { App } from 'vue'
 import { Router } from 'vue-router'
+import appLaunch from './launch/app.launch'
+import userLaunch from './launch/user.launch'
+import setup from './setup'
 
 export const bootstrap = async ({
   app,
@@ -8,16 +11,11 @@ export const bootstrap = async ({
   app: App<Element>
   router: Router
 }) => {
-  router.beforeEach(async (to, from, next) => {
-    await new Promise((resolve) => {
-      setTimeout(() => {
-        next()
-      }, 3000)
-    })
-  })
-  // // 系统初始化状态
-  // await new Promise((resolve) => {
-  //   setTimeout(resolve, 3000)
-  // })
-  return { app, router }
+  // 系统基础功能配置
+  setup(app)
+
+  // 系统初始化逻辑
+  appLaunch(router)
+  // 用户初始化逻辑
+  userLaunch(router)
 }

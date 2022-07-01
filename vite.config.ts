@@ -9,18 +9,10 @@ import icons from 'unplugin-icons/vite'
 import iconsResolver from 'unplugin-icons/resolver'
 import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import unocss from 'unocss/vite'
-import { presetAttributify, presetUno } from 'unocss'
-import transformerDirective from '@unocss/transformer-directives'
 
 // 全局样式变量
-const globalLessVaribles = resolve(
-  __dirname,
-  'src',
-  'assets',
-  'styles',
-  'varibles.less',
-)
-import ArcoDesignVueTheme from './src/assets/styles/theme.json'
+const globalLessVaribles = resolve(__dirname, 'src', 'styles', 'varibles.less')
+import ArcoDesignVueTheme from './src/styles/theme.json'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -87,26 +79,9 @@ export default defineConfig({
       include: [/\.vue$/, /\.vue\?vue/],
     }),
     // 自动导入图标插件配置
-    icons(),
-    unocss({
-      presets: [
-        presetAttributify({
-          prefix: 'css:',
-          prefixedOnly: true,
-          nonValuedAttribute: true,
-        }),
-        presetUno(),
-      ],
-      transformers: [transformerDirective()],
-      // extractors: [extractorPug(), extractorSplit],
-      shortcuts: {
-        'flex-center': 'flex justify-center align-center',
-      },
-      theme: {
-        colors: {
-          primary: '#1f6ae3',
-        },
-      },
+    icons({
+      scale: 1.5,
     }),
+    unocss(),
   ],
 })
