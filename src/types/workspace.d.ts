@@ -1,4 +1,6 @@
-export interface Menu {
+import type { LocationQuery, RouteParams } from 'vue-router'
+
+export type Menu = {
   path?: string
   name?: string
   auth?: Auth
@@ -10,6 +12,11 @@ export interface Menu {
   isLeaf?: boolean
 }
 
-export interface Auth {
+export type Tab = Menu & {
+  query: LocationQuery
+  params: RouteParams
+}
+
+export type Auth = {
   roles: string[]
 }

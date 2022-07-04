@@ -3,7 +3,6 @@ import { useStore } from '~/shared/hooks/use-store'
 import { userQuery, userAction } from '~/store/user.store'
 
 const router = useRouter()
-defineProps<{ msg: string }>()
 
 const token = useStore(userQuery, (state) => state.token)
 const length = useStore(userQuery.isLogin)
@@ -11,12 +10,6 @@ const length = useStore(userQuery.isLogin)
 function login() {
   userAction.updateToken(token.value + 'a')
 }
-
-onMounted(() => {
-  const data = userQuery.select((state) => state.token)
-
-  console.log(data)
-})
 </script>
 
 <template>

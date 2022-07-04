@@ -59,7 +59,7 @@ export default defineConfig({
       pagesDir: [{ dir: 'src/views', baseRoute: '' }],
       exclude: ['**/components/*.vue'],
       extensions: ['vue'],
-      nuxtStyle: true,
+      routeStyle: 'nuxt',
     }),
     // 自动引入组件插件配置
     components({

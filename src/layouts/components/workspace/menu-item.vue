@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { Menu } from '~/types/menu'
+import type { Menu } from '~/types/workspace'
 
 defineProps<{
   menu: Menu

@@ -8,8 +8,6 @@ const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/dashboard' },
 ]
 
-console.log([...routes, ...setupLayouts(generatedRoutes)])
-
 export default {
   base: import.meta.env.BASE_URL,
   routes: [...routes, ...setupLayouts(generatedRoutes)],

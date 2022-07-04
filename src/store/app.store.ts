@@ -1,6 +1,6 @@
 import { createStore, withProps, setProp, setProps } from '@ngneat/elf'
 import { StoreAction, StoreQuery } from '~/store'
-import { Menu } from '~/types/menu'
+import type { Menu, Tab } from '~/types/workspace'
 
 interface State {
   // 系统准备状态
@@ -13,6 +13,9 @@ interface State {
   headerMenus: Menu[]
   // 侧边菜单列表
   sideMenus: Menu[]
+  // 选项卡列表
+  tabs: Tab[]
+  currentTab?: string
 }
 
 const STORE_KEY = 'app'
@@ -26,6 +29,7 @@ const appStore = createStore(
     menus: [],
     headerMenus: [],
     sideMenus: [],
+    tabs: [],
   }),
 )
 
@@ -81,6 +85,36 @@ class AppAction extends StoreAction<State> {
    */
   updateSideMenus(menus: Menu[]) {
     this.store.update(setProp('sideMenus', menus))
+  }
+
+  addTab(tab: Tab) {
+    const { tabs } = this.store.getValue()
+    this.store.update(
+      setProps({
+        tabs: [...tabs, tab],
+        currentTab: tab.key,
+      }),
+    )
+  }
+
+  deleteTab(key: string) {
+    const { tabs } = this.store.getValue()
+
+    if (tabs.length === 1) {
+      return
+    }
+
+    // 删除已关闭Tab
+    this.store.update(
+      setProp(
+        'tabs',
+        tabs.filter((tab) => tab.key !== key),
+      ),
+    )
+  }
+
+  updateCurrentTab(menu: Menu) {
+    this.store.update(setProp('currentTab', menu.key))
   }
 }
 

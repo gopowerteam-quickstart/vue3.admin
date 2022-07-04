@@ -3,7 +3,7 @@ import { appConfig } from '~/config/app.config'
 import menus from '~/config/menu.config'
 import { appAction } from '~/store/app.store'
 import { userQuery } from '~/store/user.store'
-import type { Menu } from '~/types/menu'
+import type { Menu } from '~/types/workspace'
 /**
  * 启动websocket
  * @returns
