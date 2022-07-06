@@ -12,7 +12,8 @@ export type Menu = {
   isLeaf?: boolean
 }
 
-export type Tab = Menu & {
+export type Tab = Required<Menu> & {
+  menuKey: string
   query: LocationQuery
   params: RouteParams
 }

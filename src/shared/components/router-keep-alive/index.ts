@@ -1,1 +1,3 @@
-export * as RouterKeepAlive from './router-keep-alive'
+import { KeepAlive } from './router-keep-alive'
+
+export default KeepAlive

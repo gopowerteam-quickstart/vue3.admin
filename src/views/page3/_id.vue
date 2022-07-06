@@ -19,7 +19,6 @@ meta:
   auth:
     roles:
       - ADMIN
-  multiple: true
   menu:
     key: root2.test.page3
     icon: xxx

@@ -15,7 +15,6 @@ interface State {
   sideMenus: Menu[]
   // 选项卡列表
   tabs: Tab[]
-  currentTab?: string
 }
 
 const STORE_KEY = 'app'
@@ -92,7 +91,6 @@ class AppAction extends StoreAction<State> {
     this.store.update(
       setProps({
         tabs: [...tabs, tab],
-        currentTab: tab.key,
       }),
     )
   }
@@ -111,10 +109,6 @@ class AppAction extends StoreAction<State> {
         tabs.filter((tab) => tab.key !== key),
       ),
     )
-  }
-
-  updateCurrentTab(menu: Menu) {
-    this.store.update(setProp('currentTab', menu.key))
   }
 }
 
