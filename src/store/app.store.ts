@@ -110,18 +110,20 @@ class AppAction extends StoreAction<State> {
   /**
    * 删除Tab
    */
-  deleteTab(key: string) {
+  deleteTab(key: string | string[]) {
     const { tabs } = this.store.getValue()
+    const keys = Array.isArray(key) ? key : [key]
 
     if (tabs.length === 1) {
       return
     }
 
     // 删除已关闭Tab
+
     this.store.update(
       setProp(
         'tabs',
-        tabs.filter((tab) => tab.key !== key),
+        tabs.filter((tab) => !keys.includes(tab.key)),
       ),
     )
   }
