@@ -1,7 +1,7 @@
-<script setup lang="ts"></script>
-
 <template>
-  <a-input placeholder="page2"></a-input>
+  <page-container title="111">
+    <a-input placeholder="page2"></a-input>
+  </page-container>
 </template>
 
 <route lang="yaml">

@@ -1,14 +1,12 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const { id } = route.query
+const { id } = route.params
 </script>
 
 <template>
-  <PageContainer>
-    <a-input
-      v-model="id"
-      placeholder="page3"></a-input>
+  <PageContainer :title="`测试也-${id}`">
+    <a-input placeholder="page3"></a-input>
   </PageContainer>
 </template>
 

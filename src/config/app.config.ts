@@ -9,7 +9,7 @@ export const appConfig: AppConfig = {
     timeout: 3000,
   },
   workspace: {
-    navigation: 'side',
+    navigation: 'all',
     tabs: false,
     headerFixed: true,
     sideFixed: true,

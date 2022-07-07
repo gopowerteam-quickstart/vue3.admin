@@ -21,6 +21,7 @@ specifiers:
   '@unocss/transformer-directives': ^0.39.3
   '@vitejs/plugin-vue': ^2.3.3
   '@vue/eslint-config-typescript': ^11.0.0
+  '@vue/runtime-core': ^3.2.37
   '@vueuse/core': ^8.7.4
   '@vueuse/head': ^0.7.6
   commitizen: 4.2.4
@@ -67,6 +68,7 @@ dependencies:
   '@ngneat/elf': registry.npmmirror.com/@ngneat/elf/2.1.0_typescript@4.7.4
   '@ngneat/elf-devtools': registry.npmmirror.com/@ngneat/elf-devtools/1.2.1
   '@ngneat/elf-persist-state': registry.npmmirror.com/@ngneat/elf-persist-state/1.1.2
+  '@vue/runtime-core': registry.npmmirror.com/@vue/runtime-core/3.2.37
   nprogress: registry.npmmirror.com/nprogress/0.2.0
   pinia: registry.npmmirror.com/pinia/2.0.14_j6bzmzd4ujpabbp5objtwxyjp4
   rxjs: registry.npmmirror.com/rxjs/7.5.5

@@ -24,6 +24,7 @@ import { useStore } from '~/shared/hooks/use-store'
 import { appQuery, appAction } from '~/store/app.store'
 import type { Menu, Tab } from '~/types/workspace'
 
+const title = $(useStore(appQuery, (state) => state.title))
 const menus = $(useStore(appQuery, (state) => state.menus))
 const tabs = $(useStore(appQuery, (state) => state.tabs))
 const route = useRoute()
@@ -56,6 +57,7 @@ function onTabInit() {
   if (menu) {
     appAction.addTab({
       ...menu,
+      title: title,
       key: route.fullPath,
       menuKey: menu.key,
       query: route.query,
@@ -64,7 +66,7 @@ function onTabInit() {
   }
 }
 
-function onTabDelete(key: string) {
+function onTabDelete(key: string | number) {
   const index = tabs.findIndex((tab) => tab.key === key)
 
   if (index === -1 || tabs.length === 1) return
@@ -78,10 +80,10 @@ function onTabDelete(key: string) {
     router.push({ name: target.name })
   }
 
-  appAction.deleteTab(key)
+  appAction.deleteTab(key.toString())
 }
 
-function onTabChange(key: string) {
+function onTabChange(key: string | number) {
   const tab = tabs.find((x) => x.key === key)
 
   if (tab) {

@@ -1,10 +1,23 @@
 <script setup lang="ts">
+import { appConfig } from './config/app.config'
+import { useStore } from './shared/hooks/use-store'
+import { appQuery } from './store/app.store'
+
+const pageTitle = $(useStore(appQuery, (state) => state.title))
 const isDark = useDark()
 // const toggleDark = useToggle(isDark)
 const preferredDark = usePreferredDark()
 
+const title = computed(() => {
+  if (pageTitle) {
+    return `${appConfig.title}-${pageTitle}`
+  } else {
+    return appConfig.title
+  }
+})
+
 useHead({
-  title: 'Vitesse',
+  title: title,
   meta: [
     {
       name: 'description',

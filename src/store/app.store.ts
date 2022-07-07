@@ -5,6 +5,8 @@ import type { Menu, Tab } from '~/types/workspace'
 interface State {
   // 系统准备状态
   ready: boolean
+  // 页面标题
+  title: string
   // 侧边栏展开状态
   collapsed: boolean
   // 系统菜单列表
@@ -23,6 +25,7 @@ const appStore = createStore(
   { name: STORE_KEY },
   withProps<State>({
     ready: false,
+    title: '',
     collapsed: false,
     // 用户菜单列表
     menus: [],
@@ -48,10 +51,16 @@ class AppAction extends StoreAction<State> {
 
   /**
    * 更新系统状态
-   * @param user
    */
   setReady() {
     this.store.update(setProp('ready', true))
+  }
+
+  /**
+   * 页面标题
+   */
+  updateTitle(title: string) {
+    this.store.update(setProp('title', title))
   }
 
   /**
@@ -86,6 +95,9 @@ class AppAction extends StoreAction<State> {
     this.store.update(setProp('sideMenus', menus))
   }
 
+  /**
+   * 添加Tab
+   */
   addTab(tab: Tab) {
     const { tabs } = this.store.getValue()
     this.store.update(
@@ -95,6 +107,9 @@ class AppAction extends StoreAction<State> {
     )
   }
 
+  /**
+   * 删除Tab
+   */
   deleteTab(key: string) {
     const { tabs } = this.store.getValue()
 

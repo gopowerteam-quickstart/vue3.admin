@@ -92,10 +92,12 @@ function generateUserMenu(router: Router) {
     case 'side':
       appAction.updateSideMenus(headerMenus)
       break
-    case 'all':
-      headerMenus.forEach((menu) => (menu.isLeaf = true))
+    case 'all': {
+      headerMenus.forEach((m) => (m.isLeaf = true))
       appAction.updateHeaderMenus(headerMenus)
+
       break
+    }
   }
 }
 /**

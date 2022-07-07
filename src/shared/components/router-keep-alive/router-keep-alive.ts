@@ -1,11 +1,13 @@
 /* eslint-disable */
 import { isFunction } from '@vueuse/core'
 import {
+  callWithAsyncErrorHandling,
   cloneVNode,
   ComponentInternalInstance,
   ComponentOptions,
   ConcreteComponent,
   isVNode,
+  queuePostFlushCb,
   setTransitionHooks,
   SetupContext,
   VNode,
@@ -62,6 +64,24 @@ export const enum LifecycleHooks {
   SERVER_PREFETCH = 'sp',
 }
 
+export const enum ErrorCodes {
+  SETUP_FUNCTION = 0,
+  RENDER_FUNCTION = 1,
+  WATCH_GETTER = 2,
+  WATCH_CALLBACK = 3,
+  WATCH_CLEANUP = 4,
+  NATIVE_EVENT_HANDLER = 5,
+  COMPONENT_EVENT_HANDLER = 6,
+  VNODE_HOOK = 7,
+  DIRECTIVE_HOOK = 8,
+  TRANSITION_HOOK = 9,
+  APP_ERROR_HANDLER = 10,
+  APP_WARN_HANDLER = 11,
+  FUNCTION_REF = 12,
+  ASYNC_COMPONENT_LOADER = 13,
+  SCHEDULER = 14,
+}
+
 type CacheKey = string | number | symbol | ConcreteComponent
 type Cache = Map<CacheKey, VNode>
 type Keys = Set<CacheKey>
@@ -106,12 +126,12 @@ const KeepAliveImpl: ComponentOptions = {
 
     // if the internal renderer is not registered, it indicates that this is server-side rendering,
     // for KeepAlive, we just need to render its children
-    // if (__SSR__ && !sharedContext.renderer) {
-    //   return () => {
-    //     const children = slots.default && slots.default()
-    //     return children && children.length === 1 ? children[0] : children
-    //   }
-    // }
+    if (import.meta.env.SSR && !sharedContext.renderer) {
+      return () => {
+        const children = slots.default && slots.default()
+        return children && children.length === 1 ? children[0] : children
+      }
+    }
 
     const cache: Cache = new Map()
     const keys: Keys = new Set()
@@ -154,17 +174,18 @@ const KeepAliveImpl: ComponentOptions = {
         vnode.slotScopeIds,
         optimized,
       )
-      // TODO
+
       // queuePostRenderEffect(() => {
-      //   instance.isDeactivated = false
-      //   if (instance.a) {
-      //     invokeArrayFns(instance.a)
-      //   }
-      //   const vnodeHook = vnode.props && vnode.props.onVnodeMounted
-      //   if (vnodeHook) {
-      //     invokeVNodeHook(vnodeHook, instance.parent, vnode)
-      //   }
-      // }, parentSuspense)
+      queuePostFlushCb(() => {
+        instance.isDeactivated = false
+        if (instance.a) {
+          invokeArrayFns(instance.a)
+        }
+        const vnodeHook = vnode.props && vnode.props.onVnodeMounted
+        if (vnodeHook) {
+          invokeVNodeHook(vnodeHook, instance.parent, vnode)
+        }
+      })
 
       // if (__DEV__ || __FEATURE_PROD_DEVTOOLS__) {
       //   // Update components tree
@@ -173,18 +194,19 @@ const KeepAliveImpl: ComponentOptions = {
     }
 
     sharedContext.deactivate = (vnode: VNode) => {
-      const instance = vnode.component!
+      const instance = vnode.component! as any
       move(vnode, storageContainer, null, MoveType.LEAVE, parentSuspense)
       // queuePostRenderEffect(() => {
-      //   if (instance.da) {
-      //     invokeArrayFns(instance.da)
-      //   }
-      //   const vnodeHook = vnode.props && vnode.props.onVnodeUnmounted
-      //   if (vnodeHook) {
-      //     invokeVNodeHook(vnodeHook, instance.parent, vnode)
-      //   }
-      //   instance.isDeactivated = true
-      // }, parentSuspense)
+      queuePostFlushCb(() => {
+        if (instance.da) {
+          invokeArrayFns(instance.da)
+        }
+        const vnodeHook = vnode.props && vnode.props.onVnodeUnmounted
+        if (vnodeHook) {
+          invokeVNodeHook(vnodeHook, instance.parent, vnode)
+        }
+        instance.isDeactivated = true
+      })
 
       // if (__DEV__ || __FEATURE_PROD_DEVTOOLS__) {
       //   // Update components tree
@@ -473,3 +495,19 @@ export const isAsyncWrapper = (i: ComponentInternalInstance | VNode): boolean =>
 export const isSuspense = (type: any): boolean => type.__isSuspense
 export const isArray = Array.isArray
 export const isString = (val: unknown): val is string => typeof val === 'string'
+export const invokeArrayFns = (fns: Function[], arg?: any) => {
+  for (let i = 0; i < fns.length; i++) {
+    fns[i](arg)
+  }
+}
+export function invokeVNodeHook(
+  hook: any,
+  instance: ComponentInternalInstance | null,
+  vnode: VNode,
+  prevVNode: VNode | null = null,
+) {
+  callWithAsyncErrorHandling(hook, instance, ErrorCodes.VNODE_HOOK as any, [
+    vnode,
+    prevVNode,
+  ])
+}

@@ -25,6 +25,7 @@
     "@ngneat/elf": "^2.1.0",
     "@ngneat/elf-devtools": "^1.2.1",
     "@ngneat/elf-persist-state": "^1.1.2",
+    "@vue/runtime-core": "^3.2.37",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.14",
     "rxjs": "^7.5.5",
