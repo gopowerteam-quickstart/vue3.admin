@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2">
+  <div class="py-2 pl-2">
     <a-tabs
       v-model:active-key="$route.fullPath"
       type="card-gutter"

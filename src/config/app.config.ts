@@ -10,10 +10,10 @@ export const appConfig: AppConfig = {
   },
   workspace: {
     navigation: 'all',
-    tabs: false,
+    tabs: true,
     headerFixed: true,
     sideFixed: true,
-    tabsFixed: true,
+    tabsFixed: false,
     contentWidth: 'auto',
     sideWidth: 200,
     sideCollapsedWidth: 60,
