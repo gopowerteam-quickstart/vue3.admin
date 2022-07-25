@@ -2,6 +2,7 @@
 import { appConfig } from './config/app.config'
 import { useStore } from './shared/hooks/use-store'
 import { appQuery } from './store/app.store'
+import { ModalProvider } from '@gopowerteam/vue-modal'
 
 const pageTitle = $(useStore(appQuery, (state) => state.title))
 const isDark = useDark()
@@ -41,5 +42,7 @@ useHead({
 </script>
 
 <template>
-  <RouterView />
+  <modal-provider>
+    <RouterView />
+  </modal-provider>
 </template>

@@ -9,6 +9,7 @@ specifiers:
   '@babel/eslint-parser': ^7.18.2
   '@commitlint/cli': 17.0.2
   '@commitlint/config-conventional': 17.0.2
+  '@gopowerteam/vue-modal': ^0.1.12
   '@iconify-json/icon-park': ^1.1.4
   '@ngneat/elf': ^2.1.0
   '@ngneat/elf-devtools': ^1.2.1
@@ -65,6 +66,7 @@ specifiers:
 
 dependencies:
   '@arco-design/web-vue': registry.npmmirror.com/@arco-design/web-vue/2.31.0_vue@3.2.37
+  '@gopowerteam/vue-modal': registry.npmmirror.com/@gopowerteam/vue-modal/0.1.12_vue@3.2.37
   '@ngneat/elf': registry.npmmirror.com/@ngneat/elf/2.1.0_typescript@4.7.4
   '@ngneat/elf-devtools': registry.npmmirror.com/@ngneat/elf-devtools/1.2.1
   '@ngneat/elf-persist-state': registry.npmmirror.com/@ngneat/elf-persist-state/1.1.2
@@ -737,6 +739,17 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  registry.npmmirror.com/@gopowerteam/vue-modal/0.1.12_vue@3.2.37:
+    resolution: {integrity: sha512-t+fcJmXaS8DZAVvfbzhgs905H82hrYXluuiSX2JrIvq10tp01mVsEWkaz3FaoCb/9cyldpoCHfTVfc0ctzJr0g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@gopowerteam/vue-modal/-/vue-modal-0.1.12.tgz}
+    id: registry.npmmirror.com/@gopowerteam/vue-modal/0.1.12
+    name: '@gopowerteam/vue-modal'
+    version: 0.1.12
+    peerDependencies:
+      vue: ^3.0.5
+    dependencies:
+      vue: registry.npmmirror.com/vue/3.2.37
+    dev: false
 
   registry.npmmirror.com/@humanwhocodes/config-array/0.9.5:
     resolution: {integrity: sha512-ObyMyWxZiCu/yTisA7uzx81s40xR2fD5Cg/2Kq7G02ajkNubJf6BopgDTmDyc3U7sXpNKM8cYOw7s7Tyr+DnCw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@humanwhocodes/config-array/-/config-array-0.9.5.tgz}
