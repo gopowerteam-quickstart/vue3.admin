@@ -106,7 +106,11 @@ async function onTabDelete(key: string | number) {
     // 获取切换目标标签
     const target = left || right
 
-    await router.push({ name: target.name })
+    await router.push({
+      path: target.key,
+      query: target.query,
+      params: target.params,
+    })
   }
 
   appAction.deleteTab(key.toString())
@@ -120,7 +124,11 @@ function onTabClose(tab: Tab, action: TabAction) {
 
   const changeTabRouter = () => {
     if (!isCurrentTab) {
-      router.push({ name: tab.name, query: tab.query, params: tab.params })
+      router.push({
+        path: tab.key,
+        query: tab.query,
+        params: tab.params,
+      })
     }
   }
 
@@ -150,7 +158,7 @@ function onTabChange(key: string | number) {
 
   if (tab) {
     router.push({
-      name: tab.name,
+      path: tab.key,
       query: tab.query,
       params: tab.params,
     })
