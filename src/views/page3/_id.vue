@@ -17,8 +17,4 @@ meta:
   auth:
     roles:
       - ADMIN
-  menu:
-    key: root2.test.page3
-    icon: xxx
-    title: Page3
 </route>

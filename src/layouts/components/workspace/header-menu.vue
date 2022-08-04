@@ -42,6 +42,12 @@ function updateSideMenus() {
   }
 
   const menu = route.meta.menu as Menu
+
+  // 过滤非菜单显示项
+  if (!menu) {
+    return
+  }
+
   const target = menus.find((x) => x.key === menu.key.split('.')[0])
 
   if (target && target.children) {

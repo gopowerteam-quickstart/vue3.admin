@@ -70,7 +70,7 @@ function updateSelectedMenu() {
  */
 function onMenuSelect(key: string) {
   const menu = menus.find((menu) => menu.key === key)
-
+  console.log(menu?.name)
   if (menu?.path && menu?.name) {
     router.push({ name: menu.name })
   }

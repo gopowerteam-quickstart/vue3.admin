@@ -45,16 +45,20 @@ const router = useRouter()
 
 watch(
   () => route.fullPath,
-  () => {
+  (value) => {
     const { key } = (route?.meta?.menu as Menu) || {}
 
+    // 获取菜单显示项
     const menu = menus.find((x) => key && x.key === key)
-    const tab = tabs.find((x) => x.key === route.fullPath)
+
+    // 获取tab项
+    const tab = tabs.find((x) => x.key === value)
 
     if (!tab) {
       appAction.addTab({
-        ...menu,
-        key: route.fullPath,
+        ...(menu || {}),
+        key: value,
+        // 非菜单显示项为空
         menuKey: menu?.key,
         query: route.query,
         params: route.params,
@@ -65,35 +69,44 @@ watch(
 
 function onTabInit() {
   const { key } = (route?.meta?.menu as Menu) || {}
+
+  // 获取菜单显示项
   const menu = menus.find((x) => key && x.key === key)
 
-  if (menu) {
-    appAction.addTab({
-      ...menu,
-      title: title,
-      key: route.fullPath,
-      menuKey: menu.key,
-      query: route.query,
-      params: route.params,
-    } as Tab)
-  }
+  appAction.addTab({
+    ...(menu || {}),
+    title: title,
+    key: route.fullPath,
+    menuKey: menu?.key,
+    query: route.query,
+    params: route.params,
+  } as Tab)
 }
 
 /**
  * 关闭对应标签
  */
-function onTabDelete(key: string | number) {
+async function onTabDelete(key: string | number) {
   const index = tabs.findIndex((tab) => tab.key === key)
 
-  if (index === -1 || tabs.length === 1) return
+  if (
+    // 未找到需要删除的标签
+    index === -1 ||
+    // 待删除标签是最后一个标签
+    tabs.length === 1
+  )
+    return
 
-  // 关闭当前标签页处理
+  // 待关闭标签页为正在显示标签
   if (key === route.fullPath) {
+    // 待删除标签左侧标签
     const left = tabs[index - 1]
+    // 待删除标签右侧标签
     const right = tabs[index + 1]
+    // 获取切换目标标签
     const target = left || right
 
-    router.push({ name: target.name })
+    await router.push({ name: target.name })
   }
 
   appAction.deleteTab(key.toString())
