@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
-<template>
-  <a-input placeholder="page1"></a-input>
+<template lang="pug">
+a-input(placeholder='page1')
 </template>
 
 <route lang="yaml">
