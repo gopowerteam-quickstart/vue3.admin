@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
     "commit": "git-cz"
@@ -88,7 +88,6 @@
     "vite-plugin-pages": "^0.24.2",
     "vite-plugin-vue-layouts": "^0.6.0",
     "vite-ssg": "^0.20.1",
-    "vue-tsc": "^0.38.1",
     "@volar/vue-language-plugin-pug": "^1.0.0"
   },
   "pnpm": {
