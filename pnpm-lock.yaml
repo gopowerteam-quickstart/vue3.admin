@@ -11,6 +11,7 @@ specifiers:
   '@commitlint/config-conventional': 17.0.2
   '@gopowerteam/vue-modal': ^0.1.12
   '@iconify-json/icon-park': ^1.1.4
+  '@iconify-json/icon-park-outline': 1.1.6
   '@ngneat/elf': ^2.1.0
   '@ngneat/elf-devtools': ^1.2.1
   '@ngneat/elf-persist-state': ^1.1.2
@@ -24,8 +25,10 @@ specifiers:
   '@unocss/reset': ^0.39.3
   '@unocss/transformer-directives': ^0.39.3
   '@vitejs/plugin-vue': ^2.3.3
+  '@volar/vue-language-plugin-pug': ^1.0.0
   '@vue/eslint-config-typescript': ^11.0.0
   '@vue/runtime-core': ^3.2.37
+  '@vue/tsconfig': 0.1.3
   '@vueuse/core': ^8.7.4
   '@vueuse/head': ^0.7.6
   commitizen: 4.2.4
@@ -35,6 +38,7 @@ specifiers:
   eslint-plugin-prettier: ^4.0.0
   eslint-plugin-prettier-vue: ^4.1.0
   eslint-plugin-vue: ^9.1.1
+  eslint-plugin-vue-pug: 0.5.4
   husky: ^8.0.1
   less: ^4.1.3
   lint-staged: ^13.0.2
@@ -87,6 +91,7 @@ devDependencies:
   '@commitlint/cli': registry.npmmirror.com/@commitlint/cli/17.0.2
   '@commitlint/config-conventional': registry.npmmirror.com/@commitlint/config-conventional/17.0.2
   '@iconify-json/icon-park': registry.npmmirror.com/@iconify-json/icon-park/1.1.4
+  '@iconify-json/icon-park-outline': registry.npmmirror.com/@iconify-json/icon-park-outline/1.1.6
   '@prettier/plugin-pug': registry.npmmirror.com/@prettier/plugin-pug/2.2.0_prettier@2.7.1
   '@types/nprogress': registry.npmmirror.com/@types/nprogress/0.2.0
   '@types/prettier': registry.npmmirror.com/@types/prettier/2.6.3
@@ -97,7 +102,9 @@ devDependencies:
   '@unocss/reset': registry.npmmirror.com/@unocss/reset/0.39.3
   '@unocss/transformer-directives': registry.npmmirror.com/@unocss/transformer-directives/0.39.3
   '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.3.3_vite@2.9.12+vue@3.2.37
+  '@volar/vue-language-plugin-pug': registry.npmmirror.com/@volar/vue-language-plugin-pug/1.0.8
   '@vue/eslint-config-typescript': registry.npmmirror.com/@vue/eslint-config-typescript/11.0.0_buclsfeus64j3clgnmfgeicsui
+  '@vue/tsconfig': registry.npmmirror.com/@vue/tsconfig/0.1.3_@types+node@18.0.0
   '@vueuse/core': registry.npmmirror.com/@vueuse/core/8.7.4_vue@3.2.37
   '@vueuse/head': registry.npmmirror.com/@vueuse/head/0.7.6_vue@3.2.37
   commitizen: registry.npmmirror.com/commitizen/4.2.4
@@ -107,6 +114,7 @@ devDependencies:
   eslint-plugin-prettier: registry.npmmirror.com/eslint-plugin-prettier/4.0.0_xu6ewijrtliw5q5lksq5uixwby
   eslint-plugin-prettier-vue: registry.npmmirror.com/eslint-plugin-prettier-vue/4.1.0
   eslint-plugin-vue: registry.npmmirror.com/eslint-plugin-vue/9.1.1_eslint@8.18.0
+  eslint-plugin-vue-pug: registry.npmmirror.com/eslint-plugin-vue-pug/0.5.4_hnhiotbb3egimrep2h4shb7o3a
   husky: registry.npmmirror.com/husky/8.0.1
   less: registry.npmmirror.com/less/4.1.3
   lint-staged: registry.npmmirror.com/lint-staged/13.0.2
@@ -615,7 +623,7 @@ packages:
       '@types/node': registry.npmmirror.com/@types/node/18.0.0
       chalk: registry.npmmirror.com/chalk/4.1.2
       cosmiconfig: registry.npmmirror.com/cosmiconfig/7.0.1
-      cosmiconfig-typescript-loader: registry.npmmirror.com/cosmiconfig-typescript-loader/2.0.1_qiyc72axg2v44xl4yovan2v55u
+      cosmiconfig-typescript-loader: registry.npmmirror.com/cosmiconfig-typescript-loader/2.0.1_i2jc5nvbrvb5akjwkmra2rejwy
       lodash: registry.npmmirror.com/lodash/4.17.21
       resolve-from: registry.npmmirror.com/resolve-from/5.0.0
       typescript: registry.npmmirror.com/typescript/4.7.4
@@ -776,6 +784,14 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz}
     name: '@humanwhocodes/object-schema'
     version: 1.2.1
+    dev: true
+
+  registry.npmmirror.com/@iconify-json/icon-park-outline/1.1.6:
+    resolution: {integrity: sha512-NLwjpsuQAxsbSvcJ7vdNYeyouGs9ith3CHVXMVu/iTX4skjNhPDkjpLfjwPME4zdyWAskZH5RhNaL9+gD67MNQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify-json/icon-park-outline/-/icon-park-outline-1.1.6.tgz}
+    name: '@iconify-json/icon-park-outline'
+    version: 1.1.6
+    dependencies:
+      '@iconify/types': registry.npmmirror.com/@iconify/types/1.1.0
     dev: true
 
   registry.npmmirror.com/@iconify-json/icon-park/1.1.4:
@@ -1382,10 +1398,90 @@ packages:
       '@volar/source-map': registry.npmmirror.com/@volar/source-map/0.38.1
     dev: true
 
+  registry.npmmirror.com/@volar/language-core/1.0.8:
+    resolution: {integrity: sha512-uxYSOqBk8ZFSzGjUIPOBEFPOg8F3CE6cLO5meK95DODGIlUlPytGiy9sy8QZ9w7RpUH4XMOX3MH/G48SLgP07A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@volar/language-core/-/language-core-1.0.8.tgz}
+    name: '@volar/language-core'
+    version: 1.0.8
+    dependencies:
+      '@volar/source-map': registry.npmmirror.com/@volar/source-map/1.0.8
+      '@vue/reactivity': registry.npmmirror.com/@vue/reactivity/3.2.41
+      muggle-string: registry.npmmirror.com/muggle-string/0.1.0
+    dev: true
+
+  registry.npmmirror.com/@volar/language-service/1.0.8:
+    resolution: {integrity: sha512-NaVWxQYRLnUR0tYerAMsDLwemj/fb9y93S/tvhMkt99XpYT2OimW7nbVigP2VhxBRbStX0RjIVpYvR6bFeTyBg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@volar/language-service/-/language-service-1.0.8.tgz}
+    name: '@volar/language-service'
+    version: 1.0.8
+    dependencies:
+      '@volar/language-core': registry.npmmirror.com/@volar/language-core/1.0.8
+      '@volar/shared': registry.npmmirror.com/@volar/shared/1.0.8
+      '@volar/source-map': registry.npmmirror.com/@volar/source-map/1.0.8
+      '@volar/transforms': registry.npmmirror.com/@volar/transforms/1.0.8
+      '@volar/typescript-faster': registry.npmmirror.com/@volar/typescript-faster/1.0.8
+      '@vue/reactivity': registry.npmmirror.com/@vue/reactivity/3.2.41
+      vscode-html-languageservice: registry.npmmirror.com/vscode-html-languageservice/5.0.2
+      vscode-json-languageservice: registry.npmmirror.com/vscode-json-languageservice/5.1.1
+      vscode-languageserver-protocol: registry.npmmirror.com/vscode-languageserver-protocol/3.17.2
+      vscode-languageserver-textdocument: registry.npmmirror.com/vscode-languageserver-textdocument/1.0.7
+      vscode-uri: registry.npmmirror.com/vscode-uri/3.0.6
+    dev: true
+
+  registry.npmmirror.com/@volar/pug-language-service/1.0.8:
+    resolution: {integrity: sha512-dpc+Cjll7so5GgIubh0/x/3vY5t209RH2WBo8Tte4iH9e7HEGZ2tbsOBcRktgbJvM1xWOLR7B4Z5OJ40Xllliw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@volar/pug-language-service/-/pug-language-service-1.0.8.tgz}
+    name: '@volar/pug-language-service'
+    version: 1.0.8
+    dependencies:
+      '@volar/language-service': registry.npmmirror.com/@volar/language-service/1.0.8
+      '@volar/shared': registry.npmmirror.com/@volar/shared/1.0.8
+      '@volar/source-map': registry.npmmirror.com/@volar/source-map/1.0.8
+      '@volar/transforms': registry.npmmirror.com/@volar/transforms/1.0.8
+      muggle-string: registry.npmmirror.com/muggle-string/0.1.0
+      pug-lexer: registry.npmmirror.com/pug-lexer/5.0.1
+      pug-parser: registry.npmmirror.com/pug-parser/6.0.0
+      vscode-languageserver-textdocument: registry.npmmirror.com/vscode-languageserver-textdocument/1.0.7
+      vscode-languageserver-types: registry.npmmirror.com/vscode-languageserver-types/3.17.2
+    dev: true
+
+  registry.npmmirror.com/@volar/shared/1.0.8:
+    resolution: {integrity: sha512-PykL7EH1Ilz5Il1yYlXWSQF420PxQb/Z1VbbqLfSEz/cJUf9rNeQv7mkxAQUnhoiWCJKHoJwVFf5lTWO0OcBhQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@volar/shared/-/shared-1.0.8.tgz}
+    name: '@volar/shared'
+    version: 1.0.8
+    dependencies:
+      typesafe-path: registry.npmmirror.com/typesafe-path/0.2.2
+      vscode-languageserver-protocol: registry.npmmirror.com/vscode-languageserver-protocol/3.17.2
+      vscode-languageserver-textdocument: registry.npmmirror.com/vscode-languageserver-textdocument/1.0.7
+      vscode-uri: registry.npmmirror.com/vscode-uri/3.0.6
+    dev: true
+
   registry.npmmirror.com/@volar/source-map/0.38.1:
     resolution: {integrity: sha512-1DoB8BYTle81DdLChnurYteN208qvsfz4IgwjH6T2YcnBtUvtscxMOwg0bfQJskfoLrJ5gESBvEpU8tWsEVyrQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@volar/source-map/-/source-map-0.38.1.tgz}
     name: '@volar/source-map'
     version: 0.38.1
+    dev: true
+
+  registry.npmmirror.com/@volar/source-map/1.0.8:
+    resolution: {integrity: sha512-uKMe+alyfl1Abs5SviKejFoe7x9g6jDPVpVt63Tet4qn1Ziy7tFsvtCpM2Y1Ko5qw2nLIeloLslPqm9/gmbBLQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@volar/source-map/-/source-map-1.0.8.tgz}
+    name: '@volar/source-map'
+    version: 1.0.8
+    dependencies:
+      muggle-string: registry.npmmirror.com/muggle-string/0.1.0
+    dev: true
+
+  registry.npmmirror.com/@volar/transforms/1.0.8:
+    resolution: {integrity: sha512-xmMfrpw0OFb1A6UFg6EXjEKw0/DEeee/wEzg+aBYpRvGo1uVb8WP6lg2NYCVc8c1ZIaAcaRtfEHx/gLalRKkaA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@volar/transforms/-/transforms-1.0.8.tgz}
+    name: '@volar/transforms'
+    version: 1.0.8
+    dependencies:
+      '@volar/shared': registry.npmmirror.com/@volar/shared/1.0.8
+      vscode-languageserver-types: registry.npmmirror.com/vscode-languageserver-types/3.17.2
+    dev: true
+
+  registry.npmmirror.com/@volar/typescript-faster/1.0.8:
+    resolution: {integrity: sha512-1ZsMbb/uF0zyJlSD50bhHhQJnTJRpL6OWQEJ5r5WftB80hnXKELOftGZE2LPWlUt8uRRIeSu06YeabhtBKu9Aw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@volar/typescript-faster/-/typescript-faster-1.0.8.tgz}
+    name: '@volar/typescript-faster'
+    version: 1.0.8
+    dependencies:
+      semver: registry.npmmirror.com/semver/7.3.8
     dev: true
 
   registry.npmmirror.com/@volar/vue-code-gen/0.38.1:
@@ -1397,7 +1493,16 @@ packages:
       '@volar/source-map': registry.npmmirror.com/@volar/source-map/0.38.1
       '@vue/compiler-core': registry.npmmirror.com/@vue/compiler-core/3.2.37
       '@vue/compiler-dom': registry.npmmirror.com/@vue/compiler-dom/3.2.37
-      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.37
+      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.41
+    dev: true
+
+  registry.npmmirror.com/@volar/vue-language-plugin-pug/1.0.8:
+    resolution: {integrity: sha512-liUBY9t+0cd0PO6jN0g05BI0Hq7Q+bWC2xFW+krVuuzrIvdKCGgbWt9KclJ4tN2oHixEbYRer2mw0vwLMFrbRg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@volar/vue-language-plugin-pug/-/vue-language-plugin-pug-1.0.8.tgz}
+    name: '@volar/vue-language-plugin-pug'
+    version: 1.0.8
+    dependencies:
+      '@volar/pug-language-service': registry.npmmirror.com/@volar/pug-language-service/1.0.8
+      '@volar/source-map': registry.npmmirror.com/@volar/source-map/1.0.8
     dev: true
 
   registry.npmmirror.com/@volar/vue-typescript/0.38.1:
@@ -1409,7 +1514,7 @@ packages:
       '@volar/source-map': registry.npmmirror.com/@volar/source-map/0.38.1
       '@volar/vue-code-gen': registry.npmmirror.com/@volar/vue-code-gen/0.38.1
       '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc/3.2.37
-      '@vue/reactivity': registry.npmmirror.com/@vue/reactivity/3.2.37
+      '@vue/reactivity': registry.npmmirror.com/@vue/reactivity/3.2.41
     dev: true
 
   registry.npmmirror.com/@vue/compiler-core/3.2.37:
@@ -1501,6 +1606,14 @@ packages:
     dependencies:
       '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.37
 
+  registry.npmmirror.com/@vue/reactivity/3.2.41:
+    resolution: {integrity: sha512-9JvCnlj8uc5xRiQGZ28MKGjuCoPhhTwcoAdv3o31+cfGgonwdPNuvqAXLhlzu4zwqavFEG5tvaoINQEfxz+l6g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/reactivity/-/reactivity-3.2.41.tgz}
+    name: '@vue/reactivity'
+    version: 3.2.41
+    dependencies:
+      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.41
+    dev: true
+
   registry.npmmirror.com/@vue/runtime-core/3.2.37:
     resolution: {integrity: sha512-JPcd9kFyEdXLl/i0ClS7lwgcs0QpUAWj+SKX2ZC3ANKi1U4DOtiEr6cRqFXsPwY5u1L9fAjkinIdB8Rz3FoYNQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/runtime-core/-/runtime-core-3.2.37.tgz}
     name: '@vue/runtime-core'
@@ -1534,6 +1647,26 @@ packages:
     resolution: {integrity: sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/shared/-/shared-3.2.37.tgz}
     name: '@vue/shared'
     version: 3.2.37
+
+  registry.npmmirror.com/@vue/shared/3.2.41:
+    resolution: {integrity: sha512-W9mfWLHmJhkfAmV+7gDjcHeAWALQtgGT3JErxULl0oz6R6+3ug91I7IErs93eCFhPCZPHBs4QJS7YWEV7A3sxw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/shared/-/shared-3.2.41.tgz}
+    name: '@vue/shared'
+    version: 3.2.41
+    dev: true
+
+  registry.npmmirror.com/@vue/tsconfig/0.1.3_@types+node@18.0.0:
+    resolution: {integrity: sha512-kQVsh8yyWPvHpb8gIc9l/HIDiiVUy1amynLNpCy8p+FoCiZXCo6fQos5/097MmnNZc9AtseDsCrfkhqCrJ8Olg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/tsconfig/-/tsconfig-0.1.3.tgz}
+    id: registry.npmmirror.com/@vue/tsconfig/0.1.3
+    name: '@vue/tsconfig'
+    version: 0.1.3
+    peerDependencies:
+      '@types/node': '*'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+    dependencies:
+      '@types/node': registry.npmmirror.com/@types/node/18.0.0
+    dev: true
 
   registry.npmmirror.com/@vueuse/core/8.7.4_vue@3.2.37:
     resolution: {integrity: sha512-dQgxjb79PDcizlaclgCkCzNoqNv12PnbXxUOFL9VacakmD/ACoSMWwTpcG3HKoDoYyl2V3kSW/8AkvXGEYEGFA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vueuse/core/-/core-8.7.4.tgz}
@@ -2296,8 +2429,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      is-text-path: registry.npmmirror.com/is-text-path/1.0.1
       JSONStream: registry.npmmirror.com/JSONStream/1.3.5
+      is-text-path: registry.npmmirror.com/is-text-path/1.0.1
       lodash: registry.npmmirror.com/lodash/4.17.21
       meow: registry.npmmirror.com/meow/8.1.2
       split2: registry.npmmirror.com/split2/3.2.2
@@ -2320,7 +2453,7 @@ packages:
       is-what: registry.npmmirror.com/is-what/3.14.1
     dev: true
 
-  registry.npmmirror.com/cosmiconfig-typescript-loader/2.0.1_qiyc72axg2v44xl4yovan2v55u:
+  registry.npmmirror.com/cosmiconfig-typescript-loader/2.0.1_i2jc5nvbrvb5akjwkmra2rejwy:
     resolution: {integrity: sha512-B9s6sX/omXq7I6gC6+YgLmrBFMJhPWew7ty/X5Tuwtd2zOSgWaUdXjkuVwbe3qqcdETo60+1nSVMekq//LIXVA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cosmiconfig-typescript-loader/-/cosmiconfig-typescript-loader-2.0.1.tgz}
     id: registry.npmmirror.com/cosmiconfig-typescript-loader/2.0.1
     name: cosmiconfig-typescript-loader
@@ -2328,6 +2461,7 @@ packages:
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@types/node': '*'
+      cosmiconfig: '>=7'
       typescript: '>=3'
     dependencies:
       '@types/node': registry.npmmirror.com/@types/node/18.0.0
@@ -3136,6 +3270,20 @@ packages:
       eslint-config-prettier: registry.npmmirror.com/eslint-config-prettier/8.5.0_eslint@8.18.0
       prettier: registry.npmmirror.com/prettier/2.7.1
       prettier-linter-helpers: registry.npmmirror.com/prettier-linter-helpers/1.0.0
+    dev: true
+
+  registry.npmmirror.com/eslint-plugin-vue-pug/0.5.4_hnhiotbb3egimrep2h4shb7o3a:
+    resolution: {integrity: sha512-4/EHB8B4cSLBJkaV4D+fivbZMiw/+Ios0BLJGIHm9mibZw1Yp5hp7xai/5iSKlnPYpsaFCwtzed9WGiUwOrBdQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/eslint-plugin-vue-pug/-/eslint-plugin-vue-pug-0.5.4.tgz}
+    id: registry.npmmirror.com/eslint-plugin-vue-pug/0.5.4
+    name: eslint-plugin-vue-pug
+    version: 0.5.4
+    peerDependencies:
+      eslint-plugin-vue: ^9.0.0
+    dependencies:
+      eslint-plugin-vue: registry.npmmirror.com/eslint-plugin-vue/9.1.1_eslint@8.18.0
+      vue-eslint-parser-template-tokenizer-pug: registry.npmmirror.com/vue-eslint-parser-template-tokenizer-pug/0.4.9_vue-eslint-parser@9.0.2
+    transitivePeerDependencies:
+      - vue-eslint-parser
     dev: true
 
   registry.npmmirror.com/eslint-plugin-vue/9.1.1_eslint@8.18.0:
@@ -4590,10 +4738,10 @@ packages:
     hasBin: true
     dev: true
 
-  registry.npmmirror.com/jsonc-parser/3.0.0:
-    resolution: {integrity: sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/jsonc-parser/-/jsonc-parser-3.0.0.tgz}
+  registry.npmmirror.com/jsonc-parser/3.2.0:
+    resolution: {integrity: sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/jsonc-parser/-/jsonc-parser-3.2.0.tgz}
     name: jsonc-parser
-    version: 3.0.0
+    version: 3.2.0
     dev: true
 
   registry.npmmirror.com/jsonfile/4.0.0:
@@ -5076,6 +5224,12 @@ packages:
     dev: true
     optional: true
 
+  registry.npmmirror.com/muggle-string/0.1.0:
+    resolution: {integrity: sha512-Tr1knR3d2mKvvWthlk7202rywKbiOm4rVFLsfAaSIhJ6dt9o47W4S+JMtWhd/PW9Wrdew2/S2fSvhz3E2gkfEg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/muggle-string/-/muggle-string-0.1.0.tgz}
+    name: muggle-string
+    version: 0.1.0
+    dev: true
+
   registry.npmmirror.com/nanoid/3.3.4:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nanoid/-/nanoid-3.3.4.tgz}
     name: nanoid
@@ -5144,7 +5298,7 @@ packages:
     dependencies:
       hosted-git-info: registry.npmmirror.com/hosted-git-info/4.1.0
       is-core-module: registry.npmmirror.com/is-core-module/2.9.0
-      semver: registry.npmmirror.com/semver/7.3.7
+      semver: registry.npmmirror.com/semver/7.3.8
       validate-npm-package-license: registry.npmmirror.com/validate-npm-package-license/3.0.4
     dev: true
 
@@ -5570,7 +5724,7 @@ packages:
     name: pkg-types
     version: 0.3.3
     dependencies:
-      jsonc-parser: registry.npmmirror.com/jsonc-parser/3.0.0
+      jsonc-parser: registry.npmmirror.com/jsonc-parser/3.2.0
       mlly: registry.npmmirror.com/mlly/0.5.3
       pathe: registry.npmmirror.com/pathe/0.3.0
     dev: true
@@ -6144,6 +6298,16 @@ packages:
     resolution: {integrity: sha512-QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/semver/-/semver-7.3.7.tgz}
     name: semver
     version: 7.3.7
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      lru-cache: registry.npmmirror.com/lru-cache/6.0.0
+    dev: true
+
+  registry.npmmirror.com/semver/7.3.8:
+    resolution: {integrity: sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/semver/-/semver-7.3.8.tgz}
+    name: semver
+    version: 7.3.8
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -6927,6 +7091,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  registry.npmmirror.com/typesafe-path/0.2.2:
+    resolution: {integrity: sha512-OJabfkAg1WLZSqJAJ0Z6Sdt3utnbzr/jh+NAHoyWHJe8CMSy79Gm085094M9nvTPy22KzTVn5Zq5mbapCI/hPA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/typesafe-path/-/typesafe-path-0.2.2.tgz}
+    name: typesafe-path
+    version: 0.2.2
+    dev: true
+
   registry.npmmirror.com/typescript/4.7.4:
     resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/typescript/-/typescript-4.7.4.tgz}
     name: typescript
@@ -7361,6 +7531,69 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  registry.npmmirror.com/vscode-html-languageservice/5.0.2:
+    resolution: {integrity: sha512-TQmeyE14Ure/w/S+RV2IItuRWmw/i1QaS+om6t70iHCpamuTTWnACQPMSltVGm/DlbdyMquUePJREjd/h3AVkQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-html-languageservice/-/vscode-html-languageservice-5.0.2.tgz}
+    name: vscode-html-languageservice
+    version: 5.0.2
+    dependencies:
+      vscode-languageserver-textdocument: registry.npmmirror.com/vscode-languageserver-textdocument/1.0.7
+      vscode-languageserver-types: registry.npmmirror.com/vscode-languageserver-types/3.17.2
+      vscode-nls: registry.npmmirror.com/vscode-nls/5.2.0
+      vscode-uri: registry.npmmirror.com/vscode-uri/3.0.6
+    dev: true
+
+  registry.npmmirror.com/vscode-json-languageservice/5.1.1:
+    resolution: {integrity: sha512-EtAcTD6MOfyf8+MokDsAHNM7ttuZvCo077w9aMtJiyps41gkOcoBThAbXDk6Y0Oi6ki5aDs8lgY4KxYiVW/lxA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-json-languageservice/-/vscode-json-languageservice-5.1.1.tgz}
+    name: vscode-json-languageservice
+    version: 5.1.1
+    dependencies:
+      jsonc-parser: registry.npmmirror.com/jsonc-parser/3.2.0
+      vscode-languageserver-textdocument: registry.npmmirror.com/vscode-languageserver-textdocument/1.0.7
+      vscode-languageserver-types: registry.npmmirror.com/vscode-languageserver-types/3.17.2
+      vscode-nls: registry.npmmirror.com/vscode-nls/5.2.0
+      vscode-uri: registry.npmmirror.com/vscode-uri/3.0.6
+    dev: true
+
+  registry.npmmirror.com/vscode-jsonrpc/8.0.2:
+    resolution: {integrity: sha512-RY7HwI/ydoC1Wwg4gJ3y6LpU9FJRZAUnTYMXthqhFXXu77ErDd/xkREpGuk4MyYkk4a+XDWAMqe0S3KkelYQEQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-jsonrpc/-/vscode-jsonrpc-8.0.2.tgz}
+    name: vscode-jsonrpc
+    version: 8.0.2
+    engines: {node: '>=14.0.0'}
+    dev: true
+
+  registry.npmmirror.com/vscode-languageserver-protocol/3.17.2:
+    resolution: {integrity: sha512-8kYisQ3z/SQ2kyjlNeQxbkkTNmVFoQCqkmGrzLH6A9ecPlgTbp3wDTnUNqaUxYr4vlAcloxx8zwy7G5WdguYNg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-languageserver-protocol/-/vscode-languageserver-protocol-3.17.2.tgz}
+    name: vscode-languageserver-protocol
+    version: 3.17.2
+    dependencies:
+      vscode-jsonrpc: registry.npmmirror.com/vscode-jsonrpc/8.0.2
+      vscode-languageserver-types: registry.npmmirror.com/vscode-languageserver-types/3.17.2
+    dev: true
+
+  registry.npmmirror.com/vscode-languageserver-textdocument/1.0.7:
+    resolution: {integrity: sha512-bFJH7UQxlXT8kKeyiyu41r22jCZXG8kuuVVA33OEJn1diWOZK5n8zBSPZFHVBOu8kXZ6h0LIRhf5UnCo61J4Hg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-languageserver-textdocument/-/vscode-languageserver-textdocument-1.0.7.tgz}
+    name: vscode-languageserver-textdocument
+    version: 1.0.7
+    dev: true
+
+  registry.npmmirror.com/vscode-languageserver-types/3.17.2:
+    resolution: {integrity: sha512-zHhCWatviizPIq9B7Vh9uvrH6x3sK8itC84HkamnBWoDFJtzBf7SWlpLCZUit72b3os45h6RWQNC9xHRDF8dRA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-languageserver-types/-/vscode-languageserver-types-3.17.2.tgz}
+    name: vscode-languageserver-types
+    version: 3.17.2
+    dev: true
+
+  registry.npmmirror.com/vscode-nls/5.2.0:
+    resolution: {integrity: sha512-RAaHx7B14ZU04EU31pT+rKz2/zSl7xMsfIZuo8pd+KZO6PXtQmpevpq3vxvWNcrGbdmhM/rr5Uw5Mz+NBfhVng==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-nls/-/vscode-nls-5.2.0.tgz}
+    name: vscode-nls
+    version: 5.2.0
+    dev: true
+
+  registry.npmmirror.com/vscode-uri/3.0.6:
+    resolution: {integrity: sha512-fmL7V1eiDBFRRnu+gfRWTzyPpNIHJTc4mWnFkwBUmO9U3KPgJAmTx7oxi2bl/Rh6HLdU7+4C9wlj0k2E4AdKFQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-uri/-/vscode-uri-3.0.6.tgz}
+    name: vscode-uri
+    version: 3.0.6
+    dev: true
+
   registry.npmmirror.com/vue-demi/0.13.1_vue@3.2.37:
     resolution: {integrity: sha512-xmkJ56koG3ptpLnpgmIzk9/4nFf4CqduSJbUM0OdPoU87NwRuZ6x49OLhjSa/fC15fV+5CbEnrxU4oyE022svg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-demi/-/vue-demi-0.13.1.tgz}
     id: registry.npmmirror.com/vue-demi/0.13.1
@@ -7377,6 +7610,18 @@ packages:
         optional: true
     dependencies:
       vue: registry.npmmirror.com/vue/3.2.37
+
+  registry.npmmirror.com/vue-eslint-parser-template-tokenizer-pug/0.4.9_vue-eslint-parser@9.0.2:
+    resolution: {integrity: sha512-Rt5dI7OJG9q7EvXIlcYHqzU39RuHxq7KLjjJ/gxDNj3pE1GU5iIbXGZMLhdTPD8CTCHmdhV/V7m7XmclawgjKg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-eslint-parser-template-tokenizer-pug/-/vue-eslint-parser-template-tokenizer-pug-0.4.9.tgz}
+    id: registry.npmmirror.com/vue-eslint-parser-template-tokenizer-pug/0.4.9
+    name: vue-eslint-parser-template-tokenizer-pug
+    version: 0.4.9
+    peerDependencies:
+      vue-eslint-parser: ^9.0.0
+    dependencies:
+      pug-lexer: registry.npmmirror.com/pug-lexer/5.0.1
+      vue-eslint-parser: registry.npmmirror.com/vue-eslint-parser/9.0.2_eslint@8.18.0
+    dev: true
 
   registry.npmmirror.com/vue-eslint-parser/9.0.2_eslint@8.18.0:
     resolution: {integrity: sha512-uCPQwTGjOtAYrwnU+76pYxalhjsh7iFBsHwBqDHiOPTxtICDaraO4Szw54WFTNZTAEsgHHzqFOu1mmnBOBRzDA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-eslint-parser/-/vue-eslint-parser-9.0.2.tgz}

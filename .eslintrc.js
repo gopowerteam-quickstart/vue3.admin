@@ -39,6 +39,7 @@ module.exports = {
         // 'plugin:vue/vue3-essential',
         'plugin:vue/vue3-strongly-recommended',
         'plugin:vue/vue3-recommended',
+        'plugin:vue-pug/vue3-recommended',
         'plugin:prettier-vue/recommended',
         // typescript支持引入
         '@vue/typescript',
@@ -47,6 +48,8 @@ module.exports = {
         'vue/multi-word-component-names': ['off'],
         // 'vue/max-attributes-per-line': ['off'],
         // 'vue/html-indent': ['off']
+        // 'vue/attributes-order': ['off'],
+        'no-console': ['warn'],
       },
     },
   ],
