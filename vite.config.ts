@@ -74,8 +74,9 @@ export default defineConfig({
           prefix: 'icon',
           alias: {
             park: 'icon-park',
+            'park-outline': 'icon-park-outline',
           },
-          enabledCollections: ['icon-park'],
+          enabledCollections: ['icon-park', 'icon-park-outline'],
         }),
       ],
       include: [/\.vue$/, /\.vue\?vue/],
