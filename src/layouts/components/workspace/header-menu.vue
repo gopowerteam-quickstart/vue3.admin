@@ -6,6 +6,7 @@
     <MenuItem
       v-for="menu in store.menu.headerMenus"
       :key="menu.key"
+      :show-icon="false"
       :menu="menu"></MenuItem>
   </a-menu>
 </template>

@@ -13,6 +13,6 @@ meta:
       - ADMIN
   menu:
     key: root1.page1
-    icon: xxx
+    icon: image-1.png
     title: Page1
 </route>

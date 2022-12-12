@@ -13,6 +13,9 @@ module.exports = {
     'plugin:prettier/recommended',
     './.eslintrc-auto-import.json',
   ],
+  globals: {
+    defineRender: 'readonly',
+  },
   overrides: [
     {
       files: ['**/*.{js,jsx}'],
