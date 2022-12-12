@@ -1,8 +1,6 @@
 <template>
   <template v-if="menu.isLeaf">
-    <a-menu-item :key="menu.key">
-      {{ menu.title }}
-    </a-menu-item>
+    <a-menu-item :key="menu.key"> {{ menu.title }} </a-menu-item>
   </template>
   <template v-else>
     <a-sub-menu :key="menu.key">

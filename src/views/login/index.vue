@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { useStore } from '~/shared/hooks/use-store'
-import { userQuery, userAction } from '~/store/user.store'
+import { useStore } from '@/store'
 
+const store = useStore()
 const router = useRouter()
 
-const token = useStore(userQuery, (state) => state.token)
-const length = useStore(userQuery.isLogin)
-
 function login() {
-  userAction.updateToken(token.value + 'a')
+  store.user.updateToken(store.user.token.value + 'a')
 }
 </script>
 
@@ -19,7 +16,7 @@ function login() {
     <a-button
       type="primary"
       @click="login"
-      >Userb: {{ token }} - {{ length }}</a-button
+      >Userb: {{ store.user.token }} - {{ store.user.token.length }}</a-button
     >
     <a-button type="primary">Primary</a-button>
     <a-button>Secondary</a-button>

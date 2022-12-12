@@ -5,7 +5,7 @@
         class="logo"
         :src="appConfig.logo" />
       <div
-        v-if="!collapsed"
+        v-if="!store.menu.collapsed"
         class="title">
         {{ appConfig.title }}
       </div>
@@ -18,15 +18,15 @@
 <script setup lang="ts">
 import HeaderMenu from './header-menu.vue'
 import { appConfig } from '~/config/app.config'
-import { appQuery } from '~/store/app.store'
-import { useStore } from '~/shared/hooks/use-store'
-const collapsed = $(useStore(appQuery, (state) => state.collapsed))
+import { useStore } from '@/store'
+
+const store = useStore()
 
 const height = computed(() => `${appConfig.workspace.headerHeight}px`)
 const width = computed(
   () =>
     `${
-      collapsed
+      store.menu.collapsed
         ? appConfig.workspace.sideCollapsedWidth
         : appConfig.workspace.sideWidth
     }px`,

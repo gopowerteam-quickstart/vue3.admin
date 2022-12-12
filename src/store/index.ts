@@ -1,29 +1,30 @@
-import { select, Store, StoreDef } from '@ngneat/elf'
+import { defineStore } from 'pinia'
+import { useAppStore } from './app.store'
+import { useMenuStore } from './menu.store'
+import { useUserStore } from './user.store'
+import { useTabStore } from './tab.store'
 
-export abstract class StoreAction<T> {
-  protected store!: Store<StoreDef, T>
-
-  constructor(store: Store<StoreDef, T>) {
-    this.store = store
-  }
+const stores = {
+  app: () => useAppStore(),
+  menu: () => useMenuStore(),
+  tab: () => useTabStore(),
+  user: () => useUserStore(),
 }
 
-export abstract class StoreQuery<T> {
-  protected readonly store!: Store<StoreDef, T>
+const store = defineStore('main', {
+  getters: stores,
+})
 
-  public get steam$() {
-    return this.store.pipe(select((state) => state))
-  }
-
-  constructor(store: Store<StoreDef, T>) {
-    this.store = store
-  }
-
-  select(): T
-  select<R>(selector: (state: T) => R): R
-  select<R>(selector?: (state: T) => R) {
-    const state = this.store.getValue()
-
-    return selector ? selector(state) : state
+export function useStore(): ReturnType<typeof store>
+export function useStore<T extends keyof typeof stores>(
+  name: T,
+): ReturnType<typeof store>[T]
+export function useStore<T extends keyof typeof stores>(
+  name?: T,
+): ReturnType<typeof store> | ReturnType<typeof store>[T] {
+  if (name) {
+    return store()[name]
+  } else {
+    return store()
   }
 }

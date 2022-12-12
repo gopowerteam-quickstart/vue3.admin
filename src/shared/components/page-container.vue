@@ -3,11 +3,10 @@
 </template>
 
 <script lang="ts" setup>
-import { appAction, appQuery } from '~/store/app.store'
-import { useStore } from '../hooks/use-store'
+import { useStore } from '@/store'
 
+const store = useStore()
 const route = useRoute()
-const tabs = $(useStore(appQuery, (state) => state.tabs))
 const props = defineProps<{ title: string }>()
 
 /**
@@ -15,7 +14,7 @@ const props = defineProps<{ title: string }>()
  */
 function updatePageTitle() {
   if (props.title) {
-    appAction.updateTitle(props.title)
+    store.app.updateTitle(props.title)
   }
 }
 
@@ -23,7 +22,7 @@ function updatePageTitle() {
  * 更新Tab标题
  */
 function updateTabTitle() {
-  const tab = tabs.find((x) => x.key === route.fullPath)
+  const tab = store.tab.tabs.find((x) => x.key === route.fullPath)
 
   if (tab) {
     tab.title = props.title

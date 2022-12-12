@@ -4,7 +4,7 @@
     :selected-keys="selectedKeys"
     @menu-item-click="onMenuSelect">
     <MenuItem
-      v-for="menu in headerMenus"
+      v-for="menu in store.menu.headerMenus"
       :key="menu.key"
       :menu="menu"></MenuItem>
   </a-menu>
@@ -12,15 +12,13 @@
 
 <script setup lang="ts">
 import MenuItem from './menu-item.vue'
-import { useStore } from '~/shared/hooks/use-store'
-import { appAction, appQuery } from '~/store/app.store'
-import { Menu } from '~/types/workspace'
+import type { Menu } from '~/types/workspace'
 import { appConfig } from '~/config/app.config'
+import { useStore } from '@/store'
 
 const router = useRouter()
 const route = useRoute()
-const menus = $(useStore(appQuery, (state) => state.menus))
-const headerMenus = $(useStore(appQuery, (state) => state.headerMenus))
+const store = useStore()
 
 let selectedKeys = $ref<string[]>([])
 
@@ -48,10 +46,10 @@ function updateSideMenus() {
     return
   }
 
-  const target = menus.find((x) => x.key === menu.key.split('.')[0])
+  const target = store.menu.menus.find((x) => x.key === menu.key.split('.')[0])
 
   if (target && target.children) {
-    appAction.updateSideMenus(target.children)
+    store.menu.updateSideMenus(target.children)
   }
 }
 /**
@@ -74,7 +72,9 @@ function updateSelectedMenu() {
       [] as string[],
     )
 
-  const index = keys.findIndex((k) => headerMenus.find((x) => x.key === k))
+  const index = keys.findIndex((k) =>
+    store.menu.headerMenus.find((x) => x.key === k),
+  )
 
   selectedKeys = keys.slice(index)
 }
@@ -83,10 +83,10 @@ function updateSelectedMenu() {
  * @param key
  */
 function onMenuSelect(key: string) {
-  const menu = menus.find((menu) => menu.key === key)
+  const menu = store.menu.menus.find((menu) => menu.key === key)
 
   // 更新侧边菜单
-  appAction.updateSideMenus(menu?.children || [])
+  store.menu.updateSideMenus(menu?.children || [])
 
   if (menu?.path && menu?.name) {
     router.push({ name: menu.name })

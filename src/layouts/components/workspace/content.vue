@@ -24,13 +24,12 @@
 <script setup lang="ts">
 import Tabs from './tabs.vue'
 import RouterKeepAlive from '~/shared/components/router-keep-alive'
-import { useStore } from '~/shared/hooks/use-store'
-import { appQuery } from '~/store/app.store'
 import { appConfig } from '~/config/app.config'
+import { useStore } from '@/store'
 
-const tabs = $(useStore(appQuery, (state) => state.tabs))
+const store = useStore()
 
-const keepAliveInclude = computed(() => tabs.map((x) => x.key))
+const keepAliveInclude = computed(() => store.tab.tabs.map((x) => x.key))
 </script>
 
 <style lang="less" scoped>

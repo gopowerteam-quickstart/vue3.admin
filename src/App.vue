@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { appConfig } from './config/app.config'
-import { useStore } from './shared/hooks/use-store'
-import { appQuery } from './store/app.store'
 import { ModalProvider } from '@gopowerteam/vue-modal'
+import { useStore } from '@/store'
 
-const pageTitle = $(useStore(appQuery, (state) => state.title))
+const store = useStore()
 const isDark = useDark()
 // const toggleDark = useToggle(isDark)
 const preferredDark = usePreferredDark()
 
 const title = computed(() => {
-  if (pageTitle) {
-    return `${appConfig.title}-${pageTitle}`
+  if (store.app.title) {
+    return `${appConfig.title}-${store.app.title}`
   } else {
     return appConfig.title
   }

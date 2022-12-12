@@ -1,7 +1,11 @@
-import { ViteSSGContext } from 'vite-ssg'
+import type { ViteSSGContext } from 'vite-ssg'
+import type { InstallModule } from '@/types/global'
 import NProgress from 'nprogress'
 
-export const install = ({ isClient, router }: ViteSSGContext) => {
+export const install: InstallModule = ({
+  isClient,
+  router,
+}: ViteSSGContext) => {
   if (isClient) {
     NProgress.configure({
       easing: 'ease',

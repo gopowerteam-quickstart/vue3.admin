@@ -1,8 +1,8 @@
 <template>
   <a-layout-sider
-    v-if="sideMenus.length"
+    v-if="store.menu.sideMenus.length"
     class="side !relative"
-    :collapsed="collapsed"
+    :collapsed="store.menu.collapsed"
     :width="appConfig.workspace.sideWidth"
     :collapsed-width="appConfig.workspace.sideCollapsedWidth">
     <div class="flex flex-col justify-between h-full">
@@ -12,9 +12,9 @@
         v-if="appConfig.workspace.navigation !== 'header'"
         class="collapse"
         type="text"
-        @click="() => appAction.toggleCollapse()">
+        @click="() => store.menu.toggleCollapse()">
         <icon-park:menu-unfold
-          v-if="collapsed"
+          v-if="store.menu.collapsed"
           class="icon" />
         <icon-park:menu-fold
           v-else
@@ -25,13 +25,12 @@
 </template>
 
 <script setup lang="ts">
-import { appConfig } from '~/config/app.config'
-import { useStore } from '~/shared/hooks/use-store'
-import { appAction, appQuery } from '~/store/app.store'
+import { appConfig } from '@/config/app.config'
+import { useStore } from '@/store'
 import SideMenu from './side-menu.vue'
 
-const collapsed = $(useStore(appQuery, (state) => state.collapsed))
-const sideMenus = $(useStore(appQuery, (state) => state.sideMenus))
+const store = useStore()
+
 const width = computed(() => `${appConfig.workspace.sideCollapsedWidth}px`)
 </script>
 

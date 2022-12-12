@@ -1,6 +1,6 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import PageContainer from '~/shared/components/page-container.vue'
 
-export default function (app: App<Element>) {
+export default function (app: App) {
   app.component('PageContainer', PageContainer)
 }

@@ -3,15 +3,15 @@ import { isFunction } from '@vueuse/core'
 import {
   callWithAsyncErrorHandling,
   cloneVNode,
-  ComponentInternalInstance,
-  ComponentOptions,
-  ConcreteComponent,
+  type ComponentInternalInstance,
+  type ComponentOptions,
+  type ConcreteComponent,
   isVNode,
   queuePostFlushCb,
   setTransitionHooks,
-  SetupContext,
-  VNode,
-  VNodeProps,
+  type SetupContext,
+  type VNode,
+  type VNodeProps,
 } from 'vue'
 
 type MatchPattern = string | RegExp | (string | RegExp)[]

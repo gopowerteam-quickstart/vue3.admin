@@ -1,8 +1,7 @@
-import { Router } from 'vue-router'
+import { useStore } from '@/store'
+import type { Router } from 'vue-router'
 import { appConfig } from '~/config/app.config'
 import menus from '~/config/menu.config'
-import { appAction } from '~/store/app.store'
-import { userQuery } from '~/store/user.store'
 import type { Menu } from '~/types/workspace'
 /**
  * 启动websocket
@@ -24,6 +23,7 @@ function checkUserMenuRole(menu: Menu) {
  * 生成用户菜单
  */
 function generateUserMenu(router: Router) {
+  const store = useStore()
   // 获取路由菜单
   const pages = router
     .getRoutes()
@@ -81,21 +81,20 @@ function generateUserMenu(router: Router) {
     .filter((menu) => menu?.path || menu?.children?.length) as Menu[]
 
   // 更新用户菜单
-  appAction.updateMenus(userMenus)
+  store.menu.updateMenus(userMenus)
 
   // 更新顶部菜单
   // 更新侧边菜单
   switch (appConfig.workspace.navigation) {
     case 'header':
-      appAction.updateHeaderMenus(headerMenus)
+      store.menu.updateHeaderMenus(headerMenus)
       break
     case 'side':
-      appAction.updateSideMenus(headerMenus)
+      store.menu.updateSideMenus(headerMenus)
       break
     case 'all': {
       headerMenus.forEach((m) => (m.isLeaf = true))
-      appAction.updateHeaderMenus(headerMenus)
-
+      store.menu.updateHeaderMenus(headerMenus)
       break
     }
   }
@@ -105,8 +104,10 @@ function generateUserMenu(router: Router) {
  * @returns
  */
 export default function userLaunch(router: Router) {
+  const store = useStore()
+
   router.beforeEach(async (to, from, next) => {
-    if (!userQuery.select((state) => state.current)) {
+    if (!store.user.current) {
       // 设置用户状态
       await generateUserMenu(router)
     }

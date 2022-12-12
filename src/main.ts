@@ -1,23 +1,31 @@
-import { ViteSSG, ViteSSGContext } from 'vite-ssg'
+import { ViteSSG, type ViteSSGContext } from 'vite-ssg'
 import router from '~/router'
+
+import '@arco-design/web-vue/dist/arco.css'
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
 import '~/styles/index.less'
 
-import '@arco-design/web-vue/dist/arco.css'
 import App from './App.vue'
 import { bootstrap } from './bootstrap'
+import type { InstallModule } from './types/global'
 
 /**
  * 加载模块
  * @param ctx
  */
 function installModules(ctx: ViteSSGContext) {
-  Object.values(import.meta.globEager('./modules/*.ts')).forEach((i) =>
-    i.install?.(ctx),
-  )
+  Object.values(
+    import.meta.glob('./modules/*.ts', { eager: true }) as Record<
+      string,
+      { install: InstallModule }
+    >,
+  ).forEach((i) => i.install?.(ctx))
 }
 
+/**
+ * 初始化
+ */
 export const createApp = ViteSSG(App, router, async (ctx) => {
   // 安装基础模块
   installModules(ctx)

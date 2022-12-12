@@ -1,4 +1,4 @@
-import { AppConfig } from '~/types/app.config'
+import type { AppConfig } from '~/types/app.config'
 
 export const appConfig: AppConfig = {
   app: 'vue-web-template',

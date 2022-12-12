@@ -1,72 +1,34 @@
-import { createStore, withProps, setProp } from '@ngneat/elf'
-import {
-  excludeKeys,
-  localStorageStrategy,
-  persistState,
-} from '@ngneat/elf-persist-state'
-import { map } from 'rxjs'
-import { StoreAction, StoreQuery } from '~/store'
+import { defineStore } from 'pinia'
 
-interface State {
-  token: string
-  current?: User
-}
-
-interface User {
+type User = {
   id: string
   name: string
 }
 
-const STORE_KEY = 'user'
+type State = {
+  token: string
+  current?: User
+}
 
-const userStore = createStore(
-  { name: STORE_KEY },
-  withProps<State>({ token: '' }),
-)
+const initialState: State = {
+  token: '',
+}
 
-/**
- * 持久化存储
- */
-persistState(userStore, {
-  key: STORE_KEY,
-  storage: localStorageStrategy,
-  source: () => userStore.pipe(excludeKeys(['current'])),
+export const useUserStore = defineStore('user', {
+  state: () => initialState,
+  getters: {
+    isLogin: (state) => !!state.token,
+  },
+  actions: {
+    updateUser(user: User) {
+      this.current = user
+    },
+    /**
+     * 更新用户
+     * @param user
+     */
+    updateToken(token: string) {
+      this.token = token
+    },
+  },
 })
-
-/**
- * 查询操作
- */
-class UserQuery extends StoreQuery<State> {
-  constructor() {
-    super(userStore)
-  }
-
-  get isLogin() {
-    return this.steam$.pipe(map((state) => state.token.length))
-  }
-}
-
-class UserAction extends StoreAction<State> {
-  constructor() {
-    super(userStore)
-  }
-
-  /**
-   * 更新用户
-   * @param user
-   */
-  updateUser(user: User) {
-    this.store.update(setProp('current', user))
-  }
-
-  /**
-   * 更新用户
-   * @param user
-   */
-  updateToken(token: string) {
-    this.store.update(setProp('token', token))
-  }
-}
-
-export const userQuery = new UserQuery()
-export const userAction = new UserAction()

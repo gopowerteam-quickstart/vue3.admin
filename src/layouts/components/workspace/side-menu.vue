@@ -2,12 +2,12 @@
   <a-menu
     class="flex-auto"
     :mode="appConfig.workspace.sideMode"
-    :collapsed="collapsed"
+    :collapsed="store.menu.collapsed"
     :collapsed-width="appConfig.workspace.sideCollapsedWidth"
     :selected-keys="selectedKeys"
     @menu-item-click="onMenuSelect">
     <MenuItem
-      v-for="menu in sideMenus"
+      v-for="menu in store.menu.sideMenus"
       :key="menu.key"
       :menu="menu"></MenuItem>
   </a-menu>
@@ -15,16 +15,13 @@
 
 <script setup lang="ts">
 import MenuItem from './menu-item.vue'
-import { useStore } from '~/shared/hooks/use-store'
-import { appQuery } from '~/store/app.store'
-import { appConfig } from '~/config/app.config'
-import { Menu } from '~/types/workspace'
+import { appConfig } from '@/config/app.config'
+import { useStore } from '@/store'
+import type { Menu } from '@/types/workspace'
 
 const router = useRouter()
 const route = useRoute()
-const menus = $(useStore(appQuery, (state) => state.menus))
-const sideMenus = $(useStore(appQuery, (state) => state.sideMenus))
-const collapsed = $(useStore(appQuery, (state) => state.collapsed))
+const store = useStore()
 
 let selectedKeys = $ref<string[]>([])
 
@@ -59,7 +56,9 @@ function updateSelectedMenu() {
       [] as string[],
     )
 
-  const index = keys.findIndex((k) => sideMenus.find((x) => x.key === k))
+  const index = keys.findIndex((k) =>
+    store.menu.sideMenus.find((x) => x.key === k),
+  )
 
   selectedKeys = keys.slice(index)
 }
@@ -69,7 +68,7 @@ function updateSelectedMenu() {
  * @param key
  */
 function onMenuSelect(key: string) {
-  const menu = menus.find((menu) => menu.key === key)
+  const menu = store.menu.menus.find((menu) => menu.key === key)
 
   if (menu?.path && menu?.name) {
     router.push({ name: menu.name })

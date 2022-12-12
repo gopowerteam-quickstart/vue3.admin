@@ -10,16 +10,16 @@
       @change="onTabChange"
       @delete="onTabDelete">
       <a-tab-pane
-        v-for="tab of tabs"
+        v-for="tab of store.tab.tabs"
         :key="tab.key"
-        :closable="tabs.length !== 1">
+        :closable="store.tab.tabs.length !== 1">
         <template #title>
           <a-dropdown
             trigger="contextMenu"
             @select="(action) => onTabClose(tab, action as number)">
             <div>{{ tab.title }}</div>
             <template
-              v-if="tabs.length > 1"
+              v-if="store.tab.tabs.length > 1"
               #content>
               <a-doption :value="TabAction.CLOSE_RIGHT">关闭右侧</a-doption>
               <a-doption :value="TabAction.CLOSE_OTHER">关闭其他</a-doption>
@@ -32,14 +32,11 @@
 </template>
 
 <script setup lang="ts">
+import { useStore } from '@/store'
 import { TabAction } from '~/config/enum.config'
-import { useStore } from '~/shared/hooks/use-store'
-import { appQuery, appAction } from '~/store/app.store'
 import type { Menu, Tab } from '~/types/workspace'
 
-const title = $(useStore(appQuery, (state) => state.title))
-const menus = $(useStore(appQuery, (state) => state.menus))
-const tabs = $(useStore(appQuery, (state) => state.tabs))
+const store = useStore()
 const route = useRoute()
 const router = useRouter()
 
@@ -49,13 +46,13 @@ watch(
     const { key } = (route?.meta?.menu as Menu) || {}
 
     // 获取菜单显示项
-    const menu = menus.find((x) => key && x.key === key)
+    const menu = store.menu.menus.find((x) => key && x.key === key)
 
     // 获取tab项
-    const tab = tabs.find((x) => x.key === value)
+    const tab = store.tab.tabs.find((x) => x.key === value)
 
     if (!tab) {
-      appAction.addTab({
+      store.tab.addTab({
         ...(menu || {}),
         key: value,
         // 非菜单显示项为空
@@ -71,11 +68,11 @@ function onTabInit() {
   const { key } = (route?.meta?.menu as Menu) || {}
 
   // 获取菜单显示项
-  const menu = menus.find((x) => key && x.key === key)
+  const menu = store.menu.menus.find((x) => key && x.key === key)
 
-  appAction.addTab({
+  store.tab.addTab({
     ...(menu || {}),
-    title: title,
+    title: store.app.title,
     key: route.fullPath,
     menuKey: menu?.key,
     query: route.query,
@@ -87,6 +84,7 @@ function onTabInit() {
  * 关闭对应标签
  */
 async function onTabDelete(key: string | number) {
+  const tabs = store.tab.tabs
   const index = tabs.findIndex((tab) => tab.key === key)
 
   if (
@@ -113,13 +111,14 @@ async function onTabDelete(key: string | number) {
     })
   }
 
-  appAction.deleteTab(key.toString())
+  store.tab.deleteTab(key.toString())
 }
 
 /**
  * 关闭位置标签
  */
 function onTabClose(tab: Tab, action: TabAction) {
+  const tabs = store.tab.tabs
   const isCurrentTab = tab.key === route.fullPath
 
   const changeTabRouter = () => {
@@ -133,13 +132,13 @@ function onTabClose(tab: Tab, action: TabAction) {
   }
 
   const closeOtherTab = () => {
-    appAction.deleteTab(tabs.filter((t) => t.key !== tab.key).map((t) => t.key))
+    store.tab.deleteTab(tabs.filter((t) => t.key !== tab.key).map((t) => t.key))
     changeTabRouter()
   }
 
   const closeRightTab = () => {
     const index = tabs.findIndex((t) => t.key === tab.key)
-    appAction.deleteTab(tabs.filter((t, i) => i > index).map((t) => t.key))
+    store.tab.deleteTab(tabs.filter((t, i) => i > index).map((t) => t.key))
     changeTabRouter()
   }
 
@@ -154,6 +153,7 @@ function onTabClose(tab: Tab, action: TabAction) {
 }
 
 function onTabChange(key: string | number) {
+  const tabs = store.tab.tabs
   const tab = tabs.find((x) => x.key === key)
 
   if (tab) {
