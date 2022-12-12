@@ -53,6 +53,10 @@ module.exports = {
         // 'vue/html-indent': ['off']
         // 'vue/attributes-order': ['off'],
         'no-console': ['warn'],
+        '@typescript-eslint/no-unused-vars': [
+          'error',
+          { argsIgnorePattern: '^_' },
+        ],
       },
     },
   ],

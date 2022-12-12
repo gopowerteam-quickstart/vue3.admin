@@ -45,7 +45,16 @@ const props = withDefaults(
 )
 
 const MenuIcon = defineComponent({
-  props: ['name', 'size'],
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    size: {
+      type: Number,
+      required: false,
+    },
+  },
   setup(props) {
     return () => {
       switch (true) {
