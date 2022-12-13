@@ -9,6 +9,7 @@ import {
   setup,
 } from '@gopowerteam/request'
 import { appConfig } from '@/config/app.config'
+import { TokenService } from '@/http/extends/token.service'
 
 /**
  * 状态转换拦截器
@@ -65,22 +66,6 @@ class ExceptionInterceptors implements ResponseInterceptor {
 }
 
 /**
- * Token插件
- */
-class TokenPlguin implements RequestPlugin {
-  /**
-   * 前置请求操作
-   * @param {RequestSendOptions} options 请求参数
-   */
-  before(options: RequestSendOptions) {
-    options.headers = {
-      ...options.headers,
-      // TODO:配置授权TOKEN
-    }
-  }
-}
-
-/**
  *
  */
 export default function () {
@@ -102,6 +87,6 @@ export default function () {
       error: new ErrorInterceptors(),
       exception: new ExceptionInterceptors(),
     },
-    plugins: [new TokenPlguin()],
+    plugins: [new TokenService()],
   })
 }

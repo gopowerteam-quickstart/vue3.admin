@@ -29,6 +29,7 @@
     "@arco-design/web-vue": "2.40.0",
     "@gopowerteam/request": "^0.1.11",
     "@gopowerteam/vue-modal": "0.1.12",
+    "@gopowerteam/vue-dynamic-table": "~0.0.28",
     "@vue/runtime-core": "3.2.45",
     "nprogress": "0.2.0",
     "pinia": "2.0.28",

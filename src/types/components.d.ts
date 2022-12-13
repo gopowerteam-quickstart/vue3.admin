@@ -22,6 +22,7 @@ declare module '@vue/runtime-core' {
     ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']
     ATabPane: typeof import('@arco-design/web-vue')['TabPane']
     ATabs: typeof import('@arco-design/web-vue')['Tabs']
+    DataTable: typeof import('@gopowerteam/vue-dynamic-table')['DynamicTable']
     'IconPark:home': typeof import('~icons/icon-park/home')['default']
     'IconPark:menuFold': typeof import('~icons/icon-park/menu-fold')['default']
     'IconPark:menuUnfold': typeof import('~icons/icon-park/menu-unfold')['default']

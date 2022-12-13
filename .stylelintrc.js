@@ -7,4 +7,7 @@ module.exports = {
     'stylelint-config-recommended-vue',
     'stylelint-config-recommended-less',
   ],
+  rules: {
+    'string-quotes': null,
+  },
 }
