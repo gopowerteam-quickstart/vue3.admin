@@ -1,21 +1,26 @@
 <template>
-  <slot></slot>
+  <div class="page-container">
+    <slot></slot>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { useStore } from '@/store'
 
+defineOptions({
+  name: 'PageContainer',
+  inheritAttrs: false,
+})
+
 const store = useStore()
 const route = useRoute()
-const props = defineProps<{ title: string }>()
+const props = defineProps<{ title?: string }>()
 
 /**
  * 更新页面标题
  */
 function updatePageTitle() {
-  if (props.title) {
-    store.app.updateTitle(props.title)
-  }
+  store.app.updateTitle(props.title!)
 }
 
 /**
@@ -25,7 +30,7 @@ function updateTabTitle() {
   const tab = store.tab.tabs.find((x) => x.key === route.fullPath)
 
   if (tab) {
-    tab.title = props.title
+    tab.title = props.title!
   }
 }
 
@@ -34,14 +39,14 @@ onActivated(() => {
 })
 
 onBeforeMount(() => {
-  updatePageTitle()
-  updateTabTitle()
+  if (props.title) {
+    updatePageTitle()
+    updateTabTitle()
+  }
 })
 </script>
-
-<script lang="ts">
-export default {
-  name: 'PageContainer',
-  inheritAttrs: false,
+<style lang="less" scoped>
+.page-container {
+  padding: 10px;
 }
-</script>
+</style>

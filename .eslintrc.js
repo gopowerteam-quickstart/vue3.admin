@@ -15,6 +15,7 @@ module.exports = {
   ],
   globals: {
     defineRender: 'readonly',
+    defineOptions: 'readonly',
   },
   overrides: [
     {

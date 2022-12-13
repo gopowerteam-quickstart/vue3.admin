@@ -2,7 +2,7 @@
   <a-layout-content class="relative">
     <Tabs v-if="appConfig.workspace.tabs && appConfig.workspace.tabsFixed" />
     <section
-      class="absolute inset-0 overflow-auto"
+      class="absolute inset-0 overflow-auto workspace-content"
       :style="{
         'margin-top': appConfig.workspace.tabsFixed ? '50px' : '0px',
       }">
@@ -35,5 +35,9 @@ const keepAliveInclude = computed(() => store.tab.tabs.map((x) => x.key))
 <style lang="less" scoped>
 .tabs-fixed {
   margin-top: 50px;
+}
+
+.workspace-content {
+  background-color: #fafafa;
 }
 </style>

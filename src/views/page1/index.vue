@@ -1,7 +1,8 @@
 <script setup lang="ts"></script>
 
 <template lang="pug">
-a-input(placeholder='page1')
+page-container
+  a-input(placeholder='page1')
 </template>
 
 <route lang="yaml">

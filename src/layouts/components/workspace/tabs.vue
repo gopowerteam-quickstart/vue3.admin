@@ -1,5 +1,5 @@
 <template>
-  <div class="py-2 pl-2">
+  <div class="py-2 pl-2 tabs-container">
     <a-tabs
       v-model:active-key="$route.fullPath"
       type="card-gutter"
@@ -169,3 +169,9 @@ onMounted(() => {
   onTabInit()
 })
 </script>
+
+<style lang="less">
+.tabs-container {
+  background-color: #fff;
+}
+</style>
