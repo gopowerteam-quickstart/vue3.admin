@@ -8,7 +8,6 @@ import '~/styles/index.less'
 
 import App from './App.vue'
 import { bootstrap } from './bootstrap'
-import type { InstallModule } from './types/global'
 
 /**
  * 加载模块
@@ -18,7 +17,7 @@ function installModules(ctx: ViteSSGContext) {
   Object.values(
     import.meta.glob('./modules/*.ts', { eager: true }) as Record<
       string,
-      { install: InstallModule }
+      { install: (ctx: ViteSSGContext) => void }
     >,
   ).forEach((i) => i.install?.(ctx))
 }

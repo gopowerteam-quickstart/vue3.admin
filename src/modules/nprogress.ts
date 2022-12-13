@@ -1,8 +1,7 @@
 import type { ViteSSGContext } from 'vite-ssg'
-import type { InstallModule } from '@/types/global'
 import NProgress from 'nprogress'
 
-export const install: InstallModule = ({
+export const install: (ctx: ViteSSGContext) => void = ({
   isClient,
   router,
 }: ViteSSGContext) => {
