@@ -1,7 +1,9 @@
-<template>
-  <div class="page-container">
-    <slot></slot>
-  </div>
+<template lang="pug">
+.page-container
+  .page-header.flex.justify-end.mb-2
+    .page-actions
+      slot(name='action')
+  slot
 </template>
 
 <script lang="ts" setup>

@@ -51,9 +51,9 @@ function updateSelectedMenu() {
   // 获取Key列表
   const keys = key
     .split('.')
-    .reduce(
+    .reduce<string[]>(
       (r, v) => (r.push(r.length ? `${r[r.length - 1]}.${v}` : v), r),
-      [] as string[],
+      [],
     )
 
   const index = keys.findIndex((k) =>

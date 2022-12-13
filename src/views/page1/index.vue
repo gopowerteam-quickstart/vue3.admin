@@ -2,6 +2,8 @@
 
 <template lang="pug">
 page-container
+  template(#action)
+    a-button(type='primary') 删除
   a-input(placeholder='page1')
 </template>
 

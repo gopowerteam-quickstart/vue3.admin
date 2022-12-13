@@ -35,6 +35,10 @@ const width = computed(() => `${appConfig.workspace.sideCollapsedWidth}px`)
 </script>
 
 <style lang="less" scoped>
+.side {
+  z-index: 100;
+}
+
 .collapse {
   display: inline-block;
   width: v-bind(width);
