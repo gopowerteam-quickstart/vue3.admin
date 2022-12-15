@@ -6,8 +6,8 @@ specifiers:
   '@babel/eslint-parser': 7.19.1
   '@commitlint/cli': 17.3.0
   '@commitlint/config-conventional': 17.3.0
-  '@gopowerteam/request': ^0.1.11
-  '@gopowerteam/request-generate': ^0.1.9
+  '@gopowerteam/request': 0.1.11
+  '@gopowerteam/request-generate': 0.1.9
   '@gopowerteam/vue-dynamic-table': ~0.0.28
   '@gopowerteam/vue-modal': 0.1.12
   '@iconify-json/icon-park': 1.1.7
@@ -45,16 +45,21 @@ specifiers:
   nprogress: 0.2.0
   pinia: 2.0.28
   pinia-plugin-persistedstate: 3.0.1
+  postcss: 8.4.20
   postcss-html: 1.5.0
   postcss-less: 6.0.0
   prettier: 2.8.1
   pug: 3.0.2
   stylelint: 14.16.0
+  stylelint-config-html: 1.1.0
   stylelint-config-prettier: 9.0.4
   stylelint-config-recess-order: 3.0.0
+  stylelint-config-recommended: 9.0.0
   stylelint-config-recommended-less: 1.0.4
+  stylelint-config-recommended-scss: 8.0.0
   stylelint-config-recommended-vue: 1.4.0
   stylelint-config-standard: 29.0.0
+  stylelint-config-standard-scss: 6.1.0
   stylelint-less: 1.0.6
   stylelint-order: 5.0.0
   stylelint-prettier: 2.0.0
@@ -122,16 +127,21 @@ devDependencies:
   less: registry.npmmirror.com/less/4.1.3
   less-vars-to-js: registry.npmmirror.com/less-vars-to-js/1.3.0
   lint-staged: registry.npmmirror.com/lint-staged/13.1.0
+  postcss: registry.npmmirror.com/postcss/8.4.20
   postcss-html: registry.npmmirror.com/postcss-html/1.5.0
   postcss-less: registry.npmmirror.com/postcss-less/6.0.0_postcss@8.4.20
   prettier: registry.npmmirror.com/prettier/2.8.1
   pug: registry.npmmirror.com/pug/3.0.2
   stylelint: registry.npmmirror.com/stylelint/14.16.0
+  stylelint-config-html: registry.npmmirror.com/stylelint-config-html/1.1.0_bto6pmslw3cibsiuq6smxboytq
   stylelint-config-prettier: registry.npmmirror.com/stylelint-config-prettier/9.0.4_stylelint@14.16.0
   stylelint-config-recess-order: registry.npmmirror.com/stylelint-config-recess-order/3.0.0_stylelint@14.16.0
+  stylelint-config-recommended: registry.npmmirror.com/stylelint-config-recommended/9.0.0_stylelint@14.16.0
   stylelint-config-recommended-less: registry.npmmirror.com/stylelint-config-recommended-less/1.0.4
+  stylelint-config-recommended-scss: registry.npmmirror.com/stylelint-config-recommended-scss/8.0.0_l3s4qeu3gkar2knsdy3w5miimm
   stylelint-config-recommended-vue: registry.npmmirror.com/stylelint-config-recommended-vue/1.4.0_bto6pmslw3cibsiuq6smxboytq
   stylelint-config-standard: registry.npmmirror.com/stylelint-config-standard/29.0.0_stylelint@14.16.0
+  stylelint-config-standard-scss: registry.npmmirror.com/stylelint-config-standard-scss/6.1.0_l3s4qeu3gkar2knsdy3w5miimm
   stylelint-less: registry.npmmirror.com/stylelint-less/1.0.6_stylelint@14.16.0
   stylelint-order: registry.npmmirror.com/stylelint-order/5.0.0_stylelint@14.16.0
   stylelint-prettier: registry.npmmirror.com/stylelint-prettier/2.0.0_lzrral356zwd7lm6e3scl4w4om
@@ -149,6 +159,33 @@ devDependencies:
   vite-svg-loader: registry.npmmirror.com/vite-svg-loader/3.6.0
 
 packages:
+
+  registry.nlark.com/@nodelib/fs.scandir/2.1.5:
+    resolution: {integrity: sha1-dhnC6yGyVIP20WdUi0z9WnSIw9U=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@nodelib/fs.scandir/download/@nodelib/fs.scandir-2.1.5.tgz}
+    name: '@nodelib/fs.scandir'
+    version: 2.1.5
+    engines: {node: '>= 8'}
+    dependencies:
+      '@nodelib/fs.stat': registry.npmmirror.com/@nodelib/fs.stat/2.0.5
+      run-parallel: registry.npmmirror.com/run-parallel/1.2.0
+    dev: true
+
+  registry.nlark.com/concat-map/0.0.1:
+    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/concat-map/download/concat-map-0.0.1.tgz}
+    name: concat-map
+    version: 0.0.1
+    dev: true
+
+  registry.nlark.com/minimist-options/4.1.0:
+    resolution: {integrity: sha1-wGVXE8U6ii69d/+iR9NCxA8BBhk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/minimist-options/download/minimist-options-4.1.0.tgz}
+    name: minimist-options
+    version: 4.1.0
+    engines: {node: '>= 6'}
+    dependencies:
+      arrify: registry.npmmirror.com/arrify/1.0.1
+      is-plain-obj: registry.npmmirror.com/is-plain-obj/1.1.0
+      kind-of: registry.npmmirror.com/kind-of/6.0.3
+    dev: true
 
   registry.npmmirror.com/@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@ampproject/remapping/-/remapping-2.2.0.tgz}
@@ -1300,16 +1337,6 @@ packages:
       eslint-scope: registry.npmmirror.com/eslint-scope/5.1.1
     dev: true
 
-  registry.npmmirror.com/@nodelib/fs.scandir/2.1.5:
-    resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz}
-    name: '@nodelib/fs.scandir'
-    version: 2.1.5
-    engines: {node: '>= 8'}
-    dependencies:
-      '@nodelib/fs.stat': registry.npmmirror.com/@nodelib/fs.stat/2.0.5
-      run-parallel: registry.npmmirror.com/run-parallel/1.2.0
-    dev: true
-
   registry.npmmirror.com/@nodelib/fs.stat/2.0.5:
     resolution: {integrity: sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz}
     name: '@nodelib/fs.stat'
@@ -1323,7 +1350,7 @@ packages:
     version: 1.2.8
     engines: {node: '>= 8'}
     dependencies:
-      '@nodelib/fs.scandir': registry.npmmirror.com/@nodelib/fs.scandir/2.1.5
+      '@nodelib/fs.scandir': registry.nlark.com/@nodelib/fs.scandir/2.1.5
       fastq: registry.npmmirror.com/fastq/1.13.0
     dev: true
 
@@ -2858,7 +2885,7 @@ packages:
     version: 1.1.11
     dependencies:
       balanced-match: registry.npmmirror.com/balanced-match/1.0.2
-      concat-map: registry.npmmirror.com/concat-map/0.0.1
+      concat-map: registry.nlark.com/concat-map/0.0.1
     dev: true
 
   registry.npmmirror.com/brace-expansion/2.0.1:
@@ -3272,12 +3299,6 @@ packages:
     name: compute-scroll-into-view
     version: 1.0.17
     dev: false
-
-  registry.npmmirror.com/concat-map/0.0.1:
-    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/concat-map/-/concat-map-0.0.1.tgz}
-    name: concat-map
-    version: 0.0.1
-    dev: true
 
   registry.npmmirror.com/consola/2.15.3:
     resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/consola/-/consola-2.15.3.tgz}
@@ -6007,7 +6028,7 @@ packages:
       camelcase-keys: registry.npmmirror.com/camelcase-keys/6.2.2
       decamelize-keys: registry.npmmirror.com/decamelize-keys/1.1.0
       hard-rejection: registry.npmmirror.com/hard-rejection/2.1.0
-      minimist-options: registry.npmmirror.com/minimist-options/4.1.0
+      minimist-options: registry.nlark.com/minimist-options/4.1.0
       normalize-package-data: registry.npmmirror.com/normalize-package-data/3.0.3
       read-pkg-up: registry.npmmirror.com/read-pkg-up/7.0.1
       redent: registry.npmmirror.com/redent/3.0.0
@@ -6027,7 +6048,7 @@ packages:
       decamelize: registry.npmmirror.com/decamelize/1.2.0
       decamelize-keys: registry.npmmirror.com/decamelize-keys/1.1.0
       hard-rejection: registry.npmmirror.com/hard-rejection/2.1.0
-      minimist-options: registry.npmmirror.com/minimist-options/4.1.0
+      minimist-options: registry.nlark.com/minimist-options/4.1.0
       normalize-package-data: registry.npmmirror.com/normalize-package-data/3.0.3
       read-pkg-up: registry.npmmirror.com/read-pkg-up/7.0.1
       redent: registry.npmmirror.com/redent/3.0.0
@@ -6132,17 +6153,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: registry.npmmirror.com/brace-expansion/2.0.1
-    dev: true
-
-  registry.npmmirror.com/minimist-options/4.1.0:
-    resolution: {integrity: sha512-Q4r8ghd80yhO/0j1O3B2BjweX3fiHg9cdOwjJd2J76Q135c+NDxGCqdYKQ1SKBuFfgWbAUzBfvYjPUEeNgqN1A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/minimist-options/-/minimist-options-4.1.0.tgz}
-    name: minimist-options
-    version: 4.1.0
-    engines: {node: '>= 6'}
-    dependencies:
-      arrify: registry.npmmirror.com/arrify/1.0.1
-      is-plain-obj: registry.npmmirror.com/is-plain-obj/1.1.0
-      kind-of: registry.npmmirror.com/kind-of/6.0.3
     dev: true
 
   registry.npmmirror.com/minimist/1.2.6:
@@ -6743,8 +6753,8 @@ packages:
     dependencies:
       htmlparser2: registry.npmmirror.com/htmlparser2/8.0.1
       js-tokens: registry.npmmirror.com/js-tokens/8.0.0
-      postcss: registry.npmmirror.com/postcss/8.4.14
-      postcss-safe-parser: registry.npmmirror.com/postcss-safe-parser/6.0.0_postcss@8.4.14
+      postcss: registry.npmmirror.com/postcss/8.4.20
+      postcss-safe-parser: registry.npmmirror.com/postcss-safe-parser/6.0.0_postcss@8.4.20
     dev: true
 
   registry.npmmirror.com/postcss-less/6.0.0_postcss@8.4.20:
@@ -6771,18 +6781,6 @@ packages:
     version: 0.1.1
     dev: true
 
-  registry.npmmirror.com/postcss-safe-parser/6.0.0_postcss@8.4.14:
-    resolution: {integrity: sha512-FARHN8pwH+WiS2OPCxJI8FuRJpTVnn6ZNFiqAM2aeW2LwTHWWmWgIyKC6cUo0L8aeKiF/14MNvnpls6R2PBeMQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/postcss-safe-parser/-/postcss-safe-parser-6.0.0.tgz}
-    id: registry.npmmirror.com/postcss-safe-parser/6.0.0
-    name: postcss-safe-parser
-    version: 6.0.0
-    engines: {node: '>=12.0'}
-    peerDependencies:
-      postcss: ^8.3.3
-    dependencies:
-      postcss: registry.npmmirror.com/postcss/8.4.14
-    dev: true
-
   registry.npmmirror.com/postcss-safe-parser/6.0.0_postcss@8.4.20:
     resolution: {integrity: sha512-FARHN8pwH+WiS2OPCxJI8FuRJpTVnn6ZNFiqAM2aeW2LwTHWWmWgIyKC6cUo0L8aeKiF/14MNvnpls6R2PBeMQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/postcss-safe-parser/-/postcss-safe-parser-6.0.0.tgz}
     id: registry.npmmirror.com/postcss-safe-parser/6.0.0
@@ -6791,6 +6789,18 @@ packages:
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.3.3
+    dependencies:
+      postcss: registry.npmmirror.com/postcss/8.4.20
+    dev: true
+
+  registry.npmmirror.com/postcss-scss/4.0.6_postcss@8.4.20:
+    resolution: {integrity: sha512-rLDPhJY4z/i4nVFZ27j9GqLxj1pwxE80eAzUNRMXtcpipFYIeowerzBgG3yJhMtObGEXidtIgbUpQ3eLDsf5OQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/postcss-scss/-/postcss-scss-4.0.6.tgz}
+    id: registry.npmmirror.com/postcss-scss/4.0.6
+    name: postcss-scss
+    version: 4.0.6
+    engines: {node: '>=12.0'}
+    peerDependencies:
+      postcss: ^8.4.19
     dependencies:
       postcss: registry.npmmirror.com/postcss/8.4.20
     dev: true
@@ -6815,7 +6825,7 @@ packages:
       util-deprecate: registry.npmmirror.com/util-deprecate/1.0.2
     dev: true
 
-  registry.npmmirror.com/postcss-sorting/7.0.1_postcss@8.4.14:
+  registry.npmmirror.com/postcss-sorting/7.0.1_postcss@8.4.20:
     resolution: {integrity: sha512-iLBFYz6VRYyLJEJsBJ8M3TCqNcckVzz4wFounSc5Oez35ogE/X+aoC5fFu103Ot7NyvjU3/xqIXn93Gp3kJk4g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/postcss-sorting/-/postcss-sorting-7.0.1.tgz}
     id: registry.npmmirror.com/postcss-sorting/7.0.1
     name: postcss-sorting
@@ -6823,24 +6833,13 @@ packages:
     peerDependencies:
       postcss: ^8.3.9
     dependencies:
-      postcss: registry.npmmirror.com/postcss/8.4.14
+      postcss: registry.npmmirror.com/postcss/8.4.20
     dev: true
 
   registry.npmmirror.com/postcss-value-parser/4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz}
     name: postcss-value-parser
     version: 4.2.0
-    dev: true
-
-  registry.npmmirror.com/postcss/8.4.14:
-    resolution: {integrity: sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/postcss/-/postcss-8.4.14.tgz}
-    name: postcss
-    version: 8.4.14
-    engines: {node: ^10 || ^12 || >=14}
-    dependencies:
-      nanoid: registry.npmmirror.com/nanoid/3.3.4
-      picocolors: registry.npmmirror.com/picocolors/1.0.0
-      source-map-js: registry.npmmirror.com/source-map-js/1.0.2
     dev: true
 
   registry.npmmirror.com/postcss/8.4.20:
@@ -7722,11 +7721,11 @@ packages:
     version: 0.1.0
     dev: true
 
-  registry.npmmirror.com/stylelint-config-html/1.0.0_bto6pmslw3cibsiuq6smxboytq:
-    resolution: {integrity: sha512-rKQUUWDpaYC7ybsS6tLxddjn6DxhjSIXybElSmcTyVQj3ExhmU3q+l41ktrlwHRyY0M5SkTkZiwngvYPYmsgSQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/stylelint-config-html/-/stylelint-config-html-1.0.0.tgz}
-    id: registry.npmmirror.com/stylelint-config-html/1.0.0
+  registry.npmmirror.com/stylelint-config-html/1.1.0_bto6pmslw3cibsiuq6smxboytq:
+    resolution: {integrity: sha512-IZv4IVESjKLumUGi+HWeb7skgO6/g4VMuAYrJdlqQFndgbj6WJAXPhaysvBiXefX79upBdQVumgYcdd17gCpjQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/stylelint-config-html/-/stylelint-config-html-1.1.0.tgz}
+    id: registry.npmmirror.com/stylelint-config-html/1.1.0
     name: stylelint-config-html
-    version: 1.0.0
+    version: 1.1.0
     engines: {node: ^12 || >=14}
     peerDependencies:
       postcss-html: ^1.0.0
@@ -7773,6 +7772,25 @@ packages:
       - supports-color
     dev: true
 
+  registry.npmmirror.com/stylelint-config-recommended-scss/8.0.0_l3s4qeu3gkar2knsdy3w5miimm:
+    resolution: {integrity: sha512-BxjxEzRaZoQb7Iinc3p92GS6zRdRAkIuEu2ZFLTxJK2e1AIcCb5B5MXY9KOXdGTnYFZ+KKx6R4Fv9zU6CtMYPQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/stylelint-config-recommended-scss/-/stylelint-config-recommended-scss-8.0.0.tgz}
+    id: registry.npmmirror.com/stylelint-config-recommended-scss/8.0.0
+    name: stylelint-config-recommended-scss
+    version: 8.0.0
+    peerDependencies:
+      postcss: ^8.3.3
+      stylelint: ^14.10.0
+    peerDependenciesMeta:
+      postcss:
+        optional: true
+    dependencies:
+      postcss: registry.npmmirror.com/postcss/8.4.20
+      postcss-scss: registry.npmmirror.com/postcss-scss/4.0.6_postcss@8.4.20
+      stylelint: registry.npmmirror.com/stylelint/14.16.0
+      stylelint-config-recommended: registry.npmmirror.com/stylelint-config-recommended/9.0.0_stylelint@14.16.0
+      stylelint-scss: registry.npmmirror.com/stylelint-scss/4.3.0_stylelint@14.16.0
+    dev: true
+
   registry.npmmirror.com/stylelint-config-recommended-vue/1.4.0_bto6pmslw3cibsiuq6smxboytq:
     resolution: {integrity: sha512-DVJqyX2KvMCn9U0+keL12r7xlsH26K4Vg8NrIZuq5MoF7g82DpMp326Om4E0Q+Il1o+bTHuUyejf2XAI0iD04Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/stylelint-config-recommended-vue/-/stylelint-config-recommended-vue-1.4.0.tgz}
     id: registry.npmmirror.com/stylelint-config-recommended-vue/1.4.0
@@ -7784,10 +7802,10 @@ packages:
       stylelint: '>=14.0.0'
     dependencies:
       postcss-html: registry.npmmirror.com/postcss-html/1.5.0
-      semver: registry.npmmirror.com/semver/7.3.7
+      semver: registry.npmmirror.com/semver/7.3.8
       stylelint: registry.npmmirror.com/stylelint/14.16.0
-      stylelint-config-html: registry.npmmirror.com/stylelint-config-html/1.0.0_bto6pmslw3cibsiuq6smxboytq
-      stylelint-config-recommended: registry.npmmirror.com/stylelint-config-recommended/8.0.0_stylelint@14.16.0
+      stylelint-config-html: registry.npmmirror.com/stylelint-config-html/1.1.0_bto6pmslw3cibsiuq6smxboytq
+      stylelint-config-recommended: registry.npmmirror.com/stylelint-config-recommended/9.0.0_stylelint@14.16.0
     dev: true
 
   registry.npmmirror.com/stylelint-config-recommended/6.0.0_stylelint@14.16.0:
@@ -7801,17 +7819,6 @@ packages:
       stylelint: registry.npmmirror.com/stylelint/14.16.0
     dev: true
 
-  registry.npmmirror.com/stylelint-config-recommended/8.0.0_stylelint@14.16.0:
-    resolution: {integrity: sha512-IK6dWvE000+xBv9jbnHOnBq01gt6HGVB2ZTsot+QsMpe82doDQ9hvplxfv4YnpEuUwVGGd9y6nbaAnhrjcxhZQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/stylelint-config-recommended/-/stylelint-config-recommended-8.0.0.tgz}
-    id: registry.npmmirror.com/stylelint-config-recommended/8.0.0
-    name: stylelint-config-recommended
-    version: 8.0.0
-    peerDependencies:
-      stylelint: ^14.8.0
-    dependencies:
-      stylelint: registry.npmmirror.com/stylelint/14.16.0
-    dev: true
-
   registry.npmmirror.com/stylelint-config-recommended/9.0.0_stylelint@14.16.0:
     resolution: {integrity: sha512-9YQSrJq4NvvRuTbzDsWX3rrFOzOlYBmZP+o513BJN/yfEmGSr0AxdvrWs0P/ilSpVV/wisamAHu5XSk8Rcf4CQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/stylelint-config-recommended/-/stylelint-config-recommended-9.0.0.tgz}
     id: registry.npmmirror.com/stylelint-config-recommended/9.0.0
@@ -7821,6 +7828,24 @@ packages:
       stylelint: ^14.10.0
     dependencies:
       stylelint: registry.npmmirror.com/stylelint/14.16.0
+    dev: true
+
+  registry.npmmirror.com/stylelint-config-standard-scss/6.1.0_l3s4qeu3gkar2knsdy3w5miimm:
+    resolution: {integrity: sha512-iZ2B5kQT2G3rUzx+437cEpdcnFOQkwnwqXuY8Z0QUwIHQVE8mnYChGAquyKFUKZRZ0pRnrciARlPaR1RBtPb0Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/stylelint-config-standard-scss/-/stylelint-config-standard-scss-6.1.0.tgz}
+    id: registry.npmmirror.com/stylelint-config-standard-scss/6.1.0
+    name: stylelint-config-standard-scss
+    version: 6.1.0
+    peerDependencies:
+      postcss: ^8.3.3
+      stylelint: ^14.14.0
+    peerDependenciesMeta:
+      postcss:
+        optional: true
+    dependencies:
+      postcss: registry.npmmirror.com/postcss/8.4.20
+      stylelint: registry.npmmirror.com/stylelint/14.16.0
+      stylelint-config-recommended-scss: registry.npmmirror.com/stylelint-config-recommended-scss/8.0.0_l3s4qeu3gkar2knsdy3w5miimm
+      stylelint-config-standard: registry.npmmirror.com/stylelint-config-standard/29.0.0_stylelint@14.16.0
     dev: true
 
   registry.npmmirror.com/stylelint-config-standard/29.0.0_stylelint@14.16.0:
@@ -7843,7 +7868,7 @@ packages:
     peerDependencies:
       stylelint: ^14.9.1
     dependencies:
-      postcss: registry.npmmirror.com/postcss/8.4.14
+      postcss: registry.npmmirror.com/postcss/8.4.20
       postcss-value-parser: registry.npmmirror.com/postcss-value-parser/4.2.0
       stylelint: registry.npmmirror.com/stylelint/14.16.0
     dev: true
@@ -7856,8 +7881,8 @@ packages:
     peerDependencies:
       stylelint: ^14.0.0
     dependencies:
-      postcss: registry.npmmirror.com/postcss/8.4.14
-      postcss-sorting: registry.npmmirror.com/postcss-sorting/7.0.1_postcss@8.4.14
+      postcss: registry.npmmirror.com/postcss/8.4.20
+      postcss-sorting: registry.npmmirror.com/postcss-sorting/7.0.1_postcss@8.4.20
       stylelint: registry.npmmirror.com/stylelint/14.16.0
     dev: true
 
@@ -7873,6 +7898,22 @@ packages:
     dependencies:
       prettier: registry.npmmirror.com/prettier/2.8.1
       prettier-linter-helpers: registry.npmmirror.com/prettier-linter-helpers/1.0.0
+      stylelint: registry.npmmirror.com/stylelint/14.16.0
+    dev: true
+
+  registry.npmmirror.com/stylelint-scss/4.3.0_stylelint@14.16.0:
+    resolution: {integrity: sha512-GvSaKCA3tipzZHoz+nNO7S02ZqOsdBzMiCx9poSmLlb3tdJlGddEX/8QzCOD8O7GQan9bjsvLMsO5xiw6IhhIQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/stylelint-scss/-/stylelint-scss-4.3.0.tgz}
+    id: registry.npmmirror.com/stylelint-scss/4.3.0
+    name: stylelint-scss
+    version: 4.3.0
+    peerDependencies:
+      stylelint: ^14.5.1
+    dependencies:
+      lodash: registry.npmmirror.com/lodash/4.17.21
+      postcss-media-query-parser: registry.npmmirror.com/postcss-media-query-parser/0.2.3
+      postcss-resolve-nested-selector: registry.npmmirror.com/postcss-resolve-nested-selector/0.1.1
+      postcss-selector-parser: registry.npmmirror.com/postcss-selector-parser/6.0.11
+      postcss-value-parser: registry.npmmirror.com/postcss-value-parser/4.2.0
       stylelint: registry.npmmirror.com/stylelint/14.16.0
     dev: true
 
@@ -9161,13 +9202,6 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  registry.npmmirror.com/yargs-parser/21.0.1:
-    resolution: {integrity: sha512-9BK1jFpLzJROCI5TzwZL/TU4gqjK5xiHV/RfWLOahrjAko/e4DJkRDZQXfvqAsiZzzYhgAzbgz6lg48jcm4GLg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/yargs-parser/-/yargs-parser-21.0.1.tgz}
-    name: yargs-parser
-    version: 21.0.1
-    engines: {node: '>=12'}
-    dev: true
-
   registry.npmmirror.com/yargs-parser/21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/yargs-parser/-/yargs-parser-21.1.1.tgz}
     name: yargs-parser
@@ -9187,7 +9221,7 @@ packages:
       require-directory: registry.npmmirror.com/require-directory/2.1.1
       string-width: registry.npmmirror.com/string-width/4.2.3
       y18n: registry.npmmirror.com/y18n/5.0.8
-      yargs-parser: registry.npmmirror.com/yargs-parser/21.0.1
+      yargs-parser: registry.npmmirror.com/yargs-parser/21.1.1
     dev: true
 
   registry.npmmirror.com/yargs/17.6.2:

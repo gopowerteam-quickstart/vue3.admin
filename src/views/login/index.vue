@@ -18,26 +18,22 @@ import LoginFrom from './components/login-form.vue'
 
 <style lang="less" scoped>
 .login-container {
-  color: #fff;
+  color: #ffffff;
   background-color: #293146;
 }
-
 .left-enter-active,
 .left-leave-active {
   transition: all 0.5s ease;
 }
-
 .left-enter-from,
 .left-leave-to {
   opacity: 0;
   transform: translateX(-300px);
 }
-
 .right-enter-active,
 .right-leave-active {
   transition: all 0.5s ease;
 }
-
 .right-enter-from,
 .right-leave-to {
   opacity: 0;

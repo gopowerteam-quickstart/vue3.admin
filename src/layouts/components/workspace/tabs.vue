@@ -172,6 +172,6 @@ onMounted(() => {
 
 <style lang="less">
 .tabs-container {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 </style>

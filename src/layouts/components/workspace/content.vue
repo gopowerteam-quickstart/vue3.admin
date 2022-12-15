@@ -36,7 +36,6 @@ const keepAliveInclude = computed(() => store.tab.tabs.map((x) => x.key))
 .tabs-fixed {
   margin-top: 50px;
 }
-
 .workspace-content {
   background-color: #fafafa;
 }

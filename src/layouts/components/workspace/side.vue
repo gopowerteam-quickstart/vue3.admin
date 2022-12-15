@@ -38,13 +38,11 @@ const width = computed(() => `${appConfig.workspace.sideCollapsedWidth}px`)
 .side {
   z-index: 100;
 }
-
 .collapse {
   display: inline-block;
-  width: v-bind(width);
   padding: 10px 0;
+  width: v-bind(width);
   text-align: center;
-
   svg {
     margin: auto;
   }
