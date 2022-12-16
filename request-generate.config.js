@@ -1,12 +1,9 @@
 module.exports = {
-  gateway: 'https://gateway.ihis.xbt-dev.top/',
+  gateway: '',
   openapi: '/v3/api-docs',
   output: './src/http',
   exportModels: true,
-  applications: {
-    'user-service': 'platform-user-service',
-    'data-service': 'ihis-data-work',
-  },
+  applications: {},
   logger: true,
   exportServices: {
     serviceResolve({ object, tags }) {

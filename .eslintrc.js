@@ -35,6 +35,16 @@ module.exports = {
         // typescript支持引入
         'plugin:@typescript-eslint/recommended',
       ],
+      rules: {
+        '@typescript-eslint/no-unused-vars': [
+          'warn',
+          {
+            argsIgnorePattern: '^_',
+            varsIgnorePattern: '^_',
+            caughtErrorsIgnorePattern: '^_',
+          },
+        ],
+      },
     },
     {
       files: ['**/*.vue'], // 只处理 vue 文件
@@ -55,8 +65,12 @@ module.exports = {
         // 'vue/attributes-order': ['off'],
         'no-console': ['warn'],
         '@typescript-eslint/no-unused-vars': [
-          'error',
-          { argsIgnorePattern: '^_' },
+          'warn',
+          {
+            argsIgnorePattern: '^_',
+            varsIgnorePattern: '^_',
+            caughtErrorsIgnorePattern: '^_',
+          },
         ],
       },
     },

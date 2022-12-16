@@ -26,9 +26,6 @@ html.dark {
   background: rgb(40 121 255);
   opacity: 0.75;
 }
-.modal-container {
-  z-index: 1000 !important;
-}
 .arco-layout-sider-collapsed.side {
   .arco-menu-item {
     justify-content: center;
@@ -38,5 +35,35 @@ html.dark {
   }
   .arco-menu-title {
     width: 0 !important;
+  }
+}
+.modal-container {
+  position: absolute;
+  z-index: 10000 !important;
+  .modal {
+    &-wrapper {
+      z-index: 999;
+    }
+    &-content {
+      padding: 0 !important;
+    }
+    &-header {
+      padding: 5px 0;
+      border-radius: 5px 5px 0 0;
+      text-indent: 2em;
+      color: #666666;
+      background-color: #fdfdfd;
+      .title {
+        height: 40px;
+        line-height: 40px;
+      }
+      .action {
+        margin-right: 10px;
+        padding-top: 10px;
+      }
+    }
+    &-body {
+      padding: 15px 30px;
+    }
   }
 }
