@@ -54,6 +54,7 @@ watch(
     if (!tab) {
       store.tab.addTab({
         ...(menu || {}),
+        title: store.app.title || menu?.title,
         key: value,
         // 非菜单显示项为空
         menuKey: menu?.key,
@@ -72,7 +73,7 @@ function onTabInit() {
 
   store.tab.addTab({
     ...(menu || {}),
-    title: store.app.title,
+    title: store.app.title || menu?.title,
     key: route.fullPath,
     menuKey: menu?.key,
     query: route.query,
