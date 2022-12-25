@@ -1,13 +1,15 @@
 <template lang="pug">
-.page-container
-  .page-header.flex.justify-end.mb-2
-    .page-actions
+.page-container(:style='styles')
+  .page-header.flex.justify-end
+    .page-actions.mb-2
       slot(name='action')
   slot
 </template>
 
 <script lang="ts" setup>
+import { appConfig } from '@/config/app.config'
 import { useStore } from '@/store'
+import type { CSSProperties } from 'vue'
 
 defineOptions({
   name: 'PageContainer',
@@ -16,8 +18,36 @@ defineOptions({
 
 const store = useStore()
 const route = useRoute()
-const props = defineProps<{ title?: string }>()
+const props = withDefaults(
+  defineProps<{
+    title?: string
+    layout?: 'flex-row' | 'flex-column' | 'block'
+    absolute?: boolean
+    padding?: boolean
+  }>(),
+  {
+    title: '',
+    layout: 'block',
+    absolute: false,
+    padding: true,
+  },
+)
 
+const styles = computed<CSSProperties>(() => {
+  return Object.assign(
+    props.absolute ? ({ position: 'absolute', inset: 0 } as CSSProperties) : {},
+    props.layout === 'flex-row'
+      ? ({ display: 'flex', flexDirection: 'row' } as CSSProperties)
+      : {},
+    props.layout === 'flex-column'
+      ? ({ display: 'flex', flexDirection: 'column' } as CSSProperties)
+      : {},
+    props.absolute && !appConfig.workspace.tabsFixed
+      ? { marginTop: '50px' }
+      : {},
+    props.padding === false ? {} : { padding: '10px' },
+  )
+})
 /**
  * 更新页面标题
  */
@@ -50,8 +80,9 @@ onBeforeMount(() => {
   }
 })
 </script>
+
 <style lang="less" scoped>
 .page-container {
-  padding: 10px;
+  overflow: auto;
 }
 </style>
