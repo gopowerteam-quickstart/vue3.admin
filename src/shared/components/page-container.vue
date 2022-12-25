@@ -22,7 +22,10 @@ const props = defineProps<{ title?: string }>()
  * 更新页面标题
  */
 function updatePageTitle() {
-  store.app.updateTitle(props.title!)
+  const title = props.title || route.meta.title
+  if (title) {
+    store.app.updateTitle(title)
+  }
 }
 
 /**
@@ -30,9 +33,9 @@ function updatePageTitle() {
  */
 function updateTabTitle() {
   const tab = store.tab.tabs.find((x) => x.key === route.fullPath)
-
-  if (tab) {
-    tab.title = props.title!
+  const title = props.title || route.meta.title
+  if (tab && title) {
+    tab.title = title
   }
 }
 

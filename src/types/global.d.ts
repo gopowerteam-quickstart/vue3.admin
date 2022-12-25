@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly HTTP_GATEWAY: string
+  readonly VITE_HTTP_GATEWAY: string
 }
 
 // typings.d.ts or router.ts
@@ -10,6 +10,7 @@ import 'vue-router'
 declare module 'vue-router' {
   interface RouteMeta {
     layout: 'workspace' | 'blank'
+    title: string
     menu?: {
       key: string
       title: string

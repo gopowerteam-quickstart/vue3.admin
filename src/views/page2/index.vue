@@ -40,8 +40,7 @@ type DataItem = {
 const pageService = new PageService()
 const table = useTable('table')
 
-function loadData({ search, update }: LoadDataParams) {
-  console.log(search)
+function loadData({ update }: LoadDataParams) {
   setTimeout(() => {
     update([
       {

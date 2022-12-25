@@ -16,7 +16,7 @@
         <template #title>
           <a-dropdown
             trigger="contextMenu"
-            @select="(action) => onTabClose(tab, action as number)">
+            @select="(action) => onTabClose(tab, action as unknown as TabAction)">
             <div>{{ tab.title }}</div>
             <template
               v-if="store.tab.tabs.length > 1"
@@ -34,7 +34,7 @@
 <script setup lang="ts">
 import { useStore } from '@/store'
 import { TabAction } from '~/config/enum.config'
-import type { Menu, Tab } from '~/types/workspace'
+import type { Tab } from '~/types/workspace'
 
 const store = useStore()
 const route = useRoute()
@@ -43,18 +43,17 @@ const router = useRouter()
 watch(
   () => route.fullPath,
   (value) => {
-    const { key } = (route?.meta?.menu as Menu) || {}
-
     // 获取菜单显示项
-    const menu = store.menu.menus.find((x) => key && x.key === key)
-
+    const menu = store.menu.menus.find((x) => x.key === route?.meta?.menu?.key)
     // 获取tab项
     const tab = store.tab.tabs.find((x) => x.key === value)
+    // 获取标题
+    const title = route.meta.title ?? store.app.title
 
     if (!tab) {
       store.tab.addTab({
         ...(menu || {}),
-        title: menu?.title || store.app.title,
+        title,
         key: value,
         // 非菜单显示项为空
         menuKey: menu?.key,
@@ -66,14 +65,14 @@ watch(
 )
 
 function onTabInit() {
-  const { key } = (route?.meta?.menu as Menu) || {}
-
   // 获取菜单显示项
-  const menu = store.menu.menus.find((x) => key && x.key === key)
+  const menu = store.menu.menus.find((x) => x.key === route?.meta?.menu?.key)
+  // 获取标题
+  const title = route.meta.title ?? store.app.title
 
   store.tab.addTab({
     ...(menu || {}),
-    title: menu?.title || store.app.title,
+    title,
     key: route.fullPath,
     menuKey: menu?.key,
     query: route.query,

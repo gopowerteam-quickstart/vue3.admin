@@ -5,7 +5,7 @@ export const appConfig: AppConfig = {
   title: 'VueAdmin',
   logo: '/logo.png',
   http: {
-    gateway: import.meta.env.HTTP_GATEWAY,
+    gateway: import.meta.env.VITE_HTTP_GATEWAY,
     timeout: 3000,
   },
   workspace: {
