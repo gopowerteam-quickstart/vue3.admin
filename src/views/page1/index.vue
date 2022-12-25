@@ -11,9 +11,6 @@ page-container
 name: page1
 meta:
   layout: workspace
-  auth:
-    roles:
-      - ADMIN
   menu:
     key: root1.page1
     icon: image-1.png

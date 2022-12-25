@@ -130,9 +130,6 @@ const columns: TableColumnsOptions<DataItem> = [
 name: page2
 meta:
   layout: workspace
-  auth:
-    roles:
-      - ADMIN
   menu:
     key: root2.test.page2
     icon: xxx

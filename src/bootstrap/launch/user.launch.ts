@@ -14,14 +14,13 @@ export default function userLaunch(router: Router) {
   const store = useStore()
 
   router.beforeEach(async (to, from, next) => {
-    if (!to.meta.requireAuth) {
+    if (to.meta.requireAuth === false) {
       return next()
     }
 
     if (!store.user.token) {
       return next('/login')
     }
-
     // 使用Token更新用户信息
     if (!store.user.current) {
       await getUserDataByToken()

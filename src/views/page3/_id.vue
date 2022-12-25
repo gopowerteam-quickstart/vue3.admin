@@ -14,7 +14,6 @@ const { id } = route.params
 name: page3
 meta:
   layout: workspace
-  auth:
-    roles:
-      - ADMIN
+  requireRoles:
+    - ADMIN
 </route>

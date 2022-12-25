@@ -82,7 +82,7 @@ export const useMenuStore = defineStore('menu', {
               path: route.path,
               name: route.children[0].name,
               // 认证配置信息
-              requireAuth: route.children[0]?.meta?.requireAuth,
+              requireAuth: route.children[0]?.meta?.requireAuth ?? true,
               requireRoles: route.children[0]?.meta?.requireRoles,
               // 菜单配置信息
               ...(route.children[0]?.meta?.menu as Record<string, string>),
