@@ -5,7 +5,6 @@ import icons from './unplugin-icons'
 import components from './unplugin-vue-components'
 import pages from './vite-plugin-pages'
 import layouts from './vite-plugin-vue-layouts'
-import macros from './vue-macros'
 
 /**
  * DefineVitePlugins
@@ -17,7 +16,6 @@ export function defineVitePlugins(
 ): Record<'plugins', PluginOption[]> {
   return {
     plugins: [
-      macros,
       autoImport,
       pages,
       layouts,

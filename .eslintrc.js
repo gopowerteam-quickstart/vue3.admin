@@ -13,10 +13,6 @@ module.exports = {
     'plugin:prettier/recommended',
     './.eslintrc-auto-import.json',
   ],
-  globals: {
-    defineRender: 'readonly',
-    defineOptions: 'readonly',
-  },
   overrides: [
     {
       files: ['**/*.{js,jsx}'],
@@ -59,11 +55,13 @@ module.exports = {
         '@vue/typescript',
       ],
       rules: {
+        'vue/one-component-per-file': ['off'],
         'vue/multi-word-component-names': ['off'],
         // 'vue/max-attributes-per-line': ['off'],
         // 'vue/html-indent': ['off']
         // 'vue/attributes-order': ['off'],
         'no-console': ['warn'],
+        'vue/require-default-prop': ['off'],
         '@typescript-eslint/no-unused-vars': [
           'warn',
           {

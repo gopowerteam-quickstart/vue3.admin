@@ -36,10 +36,6 @@ import SvgIcon from '@/shared/components/svg-icon.vue'
 import ImageIcon from '@/shared/components/image-icon.vue'
 import type { Menu } from '~/types/workspace'
 
-defineOptions({
-  name: 'MenuItem',
-})
-
 const props = withDefaults(
   defineProps<{
     menu: Menu
@@ -78,5 +74,11 @@ const MenuIcon = defineComponent({
       }
     }
   },
+})
+</script>
+
+<script lang="tsx">
+export default defineComponent({
+  name: 'MenuItem',
 })
 </script>

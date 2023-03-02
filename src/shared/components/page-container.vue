@@ -11,11 +11,6 @@ import { appConfig } from '@/config/app.config'
 import { useStore } from '@/store'
 import type { CSSProperties } from 'vue'
 
-defineOptions({
-  name: 'PageContainer',
-  inheritAttrs: false,
-})
-
 const store = useStore()
 const route = useRoute()
 const props = withDefaults(
@@ -78,6 +73,13 @@ onBeforeMount(() => {
     updatePageTitle()
     updateTabTitle()
   }
+})
+</script>
+
+<script lang="ts">
+export default defineComponent({
+  name: 'PageContainer',
+  inheritAttrs: false,
 })
 </script>
 

@@ -4,9 +4,11 @@ import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import { DynamicTableResolver } from '@gopowerteam/vue-dynamic-table/resolver'
 export default components({
   dts: 'src/types/components.d.ts',
+  dirs: ['src/shared/components'],
   resolvers: [
     ArcoResolver({
       sideEffect: true,
+      importStyle: 'less',
     }),
     iconsResolver({
       prefix: 'icon',

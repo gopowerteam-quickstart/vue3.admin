@@ -1,33 +1,42 @@
-<script setup lang="tsx">
-const props = defineProps<{
-  name: string
-  size?: number
-}>()
-
-const images = import.meta.glob<{ default: string }>(
-  '@/assets/image/*.(png|jpg)',
-  {
-    eager: true,
+<script lang="tsx">
+export default defineComponent({
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    size: {
+      type: Number,
+      default: 20,
+    },
   },
-)
+  setup(props) {
+    const images = import.meta.glob<{ default: string }>(
+      '@/assets/image/*.(png|jpg)',
+      {
+        eager: true,
+      },
+    )
 
-const icon = Object.entries(images).find(([key, _]) =>
-  key.endsWith(`/${props.name}`),
-)
+    const icon = Object.entries(images).find(([key, _]) =>
+      key.endsWith(`/${props.name}`),
+    )
 
-defineRender(() => {
-  if (!icon) {
-    return
-  }
+    return () => {
+      if (!icon) {
+        return
+      }
 
-  const [_, { default: url }] = icon
+      const [_, { default: url }] = icon
 
-  return (
-    <img
-      src={url}
-      width={props.size}
-      height={props.size}
-    />
-  )
+      return (
+        <img
+          src={url}
+          width={props.size}
+          height={props.size}
+        />
+      )
+    }
+  },
 })
 </script>

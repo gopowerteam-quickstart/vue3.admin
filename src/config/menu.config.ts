@@ -20,4 +20,9 @@ export default [
     icon: 'icon-4.svg',
     title: '目录5',
   },
+  {
+    key: 'demo',
+    icon: 'icon-4.svg',
+    title: '示例',
+  },
 ]

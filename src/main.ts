@@ -1,7 +1,6 @@
 import { ViteSSG, type ViteSSGContext } from 'vite-ssg'
 import router from '~/router'
 
-import '@arco-design/web-vue/dist/arco.css'
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
 import '~/styles/index.less'
