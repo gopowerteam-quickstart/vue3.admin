@@ -3,12 +3,35 @@ import type {
   RequestPlugin,
   RequestSendOptions,
 } from '@gopowerteam/request'
-import type { Ref } from 'vue'
 import type { PaginationOptions } from '@gopowerteam/vue-dynamic-table'
 
 export class PageService implements RequestPlugin, PaginationOptions {
-  pageIndex: Ref<number> = ref(1)
-  pageSize: Ref<number> = ref(20)
+  data = reactive({
+    index: 1,
+    size: 20,
+    total: 0,
+  })
+
+  get pageIndex() {
+    return this.data.index
+  }
+  set pageIndex(value: number) {
+    this.data.index = value
+  }
+
+  get pageSize() {
+    return this.data.size
+  }
+  set pageSize(value: number) {
+    this.data.size = value
+  }
+
+  get total() {
+    return this.data.total
+  }
+  set total(value: number) {
+    this.data.total = value
+  }
   pageSizeOpts: number[] = [10, 20, 30, 40, 50]
   pageLayouts: (
     | 'PrevJump'
@@ -29,7 +52,6 @@ export class PageService implements RequestPlugin, PaginationOptions {
     'FullJump',
     'Total',
   ]
-  total: Ref<number> = ref(0)
 
   /**
    * 构造函数
@@ -37,15 +59,15 @@ export class PageService implements RequestPlugin, PaginationOptions {
    * @param size
    */
   constructor(index = 1, size = 20) {
-    this.pageIndex.value = index
-    this.pageSize.value = size
+    this.pageIndex = index
+    this.pageSize = size
   }
 
   /**
    * 重置操作
    */
   reset(): void {
-    this.pageIndex.value = 1
+    this.pageIndex = 1
   }
 
   /**
@@ -55,8 +77,8 @@ export class PageService implements RequestPlugin, PaginationOptions {
   before(options: RequestSendOptions) {
     options.paramsQuery = {
       ...options.paramsQuery,
-      page: this.pageIndex.value - 1,
-      size: this.pageSize.value,
+      page: this.pageIndex - 1,
+      size: this.pageSize,
     }
   }
 
@@ -65,6 +87,6 @@ export class PageService implements RequestPlugin, PaginationOptions {
    * @param response
    */
   after(response: AdapterResponse) {
-    this.total.value = response.data?.totalElements
+    this.total = response.data?.totalElements
   }
 }

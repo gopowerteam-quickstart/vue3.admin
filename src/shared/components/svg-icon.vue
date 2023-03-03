@@ -26,8 +26,9 @@ export default defineComponent({
       },
     )
 
-    const icon = Object.entries(svgs).find(([key, _]) =>
-      key.endsWith(`/${props.name}.svg`),
+    const icon = Object.entries(svgs).find(
+      ([key, _]) =>
+        key.endsWith(`/${props.name}`) || key.endsWith(`/${props.name}.svg`),
     )
 
     return () => {

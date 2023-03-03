@@ -10,6 +10,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AButton: typeof import('@arco-design/web-vue')['Button']
+    ACard: typeof import('@arco-design/web-vue')['Card']
     ACheckbox: typeof import('@arco-design/web-vue')['Checkbox']
     ADoption: typeof import('@arco-design/web-vue')['Doption']
     ADropdown: typeof import('@arco-design/web-vue')['Dropdown']
@@ -23,6 +24,9 @@ declare module '@vue/runtime-core' {
     ALayoutSider: typeof import('@arco-design/web-vue')['LayoutSider']
     AMenu: typeof import('@arco-design/web-vue')['Menu']
     AMenuItem: typeof import('@arco-design/web-vue')['MenuItem']
+    AOption: typeof import('@arco-design/web-vue')['Option']
+    ASelect: typeof import('@arco-design/web-vue')['Select']
+    ASpace: typeof import('@arco-design/web-vue')['Space']
     AStep: typeof import('@arco-design/web-vue')['Step']
     ASteps: typeof import('@arco-design/web-vue')['Steps']
     ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']
@@ -31,6 +35,9 @@ declare module '@vue/runtime-core' {
     DataTable: typeof import('@gopowerteam/vue-dynamic-table')['DynamicTable']
     'IconPark:menuFold': typeof import('~icons/icon-park/menu-fold')['default']
     'IconPark:menuUnfold': typeof import('~icons/icon-park/menu-unfold')['default']
+    'IconPark:people': typeof import('~icons/icon-park/people')['default']
+    'IconPark:personalCollection': typeof import('~icons/icon-park/personal-collection')['default']
+    'IconParkOutline:people': typeof import('~icons/icon-park-outline/people')['default']
     ImageIcon: typeof import('./../shared/components/image-icon.vue')['default']
     ImagePreview: typeof import('./../shared/components/image-preview.vue')['default']
     MediaGallery: typeof import('./../shared/components/media-gallery.vue')['default']

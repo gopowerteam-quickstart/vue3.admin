@@ -18,8 +18,11 @@ export default defineComponent({
       },
     )
 
-    const icon = Object.entries(images).find(([key, _]) =>
-      key.endsWith(`/${props.name}`),
+    const icon = Object.entries(images).find(
+      ([key, _]) =>
+        key.endsWith(`/${props.name}`) ||
+        key.endsWith(`/${props.name}.jpg`) ||
+        key.endsWith(`/${props.name}.png`),
     )
 
     return () => {

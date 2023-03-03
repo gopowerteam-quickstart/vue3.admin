@@ -1,24 +1,9 @@
-<script setup lang="ts"></script>
-
-<template>
-  <PageContainer title="仪表盘">
-    <div>
-      <a-button
-        @click="() => $router.push({ name: 'page3', params: { id: 1 } })">
-        page3-1
-      </a-button>
-      <a-button
-        @click="() => $router.push({ name: 'page3', params: { id: 2 } })">
-        page3-2
-      </a-button>
-      <div
-        v-for="item in 1000"
-        :key="item">
-        dashboard {{ item }}
-      </div>
-    </div>
-  </PageContainer>
+<template lang="pug">
+PageContainer(absolute title='仪表盘' layout='flex-center')
+  .text-3xl Welcome To Use The QuickStart Project Template
 </template>
+
+<script setup lang="ts"></script>
 
 <route lang="yaml">
 name: dashboard

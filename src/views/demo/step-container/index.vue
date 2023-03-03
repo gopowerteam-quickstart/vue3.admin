@@ -25,8 +25,9 @@ name: step-container-demo
 meta:
   layout: workspace
   requireAuth: true
+  title: step-container示例
   menu:
     key: demo.step-container-demo
     icon: image-1.png
-    title: step-container示例
+    title: StepContainer
 </route>

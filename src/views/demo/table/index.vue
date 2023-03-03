@@ -1,40 +1,49 @@
-<template>
-  <page-container title="111">
-    <a-input placeholder="page2"></a-input>
-
-    <data-table
-      ref="table"
-      :pagination="pageService"
-      row-key="username"
-      :load-data="loadData"
-      :search-forms="searchForms"
-      action-align="right"
-      :edit-forms="searchForms"
-      :columns="columns">
-      <template #actions>
-        <button @click="() => table.reload()">reload</button>
-        <div>1231</div>
-        <div>1231</div>
-        <div>1231</div>
-      </template>
-    </data-table>
-  </page-container>
+<template lang="pug">
+data-table(
+  ref='table'
+  :pagination='pageService'
+  row-key='username'
+  :load-data='loadData'
+  :search-forms='searchForms'
+  action-align='right'
+  :edit-forms='editsForms'
+  :columns='columns')
+  template(#actions)
+    a-button(type='primary' @click='() => table.reload()') 刷新
+    a-button(type='primary' @click='() => onAdd()') 新增
 </template>
 
 <script setup lang="ts">
+import type { UploadTask } from '@/shared/utils/upload.service'
 import { PageService } from '@/http/extends/page.service'
 import {
   useTable,
-  type DataRecord,
-  type FormItemsOptions,
   type LoadDataParams,
+  type FormItemsOptions,
   type TableColumnsOptions,
+  type DataRecord,
 } from '@gopowerteam/vue-dynamic-table'
 
 type DataItem = {
   phone: string
   username: string
   nickname: string
+}
+
+function onAdd() {
+  table.value.edit({
+    title: '创建',
+    record: {
+      phone: '',
+      username: '',
+      nickname: '',
+    },
+    appendRowKey: true,
+    submit: (data: DataRecord) => {
+      // eslint-disable-next-line no-console
+      console.log('add:', data)
+    },
+  })
 }
 
 const pageService = new PageService()
@@ -65,8 +74,29 @@ function loadData({ update }: LoadDataParams) {
 const searchForms: FormItemsOptions = [
   {
     key: 'phone',
-    title: 'phone',
+    title: '手机号',
     rules: [{ required: true, message: '请输入手机号' }],
+    render: (r) => r.input(),
+  },
+]
+
+const editsForms: FormItemsOptions = [
+  {
+    key: 'phone',
+    title: '手机号',
+    rules: [{ required: true, message: '请输入手机号' }],
+    render: (r) => r.input(),
+  },
+  {
+    key: 'username',
+    title: '用户名',
+    rules: [{ required: true, message: '请输入用户名' }],
+    render: (r) => r.input(),
+  },
+  {
+    key: 'nickname',
+    title: '昵称',
+    rules: [{ required: true, message: '请输入昵称' }],
     render: (r) => r.input(),
   },
 ]
@@ -104,6 +134,7 @@ const columns: TableColumnsOptions<DataItem> = [
             confirmText: 'gogogo',
             confirmAppend: '#test',
             callback: (record) => {
+              // eslint-disable-next-line no-console
               console.log(record)
             },
           },
@@ -111,9 +142,11 @@ const columns: TableColumnsOptions<DataItem> = [
             text: '编辑',
             callback: (record) => {
               table.value.edit({
+                title: '编辑',
                 record,
                 appendRowKey: true,
                 submit: (data: DataRecord) => {
+                  // eslint-disable-next-line no-console
                   console.log(data)
                 },
               })
@@ -126,11 +159,13 @@ const columns: TableColumnsOptions<DataItem> = [
 </script>
 
 <route lang="yaml">
-name: page2
+name: table-demo
 meta:
   layout: workspace
+  requireAuth: true
+  title: table示例
   menu:
-    key: root2.test.page2
-    icon: xxx
-    title: Page2
+    key: demo.table-demo
+    icon: image-1.png
+    title: Table
 </route>
