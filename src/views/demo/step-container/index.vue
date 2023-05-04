@@ -1,12 +1,17 @@
-<template lang="pug">
-page-container
-  step-container(@submit='onSubmit')
-    step-item(title='步骤1' step-key='product1')
-      step1
-    step-item(title='步骤2' step-key='product2')
-      step2
-    step-item(title='步骤3' step-key='product3')
-      step3
+<template>
+  <page-container>
+    <step-container @submit="onSubmit">
+      <step-item step-key="product1" title="步骤1">
+        <step1 />
+      </step-item>
+      <step-item step-key="product2" title="步骤2">
+        <step2 />
+      </step-item>
+      <step-item step-key="product3" title="步骤3">
+        <step3 />
+      </step-item>
+    </step-container>
+  </page-container>
 </template>
 
 <script lang="ts" setup>

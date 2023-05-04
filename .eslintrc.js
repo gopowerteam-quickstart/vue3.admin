@@ -4,73 +4,38 @@ module.exports = {
     browser: true,
     es2022: true,
   },
-  extends: [
-    // 基础规则引入
-    'eslint:recommended',
-    // React规则引入
-    // 'plugin:react/recommended',
-    // prettier规则引入&处理perttier-eslint冲突
-    'plugin:prettier/recommended',
-    './.eslintrc-auto-import.json',
-  ],
-  overrides: [
-    {
-      files: ['**/*.{js,jsx}'],
-      parser: '@babel/eslint-parser',
-      parserOptions: {
-        sourceType: 'module',
-        allowImportExportEverywhere: false,
-        ecmaFeatures: {
-          globalReturn: false,
-        },
+  extends: ['@gopowerteam/eslint-config', './.eslintrc-auto-import.json'],
+  rules: {
+    'vue/valid-template-root': ['off'],
+    'vue/one-component-per-file': ['off'],
+    'vue/multi-word-component-names': ['off'],
+    'no-console': ['warn'],
+    'vue/require-default-prop': ['off'],
+    'eslint-comments/no-unlimited-disable': 'off',
+    'vue/html-quotes': ['error', 'double', { avoidEscape: true }],
+    // eslint-plugin-vue 规则：要求组件名在模板中使用 PascalCase 命名法
+    'vue/component-name-in-template-casing': ['off', 'PascalCase', {
+      registeredComponentsOnly: true,
+    }],
+    // 控制html代码缩进
+    'vue/html-indent': ['error', 2, {
+      attribute: 1,
+      baseIndent: 1,
+      closeBracket: 0,
+      alignAttributesVertically: true,
+      ignores: [],
+    }],
+    // eslint-plugin-vue 规则：允许单行3个属性,多行1一个属性
+    'vue/max-attributes-per-line': ['error', {
+      singleline: {
+        max: 3,
       },
-    },
-    {
-      files: ['**/*.{ts,tsx}'],
-      extends: [
-        // typescript支持引入
-        'plugin:@typescript-eslint/recommended',
-      ],
-      rules: {
-        '@typescript-eslint/no-unused-vars': [
-          'warn',
-          {
-            argsIgnorePattern: '^_',
-            varsIgnorePattern: '^_',
-            caughtErrorsIgnorePattern: '^_',
-          },
-        ],
+      multiline: {
+        max: 1,
       },
-    },
-    {
-      files: ['**/*.vue'], // 只处理 vue 文件
-      extends: [
-        // vue3支持引入
-        // 'plugin:vue/vue3-essential',
-        'plugin:vue/vue3-strongly-recommended',
-        'plugin:vue/vue3-recommended',
-        'plugin:vue-pug/vue3-recommended',
-        'plugin:prettier-vue/recommended',
-        // typescript支持引入
-        '@vue/typescript',
-      ],
-      rules: {
-        'vue/one-component-per-file': ['off'],
-        'vue/multi-word-component-names': ['off'],
-        // 'vue/max-attributes-per-line': ['off'],
-        // 'vue/html-indent': ['off']
-        // 'vue/attributes-order': ['off'],
-        'no-console': ['warn'],
-        'vue/require-default-prop': ['off'],
-        '@typescript-eslint/no-unused-vars': [
-          'warn',
-          {
-            argsIgnorePattern: '^_',
-            varsIgnorePattern: '^_',
-            caughtErrorsIgnorePattern: '^_',
-          },
-        ],
-      },
-    },
-  ],
+    }],
+    'no-sequences': ['off'],
+    'prefer-promise-reject-errors': ['error', { allowEmptyReject: true }],
+    'vue/no-unused-refs': ['off'],
+  },
 }

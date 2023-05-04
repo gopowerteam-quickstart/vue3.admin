@@ -1,4 +1,4 @@
-import generatedRoutes from '~pages'
+import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:generated-layouts'
 import type { RouteRecordRaw } from 'vue-router'
 

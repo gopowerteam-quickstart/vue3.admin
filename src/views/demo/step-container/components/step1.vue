@@ -1,5 +1,7 @@
-<template lang="pug">
-.a step1
+<template>
+  <div class="a">
+    step1
+  </div>
 </template>
 
 <script setup lang="ts">

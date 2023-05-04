@@ -1,6 +1,9 @@
-<template lang="pug">
-PageContainer(absolute title='仪表盘' layout='flex-center')
-  .text-3xl Welcome To Use The QuickStart Project Template
+<template>
+  <PageContainer absolute layout="flex-center" title="仪表盘">
+    <div class="text-3xl">
+      Welcome To Use The QuickStart Project Template
+    </div>
+  </PageContainer>
 </template>
 
 <script setup lang="ts"></script>

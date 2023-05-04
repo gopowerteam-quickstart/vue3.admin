@@ -1,34 +1,42 @@
-<template lang="pug">
-data-table(
-  ref='table'
-  :pagination='pageService'
-  row-key='username'
-  :load-data='loadData'
-  :search-forms='searchForms'
-  action-align='right'
-  :edit-forms='editsForms'
-  :columns='columns')
-  template(#actions)
-    a-button(type='primary' @click='() => table.reload()') 刷新
-    a-button(type='primary' @click='() => onAdd()') 新增
+<template>
+  <data-table
+    ref="table"
+    action-align="right"
+    :columns="columns"
+    :edit-forms="editsForms"
+    :load-data="loadData"
+    :pagination="pageService"
+    row-key="username"
+    :search-forms="searchForms"
+  >
+    <template #actions>
+      <a-button type="primary" @click="() => table.reload()">
+        刷新
+      </a-button>
+      <a-button type="primary" @click="() => onAdd()">
+        新增
+      </a-button>
+    </template>
+  </data-table>
 </template>
 
 <script setup lang="ts">
-import type { UploadTask } from '@/shared/utils/upload.service'
-import { PageService } from '@/http/extends/page.service'
 import {
-  useTable,
-  type LoadDataParams,
-  type FormItemsOptions,
-  type TableColumnsOptions,
   type DataRecord,
+  type FormItemsOptions,
+  type LoadDataParams,
+  type TableColumnsOptions,
+  useTable,
 } from '@gopowerteam/vue-dynamic-table'
+import { PageService } from '@/http/extends/page.service'
 
-type DataItem = {
+interface DataItem {
   phone: string
   username: string
   nickname: string
 }
+
+const table = useTable('table')
 
 function onAdd() {
   table.value.edit({
@@ -47,7 +55,6 @@ function onAdd() {
 }
 
 const pageService = new PageService()
-const table = useTable('table')
 
 function loadData({ update }: LoadDataParams) {
   setTimeout(() => {
@@ -76,7 +83,7 @@ const searchForms: FormItemsOptions = [
     key: 'phone',
     title: '手机号',
     rules: [{ required: true, message: '请输入手机号' }],
-    render: (r) => r.input(),
+    render: r => r.input(),
   },
 ]
 
@@ -85,19 +92,19 @@ const editsForms: FormItemsOptions = [
     key: 'phone',
     title: '手机号',
     rules: [{ required: true, message: '请输入手机号' }],
-    render: (r) => r.input(),
+    render: r => r.input(),
   },
   {
     key: 'username',
     title: '用户名',
     rules: [{ required: true, message: '请输入用户名' }],
-    render: (r) => r.input(),
+    render: r => r.input(),
   },
   {
     key: 'nickname',
     title: '昵称',
     rules: [{ required: true, message: '请输入昵称' }],
-    render: (r) => r.input(),
+    render: r => r.input(),
   },
 ]
 
@@ -110,13 +117,13 @@ const columns: TableColumnsOptions<DataItem> = [
   {
     key: 'phone',
     title: '手机号',
-    render: (r) => r.phone({ safe: true, callable: true }),
+    render: r => r.phone({ safe: true, callable: true }),
   },
 
   {
     key: 'nickname',
     title: '用户名',
-    render: (r) =>
+    render: r =>
       r.text({
         color: 'red',
         text: '1',
@@ -125,7 +132,7 @@ const columns: TableColumnsOptions<DataItem> = [
   {
     key: 'action',
     title: '操作',
-    render: (r) =>
+    render: r =>
       r.button({
         buttons: [
           {

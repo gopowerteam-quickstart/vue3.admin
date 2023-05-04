@@ -1,7 +1,10 @@
-<template lang="pug">
-.step-item-container
-  slot
+<template>
+  <div class="step-item-container">
+    <slot />
+  </div>
 </template>
+
+<style scoped lang="less"></style>
 
 <script setup lang="ts">
 defineProps<{
@@ -9,5 +12,3 @@ defineProps<{
   title: string
 }>()
 </script>
-
-<style scoped lang="less"></style>

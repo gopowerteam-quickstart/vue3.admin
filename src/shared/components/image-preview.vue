@@ -1,11 +1,24 @@
-<template lang="pug">
-.image-preview
-  a-image(:preview='preview' :src='url' show-loader)
+<template>
+  <div class="image-preview">
+    <a-image :preview="preview" show-loader :src="url" />
+  </div>
 </template>
 
+<style lang="less" scoped>
+.image-preview {
+  position: relative;
+  display: inline-block;
+  font-size: 0;
+  :deep(img.arco-image-img) {
+    max-width: v-bind(width);
+    max-height: v-bind(height);
+  }
+}
+</style>
+
 <script setup lang="ts">
-import { DisplayScene } from '@/config/enum.config'
 import { asyncComputed } from '@vueuse/core'
+import { DisplayScene } from '@/config/enum.config'
 
 const props = withDefaults(
   defineProps<{
@@ -56,11 +69,10 @@ const url = asyncComputed(
   async () => {
     const prefixs = ['blob:', 'http://', 'https://']
 
-    if (prefixs.some((prefix) => props.src.startsWith(prefix))) {
+    if (prefixs.some(prefix => props.src.startsWith(prefix)))
       return props.src
-    } else {
+    else
       return getImageUrl(props.src, props.scene)
-    }
   },
   '',
   {
@@ -68,15 +80,3 @@ const url = asyncComputed(
   },
 )
 </script>
-
-<style lang="less" scoped>
-.image-preview {
-  position: relative;
-  display: inline-block;
-  font-size: 0;
-  :deep(img.arco-image-img) {
-    max-width: v-bind(width);
-    max-height: v-bind(height);
-  }
-}
-</style>

@@ -5,6 +5,7 @@ import icons from './unplugin-icons'
 import components from './unplugin-vue-components'
 import pages from './vite-plugin-pages'
 import layouts from './vite-plugin-vue-layouts'
+import ReactivityTransform from '@vue-macros/reactivity-transform/vite'
 
 /**
  * DefineVitePlugins
@@ -22,6 +23,7 @@ export function defineVitePlugins(
       components,
       icons,
       unocss,
+      ReactivityTransform(),
       ...plugins,
     ],
   }

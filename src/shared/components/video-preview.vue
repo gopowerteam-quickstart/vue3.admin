@@ -1,16 +1,19 @@
-<template lang="pug">
-.video-preview
-  image-preview(
-    v-if='cover !== undefined'
-    :src='cover'
-    width='150px'
-    height='120px')
-  .w-150px.h-120px.flex.flex-center
-    icon-park-outline:video-file.text-lg
+<template>
+  <div class="video-preview">
+    <image-preview
+      v-if="cover !== undefined"
+      height="120px"
+      :src="cover"
+      width="150px"
+    />
+    <div class="w-150px h-120px flex flex-center">
+      <icon-park-outline:video-file class="text-lg" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
-type VideoInfo = {
+interface VideoInfo {
   src: string
   cover?: string
 }

@@ -1,18 +1,13 @@
-<template lang="pug">
-.upload-progress.relative
-  Transition
-    .progress.flex.flex-center(v-if='task && !task?.completed') {{ task?.progress }}%
-
-  slot
+<template>
+  <div class="upload-progress relative">
+    <Transition>
+      <div v-if="task && !task?.completed" class="progress flex flex-center">
+        {{ task?.progress }}%
+      </div>
+    </Transition>
+    <slot />
+  </div>
 </template>
-
-<script setup lang="ts">
-import type { UploadTask } from '../utils/upload.service'
-
-defineProps<{
-  task?: UploadTask
-}>()
-</script>
 
 <style lang="less" scoped>
 .upload-progress {
@@ -43,3 +38,11 @@ defineProps<{
   transition-delay: 5s;
 }
 </style>
+
+<script setup lang="ts">
+import type { UploadTask } from '../utils/upload.service'
+
+defineProps<{
+  task?: UploadTask
+}>()
+</script>

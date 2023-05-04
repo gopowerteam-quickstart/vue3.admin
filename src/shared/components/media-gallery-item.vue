@@ -1,60 +1,19 @@
-<template lang="pug">
-.media-gallery-item
-  upload-progress(:task='task')
-    .media-wrapper.flex-center
-      .image-gallery-item(v-if='type === FileType.Image')
-        image-preview(:width='width' :height='height' :src='task?.url || src')
-  .action.flex.justify-end.space-x-2.p-1
-    .remove(@click='emits("delete", src || task?.key || "")')
-      icon-park-outline:delete.text-xs
+<template>
+  <div class="media-gallery-item">
+    <upload-progress :task="task">
+      <div class="media-wrapper flex-center">
+        <div v-if="type === FileType.Image" class="image-gallery-item">
+          <image-preview :height="height" :src="task?.url || src" :width="width" />
+        </div>
+      </div>
+    </upload-progress>
+    <div class="action flex justify-end space-x-2 p-1">
+      <div class="remove" @click="emits('delete', src || task?.key || '')">
+        <icon-park-outline:delete class="text-xs" />
+      </div>
+    </div>
+  </div>
 </template>
-
-<script setup lang="ts">
-import { FileType } from '@/config/enum.config'
-import type { UploadTask } from '../utils/upload.service'
-
-const props = defineProps<{
-  width?: string
-  height?: string
-  type: FileType
-  task?: UploadTask
-  src?: string
-}>()
-
-const emits = defineEmits({
-  delete: (key: string) => key,
-})
-
-const mediaGallery = getRootCompoent()
-
-const width = computed(() => {
-  if (props.width) {
-    return props.width
-  }
-
-  return mediaGallery?.props?.width
-})
-
-const height = computed(() => {
-  if (props.height) {
-    return props.height
-  }
-
-  return mediaGallery?.props?.height
-})
-
-function getRootCompoent() {
-  const currentInstance = getCurrentInstance()
-
-  let component = currentInstance?.parent
-
-  while (component && component?.type?.name !== 'MediaGallery') {
-    component = component.parent
-  }
-
-  return component
-}
-</script>
 
 <style lang="less" scoped>
 .media-gallery-item {
@@ -82,3 +41,47 @@ function getRootCompoent() {
   background-color: rgb(0 0 0 / 10%);
 }
 </style>
+
+<script setup lang="ts">
+import type { UploadTask } from '../utils/upload.service'
+import { FileType } from '@/config/enum.config'
+
+const props = defineProps<{
+  width?: string
+  height?: string
+  type: FileType
+  task?: UploadTask
+  src?: string
+}>()
+
+const emits = defineEmits({
+  delete: (key: string) => key,
+})
+
+const mediaGallery = getRootCompoent()
+
+const width = computed(() => {
+  if (props.width)
+    return props.width
+
+  return mediaGallery?.props?.width
+})
+
+const height = computed(() => {
+  if (props.height)
+    return props.height
+
+  return mediaGallery?.props?.height
+})
+
+function getRootCompoent() {
+  const currentInstance = getCurrentInstance()
+
+  let component = currentInstance?.parent
+
+  while (component && component?.type?.name !== 'MediaGallery')
+    component = component.parent
+
+  return component
+}
+</script>

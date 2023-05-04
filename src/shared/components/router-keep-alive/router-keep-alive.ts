@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { isFunction } from '@vueuse/core'
 import {
   callWithAsyncErrorHandling,
   cloneVNode,
@@ -484,7 +483,7 @@ function getComponentName(
   Component: ConcreteComponent,
   includeInferred = true,
 ): string | false | undefined {
-  return isFunction(Component)
+  return typeof Component === 'function'
     ? Component.displayName || Component.name
     : Component.name || (includeInferred && Component.__name)
 }

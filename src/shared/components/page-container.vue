@@ -1,20 +1,29 @@
-<template lang="pug">
-.page-container(:style='styles')
-  .page-header.flex.justify-end
-    .page-actions.mb-2
-      slot(name='action')
-  .page-body(:class='pageBodyClass')
-    slot
+<template>
+  <div class="page-container" :style="styles">
+    <div class="page-header flex justify-end">
+      <div class="page-actions mb-2">
+        <slot name="action" />
+      </div>
+    </div>
+    <div class="page-body" :class="pageBodyClass">
+      <slot />
+    </div>
+  </div>
 </template>
+
+<style lang="less" scoped>
+.page-container {
+  overflow: auto;
+  min-height: calc(100vh - 159px);
+}
+</style>
 
 <script lang="ts" setup>
 import type { CSSProperties } from 'vue'
-import { appConfig } from '@/config/app.config'
 import type { ClassName } from '@arco-design/web-vue/es/_utils/types'
+import { appConfig } from '@/config/app.config'
 import { useStore } from '@/store'
 
-const store = useStore()
-const route = useRoute()
 const props = withDefaults(
   defineProps<{
     title?: string
@@ -32,7 +41,8 @@ const props = withDefaults(
     space: true,
   },
 )
-
+const store = useStore()
+const route = useRoute()
 /**
  * 生成外层样式
  */
@@ -57,21 +67,21 @@ const styles = computed<CSSProperties>(() => {
  * 生成bodyClass
  */
 const pageBodyClass = computed<ClassName>(() => {
-  const space_direction =
-    props.layout === 'block' || props.layout === 'flex-column' ? 'y' : 'x'
+  const space_direction
+    = props.layout === 'block' || props.layout === 'flex-column' ? 'y' : 'x'
 
   const space_number = typeof props.space === 'number' ? props.space : 2
 
   return Object.assign(
     { [`space-${space_direction}-${space_number}`]: !!props.space },
     props.layout === 'flex-row'
-      ? ({ flex: true, 'flex-row': true } as ClassName)
+      ? ({ 'flex': true, 'flex-row': true } as ClassName)
       : {},
     props.layout === 'flex-column'
-      ? ({ flex: true, 'flex-col': true } as ClassName)
+      ? ({ 'flex': true, 'flex-col': true } as ClassName)
       : {},
     props.layout === 'flex-center'
-      ? ({ flex: true, 'flex-center': true, 'flex-auto': true } as ClassName)
+      ? ({ 'flex': true, 'flex-center': true, 'flex-auto': true } as ClassName)
       : {},
   )
 })
@@ -80,21 +90,18 @@ const pageBodyClass = computed<ClassName>(() => {
  */
 function updatePageTitle() {
   const title = props.title || route.meta.title
-  console.log(title)
-  if (title) {
+  if (title)
     store.app.updateTitle(title as string)
-  }
 }
 
 /**
  * 更新Tab标题
  */
 function updateTabTitle() {
-  const tab = store.tab.tabs.find((x) => x.key === route.fullPath)
+  const tab = store.tab.tabs.find(x => x.key === route.fullPath)
   const title = props.title || route.meta.title
-  if (tab && title) {
+  if (tab && title)
     tab.title = title as string
-  }
 }
 
 onActivated(() => {
@@ -102,10 +109,8 @@ onActivated(() => {
 })
 
 onBeforeMount(() => {
-  if (props.title) {
-    updatePageTitle()
-    updateTabTitle()
-  }
+  updatePageTitle()
+  updateTabTitle()
 })
 </script>
 
@@ -115,10 +120,3 @@ export default {
   inheritAttrs: false,
 }
 </script>
-
-<style lang="less" scoped>
-.page-container {
-  overflow: auto;
-  min-height: calc(100vh - 159px);
-}
-</style>

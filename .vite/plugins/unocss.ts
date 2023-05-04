@@ -1,6 +1,4 @@
 import unocss from 'unocss/vite'
-import extractorPug from '@unocss/extractor-pug'
-import { extractorSplit } from '@unocss/core'
 import { presetAttributify, presetUno } from 'unocss'
 import transformerDirective from '@unocss/transformer-directives'
 
@@ -14,7 +12,6 @@ export default unocss({
     }),
   ],
   transformers: [transformerDirective()],
-  extractors: [extractorPug(), extractorSplit],
   theme: {
     colors: {
       primary: '#1f6ae3',
