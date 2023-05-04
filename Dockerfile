@@ -1,13 +1,16 @@
 # STEP1: 构建基础镜像
-FROM alpine:3.14 AS base
+FROM alpine:3.17 as base
 # -设置环境变量
+ENV NODE_VERSION=18.15.0
+ENV PNPM_VERSION=7.27.0
 ENV APP_PATH=/app
 # -设置工作目录
 WORKDIR $APP_PATH
-# -安装pm2
-RUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
-  && apk add --no-cache --update nodejs npm \
-  && npm install -g pnpm
+# 安装基础包
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
+    && apk add --no-cache nodejs python3 curl gcc g++ make linux-headers \
+    && curl -sL https://unpkg.com/@pnpm/self-installer | node
+
 
 
 # STEP2: 构建依赖镜像
