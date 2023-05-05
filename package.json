@@ -52,6 +52,7 @@
     "@types/node": "18",
     "@types/nprogress": "0.2.0",
     "@types/prettier": "2.7.2",
+    "@types/qs": "^6.9.7",
     "@unocss/core": "0.51.8",
     "@unocss/reset": "0.51.8",
     "@unocss/transformer-directives": "0.51.8",
