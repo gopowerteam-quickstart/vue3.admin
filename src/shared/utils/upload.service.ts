@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid/non-secure'
-import { useLogger } from '../hooks/use-logger'
 import * as qiniu from 'qiniu-js'
+import { useLogger } from '../hooks/use-logger'
 import { FileType } from '@/config/enum.config'
 
 // 文件服务接口
@@ -15,9 +15,8 @@ interface IStorageService {
  */
 function generateFileKey(fileObject: File | string) {
   // JSSDK上传图片支持
-  if (typeof fileObject === 'string') {
+  if (typeof fileObject === 'string')
     return fileObject
-  }
 
   // 直接返回KEY不需要保存后缀
   return nanoid()
@@ -54,7 +53,7 @@ export class UploadTask {
     const documentSuffix = ['txt', 'doc', 'docx', 'ppt', 'xlsx']
 
     const checkSuffixType = (filename: string, suffixs: string[]) =>
-      RegExp('.(' + suffixs.join('|') + ')$', 'i').test(filename.toLowerCase())
+      RegExp(`.(${suffixs.join('|')})$`, 'i').test(filename.toLowerCase())
 
     switch (true) {
       case checkSuffixType(this.filename, imageSuffix):
@@ -111,7 +110,7 @@ export class UploadTask {
   }
 
   public abort() {
-    this.abortListeners.forEach((callback) => callback(this.key))
+    this.abortListeners.forEach(callback => callback(this.key))
   }
 
   public done(key: string, meta?: unknown) {
@@ -119,7 +118,7 @@ export class UploadTask {
     this.meta = meta
     this.completed.value = true
     this.progress.value = 1
-    this.completeListeners.forEach((callback) => callback(this.key))
+    this.completeListeners.forEach(callback => callback(this.key))
   }
 }
 
@@ -180,9 +179,8 @@ export class UploadService {
   }
 
   constructor() {
-    if (!UploadService.storageService) {
+    if (!UploadService.storageService)
       this.createStroageService()
-    }
   }
 
   /**

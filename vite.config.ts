@@ -10,7 +10,7 @@ export default defineConfig({
   ...defineViteResolve(),
   ...defineViteCSS(),
   ...defineVitePlugins([
-    vue(),
+    vue({ reactivityTransform: true }),
     jsx(),
     svg(),
   ]),

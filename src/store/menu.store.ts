@@ -1,10 +1,10 @@
-import { appConfig } from '@/config/app.config'
-import type { Menu } from '@/types/workspace'
 import { defineStore } from 'pinia'
 import type { Router } from 'vue-router'
+import { appConfig } from '@/config/app.config'
+import type { Menu } from '@/types/workspace'
 import menus from '~/config/menu.config'
 
-type State = {
+interface State {
   // 侧边栏展开状态
   collapsed: boolean
   // 系统菜单列表
@@ -58,7 +58,7 @@ export const useMenuStore = defineStore('menu', {
     /**
      * 检测用户菜单权限
      */
-    checkMenuRole(menu: Menu) {
+    checkMenuRole(_menu: Menu) {
       // TODO: 用户菜单权限检测 requireRoles includes userRoles
       return true
     },
@@ -71,13 +71,13 @@ export const useMenuStore = defineStore('menu', {
       const pages = router
         .getRoutes()
         .filter(
-          (route) =>
-            route.children.length &&
-            route.children[0]?.meta?.menu &&
-            route.children[0]?.meta?.layout === 'workspace',
+          route =>
+            route.children.length
+            && route.children[0]?.meta?.menu
+            && route.children[0]?.meta?.layout === 'workspace',
         )
         .map(
-          (route) =>
+          route =>
             ({
               path: route.path,
               name: route.children[0].name,
@@ -94,27 +94,27 @@ export const useMenuStore = defineStore('menu', {
 
       // 获取根菜单项
       const roots = userMenus.filter(
-        (route) => route.key && !route.key.includes('.'),
+        route => route.key && !route.key.includes('.'),
       )
 
       // TODO: 处理排序排序问题
       // 生成用户菜单树
       const createMenuTree = (menu: Menu) => {
         const children = userMenus.filter(
-          (route) =>
+          route =>
             route.key === `${menu.key}.${route.key.split('.').slice(-1)}`,
         )
 
-        if (!menu.path) {
+        if (!menu.path)
           menu.children = children.map(createMenuTree).filter(Boolean) as Menu[]
-        } else {
+        else
           menu.isLeaf = true
-        }
 
         // 去除无子节点的空目录
         if (!menu.path && menu.children?.length === 0) {
-          return
-        } else {
+          // TODO
+        }
+        else {
           return menu
         }
       }
@@ -123,7 +123,7 @@ export const useMenuStore = defineStore('menu', {
       const headerMenus = roots
         .map(createMenuTree)
         .filter(Boolean)
-        .filter((menu) => menu?.path || menu?.children?.length) as Menu[]
+        .filter(menu => menu?.path || menu?.children?.length) as Menu[]
 
       // 更新用户菜单
       this.updateMenus(userMenus)
@@ -137,7 +137,7 @@ export const useMenuStore = defineStore('menu', {
           this.updateSideMenus(headerMenus)
           break
         case 'all': {
-          headerMenus.forEach((m) => (m.isLeaf = true))
+          headerMenus.forEach(m => (m.isLeaf = true))
           this.updateHeaderMenus(headerMenus)
           break
         }

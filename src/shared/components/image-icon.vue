@@ -20,15 +20,14 @@ export default defineComponent({
 
     const icon = Object.entries(images).find(
       ([key, _]) =>
-        key.endsWith(`/${props.name}`) ||
-        key.endsWith(`/${props.name}.jpg`) ||
-        key.endsWith(`/${props.name}.png`),
+        key.endsWith(`/${props.name}`)
+        || key.endsWith(`/${props.name}.jpg`)
+        || key.endsWith(`/${props.name}.png`),
     )
 
     return () => {
-      if (!icon) {
+      if (!icon)
         return
-      }
 
       const [_, { default: url }] = icon
 

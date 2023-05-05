@@ -3,8 +3,6 @@ import { Message } from '@arco-design/web-vue'
 
 import {
   type AdapterResponse,
-  type RequestPlugin,
-  type RequestSendOptions,
   type ResponseInterceptor,
   setup,
 } from '@gopowerteam/request'

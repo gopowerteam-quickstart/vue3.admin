@@ -21,9 +21,9 @@ export default defineComponent({
   setup(props: any) {
     const svgs = import.meta.glob<{ render: () => VNode }>(
       '@/assets/svg/*.svg',
-      {
-        eager: true,
-      },
+    {
+      eager: true,
+    },
     )
 
     const icon = Object.entries(svgs).find(
@@ -32,9 +32,8 @@ export default defineComponent({
     )
 
     return () => {
-      if (!icon) {
+      if (!icon)
         return
-      }
 
       const [_, { render }] = icon
       const svg = render()
@@ -44,9 +43,8 @@ export default defineComponent({
         svg.props.height = props.size
       }
 
-      if (svg && svg.props && props.color) {
+      if (svg && svg.props && props.color)
         svg.props.fill = props.color
-      }
 
       return svg
     }

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-type State = {
+interface State {
   // 系统准备状态
   ready: boolean
   // 页面标题

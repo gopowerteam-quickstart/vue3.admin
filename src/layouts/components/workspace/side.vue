@@ -3,36 +3,30 @@
     v-if="store.menu.sideMenus.length"
     class="side !relative"
     :collapsed="store.menu.collapsed"
+    :collapsed-width="appConfig.workspace.sideCollapsedWidth"
     :width="appConfig.workspace.sideWidth"
-    :collapsed-width="appConfig.workspace.sideCollapsedWidth">
+  >
     <div class="flex flex-col justify-between h-full">
-      <SideMenu></SideMenu>
+      <SideMenu />
 
       <div
         v-if="appConfig.workspace.navigation !== 'header'"
         class="collapse"
         type="text"
-        @click="() => store.menu.toggleCollapse()">
+        @click="() => store.menu.toggleCollapse()"
+      >
         <icon-park:menu-unfold
           v-if="store.menu.collapsed"
-          class="icon" />
+          class="icon"
+        />
         <icon-park:menu-fold
           v-else
-          class="icon" />
+          class="icon"
+        />
       </div>
     </div>
   </a-layout-sider>
 </template>
-
-<script setup lang="ts">
-import { appConfig } from '@/config/app.config'
-import { useStore } from '@/store'
-import SideMenu from './side-menu.vue'
-
-const store = useStore()
-
-const width = computed(() => `${appConfig.workspace.sideCollapsedWidth}px`)
-</script>
 
 <style lang="less" scoped>
 .side {
@@ -48,3 +42,13 @@ const width = computed(() => `${appConfig.workspace.sideCollapsedWidth}px`)
   }
 }
 </style>
+
+<script setup lang="ts">
+import SideMenu from './side-menu.vue'
+import { appConfig } from '@/config/app.config'
+import { useStore } from '@/store'
+
+const store = useStore()
+
+const width = computed(() => `${appConfig.workspace.sideCollapsedWidth}px`)
+</script>

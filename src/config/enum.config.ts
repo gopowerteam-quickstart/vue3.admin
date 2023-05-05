@@ -1,4 +1,4 @@
-//#region 系统字典
+// #region 系统字典
 /**
  * Tab操作
  */
@@ -21,4 +21,4 @@ export enum FileType {
   Other = 'OTHER',
 }
 
-//#endregion
+// #endregion

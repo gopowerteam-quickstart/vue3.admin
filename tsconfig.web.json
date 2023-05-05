@@ -30,7 +30,7 @@
       "vite/client",
       "vite-plugin-pages/client",
       "vite-plugin-vue-layouts/client",
-      "@vue-macros/reactivity-transform/macros-global"
+      "vue/macros-global"
     ],
     "paths": {
       "@/*": ["src/*"],

@@ -1,6 +1,12 @@
+<template>
+  <modal-provider>
+    <RouterView />
+  </modal-provider>
+</template>
+
 <script setup lang="ts">
-import { appConfig } from './config/app.config'
 import { ModalProvider } from '@gopowerteam/vue-modal'
+import { appConfig } from './config/app.config'
 import { useStore } from '@/store'
 
 const store = useStore()
@@ -9,15 +15,14 @@ const isDark = useDark()
 const preferredDark = usePreferredDark()
 
 const title = computed(() => {
-  if (store.app.title) {
+  if (store.app.title)
     return `${appConfig.title}-${store.app.title}`
-  } else {
+  else
     return appConfig.title
-  }
 })
 
 useHead({
-  title: title,
+  title,
   meta: [
     {
       name: 'description',
@@ -39,9 +44,3 @@ useHead({
   ],
 })
 </script>
-
-<template>
-  <modal-provider>
-    <RouterView />
-  </modal-provider>
-</template>

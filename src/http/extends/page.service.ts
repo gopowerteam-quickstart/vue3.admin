@@ -15,6 +15,7 @@ export class PageService implements RequestPlugin, PaginationOptions {
   get pageIndex() {
     return this.data.index
   }
+
   set pageIndex(value: number) {
     this.data.index = value
   }
@@ -22,6 +23,7 @@ export class PageService implements RequestPlugin, PaginationOptions {
   get pageSize() {
     return this.data.size
   }
+
   set pageSize(value: number) {
     this.data.size = value
   }
@@ -29,9 +31,11 @@ export class PageService implements RequestPlugin, PaginationOptions {
   get total() {
     return this.data.total
   }
+
   set total(value: number) {
     this.data.total = value
   }
+
   pageSizeOpts: number[] = [10, 20, 30, 40, 50]
   pageLayouts: (
     | 'PrevJump'
@@ -43,15 +47,15 @@ export class PageService implements RequestPlugin, PaginationOptions {
     | 'FullJump'
     | 'Total'
   )[] = [
-    'PrevJump',
-    'PrevPage',
-    'JumpNumber',
-    'NextPage',
-    'NextJump',
-    'Sizes',
-    'FullJump',
-    'Total',
-  ]
+      'PrevJump',
+      'PrevPage',
+      'JumpNumber',
+      'NextPage',
+      'NextJump',
+      'Sizes',
+      'FullJump',
+      'Total',
+    ]
 
   /**
    * 构造函数

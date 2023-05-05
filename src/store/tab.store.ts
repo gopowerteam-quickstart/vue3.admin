@@ -1,7 +1,7 @@
-import type { Tab } from '@/types/workspace'
 import { defineStore } from 'pinia'
+import type { Tab } from '@/types/workspace'
 
-type State = {
+interface State {
   // 选项卡列表
   tabs: Tab[]
 }
@@ -26,11 +26,10 @@ export const useTabStore = defineStore('tab', {
     deleteTab(key: string | string[]) {
       const keys = Array.isArray(key) ? key : [key]
 
-      if (this.tabs.length === 1) {
+      if (this.tabs.length === 1)
         return
-      }
 
-      this.tabs = this.tabs.filter((tab) => !keys.includes(tab.key))
+      this.tabs = this.tabs.filter(tab => !keys.includes(tab.key))
     },
   },
 })

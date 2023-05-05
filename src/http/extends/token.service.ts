@@ -11,7 +11,7 @@ export class TokenService implements RequestPlugin {
     if (store.user.token) {
       options.headers = {
         ...options.headers,
-        ['Authorization']: `${store.user.token}`,
+        Authorization: `${store.user.token}`,
       }
     }
   }

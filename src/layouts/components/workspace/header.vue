@@ -3,35 +3,19 @@
     <div class="slogan flex-center space-x-1">
       <img
         class="logo"
-        :src="appConfig.logo" />
+        :src="appConfig.logo"
+      >
       <div
         v-if="!store.menu.collapsed"
-        class="title">
+        class="title"
+      >
         {{ appConfig.title }}
       </div>
     </div>
 
-    <HeaderMenu></HeaderMenu>
+    <HeaderMenu />
   </section>
 </template>
-
-<script setup lang="ts">
-import HeaderMenu from './header-menu.vue'
-import { appConfig } from '~/config/app.config'
-import { useStore } from '@/store'
-
-const store = useStore()
-
-const height = computed(() => `${appConfig.workspace.headerHeight}px`)
-const width = computed(
-  () =>
-    `${
-      store.menu.collapsed
-        ? appConfig.workspace.sideCollapsedWidth
-        : appConfig.workspace.sideWidth
-    }px`,
-)
-</script>
 
 <style lang="less" scoped>
 .header {
@@ -50,3 +34,21 @@ const width = computed(
   }
 }
 </style>
+
+<script setup lang="ts">
+import HeaderMenu from './header-menu.vue'
+import { appConfig } from '~/config/app.config'
+import { useStore } from '@/store'
+
+const store = useStore()
+
+const height = computed(() => `${appConfig.workspace.headerHeight}px`)
+const width = computed(
+  () =>
+    `${
+      store.menu.collapsed
+        ? appConfig.workspace.sideCollapsedWidth
+        : appConfig.workspace.sideWidth
+    }px`,
+)
+</script>

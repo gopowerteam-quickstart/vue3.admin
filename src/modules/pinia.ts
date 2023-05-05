@@ -12,9 +12,8 @@ export const install: (ctx: ViteSSGContext) => void = ({
   pinia.use(persist)
   app.use(pinia)
 
-  if (isClient) {
+  if (isClient)
     pinia.state.value = initialState.pinia || {}
-  } else {
+  else
     initialState.pinia = pinia.state.value
-  }
 }

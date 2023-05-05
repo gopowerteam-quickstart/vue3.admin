@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia'
 
-type User = {
+interface User {
   id: string
   name: string
 }
 
-type State = {
+interface State {
   token: string
   current?: User
 }
@@ -17,7 +17,7 @@ const initialState: State = {
 export const useUserStore = defineStore('user', {
   state: () => initialState,
   getters: {
-    isLogin: (state) => !!state.token,
+    isLogin: state => !!state.token,
   },
   actions: {
     updateUser(user: User) {

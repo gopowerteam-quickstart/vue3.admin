@@ -1,7 +1,7 @@
 import type { NextStepExecutor } from '@/shared/hooks/use-step'
 
-export const StepProvideKey = Symbol() as InjectionKey<{
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const StepProvideKey = Symbol('InjectionKey') as InjectionKey<{
+
   dataSource: Map<string, any>
   onNextStep: (executor: NextStepExecutor) => void
 }>

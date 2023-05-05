@@ -1,13 +1,13 @@
 <template>
   <a-layout-header>
-    <Header></Header>
+    <Header />
   </a-layout-header>
   <a-layout-content>
     <a-layout class="h-full">
-      <Side></Side>
-      <slot></slot>
+      <Side />
+      <slot />
 
-      <a-layout-footer></a-layout-footer>
+      <a-layout-footer />
     </a-layout>
   </a-layout-content>
 </template>

@@ -1,5 +1,5 @@
-import { useStore } from '@/store'
 import type { Router } from 'vue-router'
+import { useStore } from '@/store'
 
 async function getUserDataByToken() {
   const store = useStore()
@@ -14,13 +14,12 @@ export default function userLaunch(router: Router) {
   const store = useStore()
 
   router.beforeEach(async (to, from, next) => {
-    if (to.meta.requireAuth === false) {
+    if (to.meta.requireAuth === false)
       return next()
-    }
 
-    if (!store.user.token) {
+    if (!store.user.token)
       return next('/login')
-    }
+
     // 使用Token更新用户信息
     if (!store.user.current) {
       await getUserDataByToken()

@@ -28,7 +28,7 @@ export function currency(value: number, config?: Partial<CurrencyConfig>) {
   }
 
   // 金额缩放处理
-  value = value / Math.pow(10, currencyConfig.scale)
+  value = value / 10 ** currencyConfig.scale
 
   // 返回格式化金额
   // TODO: 小程序中无法使用

@@ -2,27 +2,35 @@
   <div class="py-2 pl-2 tabs-container">
     <a-tabs
       v-model:active-key="$route.fullPath"
-      type="card-gutter"
-      size="large"
-      :editable="true"
       destroy-on-hide
+      :editable="true"
       hide-content
+      size="large"
+      type="card-gutter"
       @change="onTabChange"
-      @delete="onTabDelete">
+      @delete="onTabDelete"
+    >
       <a-tab-pane
         v-for="tab of store.tab.tabs"
         :key="tab.key"
-        :closable="store.tab.tabs.length !== 1">
+        :closable="store.tab.tabs.length !== 1"
+      >
         <template #title>
           <a-dropdown
             trigger="contextMenu"
-            @select="(action) => onTabClose(tab, action as unknown as TabAction)">
+            @select="(action) => onTabClose(tab, action as unknown as TabAction)"
+          >
             <div>{{ tab.title }}</div>
             <template
               v-if="store.tab.tabs.length > 1"
-              #content>
-              <a-doption :value="TabAction.CLOSE_RIGHT">关闭右侧</a-doption>
-              <a-doption :value="TabAction.CLOSE_OTHER">关闭其他</a-doption>
+              #content
+            >
+              <a-doption :value="TabAction.CLOSE_RIGHT">
+                关闭右侧
+              </a-doption>
+              <a-doption :value="TabAction.CLOSE_OTHER">
+                关闭其他
+              </a-doption>
             </template>
           </a-dropdown>
         </template>
@@ -30,6 +38,12 @@
     </a-tabs>
   </div>
 </template>
+
+<style lang="less">
+.tabs-container {
+  background-color: #ffffff;
+}
+</style>
 
 <script setup lang="ts">
 import { useStore } from '@/store'
@@ -44,9 +58,9 @@ watch(
   () => route.fullPath,
   (value) => {
     // 获取菜单显示项
-    const menu = store.menu.menus.find((x) => x.key === route?.meta?.menu?.key)
+    const menu = store.menu.menus.find(x => x.key === route?.meta?.menu?.key)
     // 获取tab项
-    const tab = store.tab.tabs.find((x) => x.key === value)
+    const tab = store.tab.tabs.find(x => x.key === value)
     // 获取标题
     const title = route.meta.title ?? store.app.title
 
@@ -66,7 +80,7 @@ watch(
 
 function onTabInit() {
   // 获取菜单显示项
-  const menu = store.menu.menus.find((x) => x.key === route?.meta?.menu?.key)
+  const menu = store.menu.menus.find(x => x.key === route?.meta?.menu?.key)
   // 获取标题
   const title = route.meta.title ?? store.app.title
 
@@ -85,13 +99,13 @@ function onTabInit() {
  */
 async function onTabDelete(key: string | number) {
   const tabs = store.tab.tabs
-  const index = tabs.findIndex((tab) => tab.key === key)
+  const index = tabs.findIndex(tab => tab.key === key)
 
   if (
     // 未找到需要删除的标签
-    index === -1 ||
+    index === -1
     // 待删除标签是最后一个标签
-    tabs.length === 1
+    || tabs.length === 1
   )
     return
 
@@ -132,13 +146,13 @@ function onTabClose(tab: Tab, action: TabAction) {
   }
 
   const closeOtherTab = () => {
-    store.tab.deleteTab(tabs.filter((t) => t.key !== tab.key).map((t) => t.key))
+    store.tab.deleteTab(tabs.filter(t => t.key !== tab.key).map(t => t.key))
     changeTabRouter()
   }
 
   const closeRightTab = () => {
-    const index = tabs.findIndex((t) => t.key === tab.key)
-    store.tab.deleteTab(tabs.filter((t, i) => i > index).map((t) => t.key))
+    const index = tabs.findIndex(t => t.key === tab.key)
+    store.tab.deleteTab(tabs.filter((t, i) => i > index).map(t => t.key))
     changeTabRouter()
   }
 
@@ -154,7 +168,7 @@ function onTabClose(tab: Tab, action: TabAction) {
 
 function onTabChange(key: string | number) {
   const tabs = store.tab.tabs
-  const tab = tabs.find((x) => x.key === key)
+  const tab = tabs.find(x => x.key === key)
 
   if (tab) {
     router.push({
@@ -169,9 +183,3 @@ onMounted(() => {
   onTabInit()
 })
 </script>
-
-<style lang="less">
-.tabs-container {
-  background-color: #ffffff;
-}
-</style>

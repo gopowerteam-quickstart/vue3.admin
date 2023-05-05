@@ -1,5 +1,5 @@
-import { useStore } from '@/store'
 import type { Router } from 'vue-router'
+import { useStore } from '@/store'
 
 // 启动逻辑
 async function appLaunch1() {

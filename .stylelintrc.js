@@ -1,7 +1,6 @@
 module.exports = {
   extends: [
     'stylelint-config-standard',
-    'stylelint-config-prettier',
     'stylelint-config-html/vue',
     'stylelint-config-recommended-vue/scss',
     'stylelint-config-recommended-less',
@@ -16,7 +15,7 @@ module.exports = {
   ],
   ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts', '**/*.json'],
   rules: {
-    indentation: 2,
+    'no-extra-semicolons': null,
     'selector-pseudo-element-no-unknown': [
       true,
       {
@@ -24,17 +23,13 @@ module.exports = {
       },
     ],
     'scss/at-rule-no-unknown': null,
-    'number-leading-zero': 'always',
     'no-descending-specificity': null,
     'function-url-quotes': 'always',
-    'string-quotes': 'single',
     'unit-case': null,
-    'color-hex-case': 'lower',
     'color-hex-length': 'long',
     'rule-empty-line-before': 'never',
     'font-family-no-missing-generic-family-keyword': null,
     'selector-type-no-unknown': null,
-    'block-opening-brace-space-before': 'always',
     'at-rule-no-unknown': null,
     'no-duplicate-selectors': null,
     'property-no-unknown': null,

@@ -1,15 +1,17 @@
 <template>
   <a-menu
     class="flex-auto"
-    :mode="appConfig.workspace.sideMode"
     :collapsed="store.menu.collapsed"
     :collapsed-width="appConfig.workspace.sideCollapsedWidth"
+    :mode="appConfig.workspace.sideMode"
     :selected-keys="selectedKeys"
-    @menu-item-click="onMenuSelect">
+    @menu-item-click="onMenuSelect"
+  >
     <MenuItem
       v-for="menu in store.menu.sideMenus"
       :key="menu.key"
-      :menu="menu"></MenuItem>
+      :menu="menu"
+    />
   </a-menu>
 </template>
 
@@ -44,9 +46,8 @@ function updateSelectedMenu() {
   const menu = route.meta.menu as Menu
   const key = menu?.key
 
-  if (!key) {
+  if (!key)
     return
-  }
 
   // 获取Key列表
   const keys = key
@@ -56,8 +57,8 @@ function updateSelectedMenu() {
       [],
     )
 
-  const index = keys.findIndex((k) =>
-    store.menu.sideMenus.find((x) => x.key === k),
+  const index = keys.findIndex(k =>
+    store.menu.sideMenus.find(x => x.key === k),
   )
 
   selectedKeys = keys.slice(index)
@@ -68,10 +69,9 @@ function updateSelectedMenu() {
  * @param key
  */
 function onMenuSelect(key: string) {
-  const menu = store.menu.menus.find((menu) => menu.key === key)
+  const menu = store.menu.menus.find(menu => menu.key === key)
 
-  if (menu?.path && menu?.name) {
+  if (menu?.path && menu?.name)
     router.push({ name: menu.name })
-  }
 }
 </script>

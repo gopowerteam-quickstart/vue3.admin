@@ -3,10 +3,12 @@
     <a-menu-item :key="menu.key">
       <template
         v-if="props.showIcon && menu.icon"
-        #icon>
+        #icon
+      >
         <MenuIcon
           :name="menu.icon"
-          :size="15"></MenuIcon>
+          :size="15"
+        />
       </template>
       {{ menu.title }}
     </a-menu-item>
@@ -15,10 +17,12 @@
     <a-sub-menu :key="menu.key">
       <template
         v-if="props.showIcon && menu.icon"
-        #icon>
+        #icon
+      >
         <MenuIcon
           :name="menu.icon"
-          :size="15"></MenuIcon>
+          :size="15"
+        />
       </template>
       <template #title>
         {{ menu.title }}
@@ -26,7 +30,8 @@
       <MenuItem
         v-for="child in menu.children"
         :key="child.key"
-        :menu="child"></MenuItem>
+        :menu="child"
+      />
     </a-sub-menu>
   </template>
 </template>
